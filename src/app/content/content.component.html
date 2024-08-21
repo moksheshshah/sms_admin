@@ -1,0 +1,260 @@
+<div class="w-full flex h-screen">
+  <!--  [ngClass]="isExpand ? 'pl-4 xl:pl-7':'px-4 xl:px-7'" -->
+  <aside class="fixed inset-y-0 left-0 w-[290px] h-full bg-white border-r-2 border-gray_2 pb-6 z-50 xl:z-auto overflow-y-auto px-4 xl:px-7 anim group" [ngClass]="isShow ? 'translate-x-0' : '-translate-x-full'">
+    <div class="sticky top-0 logo bg-white py-8 z-[11]">
+      <a href="sm-dashboard" class="flex items-center xl:justify-center h-24 pl-1.5 xl:pl-0">
+        SMS
+      </a>
+    </div>
+    <ul class="w-full h-auto overflow-x-hidden text-gray_1 space-y-1.5 anim" (click)="checkRoutesPath()">
+      <li>
+        <div [routerLink]="'dashboard'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md  group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-dashboard text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-dashboard_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Dashboard</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'useranalysis'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-user text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-user_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">User Analysis</span>
+        </div>
+      </li>
+      <li [ngClass]="isExpand ? 'h-[400px] xl:h-[830px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isExpand = !isExpand;isAccountingExpand = false">
+          <span class="icon_hide block icon-master text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-master_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Masters</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isExpand ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isExpand ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'payment'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-payment text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-payment_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Payment Category</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'expenses'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-expenses text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-expenses_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Expenses Category</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'size'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-size text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-size_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Size</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'coupon'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-coupon text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-coupon-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Festival Coupon</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'productcoupon'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-coupon text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-coupon-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Product Coupon</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'blogscategory'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-story_category text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-story_category_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Blog Category</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'blogs'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-story text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-story_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Blog</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'plan'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-subscription text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-subscription_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Subscription Plan</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'productbenefits'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-product_benefits text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-productbenefit-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Product Benefits</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'staffmembers'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-staff_members text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-staff_members_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Staff Members</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'gallery'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-gallery text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-gallery-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Gallery</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'banner'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-banner-unlill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-banner-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Banner</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'pages'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-page-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-page-Fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Pages</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'advertising'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-advertisement-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-advertisement-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Advertisement</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'chatbot'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-chat-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-chat-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Manage Chatbot</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'customerreview'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-customer-review-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-customer-review-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Customer Review</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'users'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-user text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-user_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Users</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <!-- <li>
+        <div [routerLink]="'subscriptionuser'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-subscribe text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-subscribe_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Subscription User</span>
+        </div>
+      </li> -->
+      <li>
+        <div [routerLink]="'product'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-e_commerce text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-e_commerce_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Product</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'orders'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-order text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-order_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Orders</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'plan-orders'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-subscription text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-subscription_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Plan Orders</span>
+        </div>
+      </li>
+      <li [ngClass]="isAccountingExpand ? 'h-[150px] xl:h-[142px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isAccountingExpand = !isAccountingExpand;isExpand = false">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Accounting</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isAccountingExpand ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isAccountingExpand ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'analysis'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-expenses text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-expenses_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Analysis</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'reports'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="icon_hide block icon-payment text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-payment_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Report</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <div [routerLink]="'expense'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-setting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-setting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Expense</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'contact-us'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-contact-unfil text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-contact-fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Contact Us</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'support'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-support-unfill text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-support-fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Support</span>
+        </div>
+      </li>
+      <li>
+        <div [routerLink]="'invoicesettings'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+          <span class="icon_hide block icon-invoice_details text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-invoice_details_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Invoice Settings</span>
+        </div>
+      </li>
+    </ul>
+  </aside>
+  <div class="w-full h-full overflow-auto anim" [ngClass]="isShow ? 'ml-0 lg:ml-[290px]' : 'ml-0'">
+    <div class="w-full" *ngIf="networkStatus">
+      <header class="w-full sticky top-0 flex items-center bg-white border-b-2 border-gray_2 py-6 px-6 xl:px-8 z-[49]">
+        <div class="cursor-pointer" (click)="isShow = !isShow">
+          <svg class="w-9 h-9" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path fill="#000000" fill-rule="evenodd" d="M3 5a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zm0 5a1 1 0 0 1 1-1h12a1 1 0 0 1 0 2H4a1 1 0 0 1-1-1z" clip-rule="evenodd" opacity="1" data-original="#000000" ></path></g></svg>
+        </div>
+        <form class="w-[700px] mr-5 ml-5" autocomplete="false">
+          <div class="w-full flex items-center bg-gray_2 rounded-xl px-5 xl:px-6 py-2.5 xl:py-3">
+            <label for="search">
+              <span class="block icon-search text-gray_1 text-[24px] cursor-pointer"></span>
+            </label>
+            <input type="text" name="search" id="search" class="w-full outline-none bg-transparent text-light_blue placeholder:text-light_blue pl-2.5" placeholder="Search..." autocomplete="false">
+          </div>
+        </form>
+        <div class="user_profile ml-auto" (click)="logout()">
+          <span class="icon-logout text-lg flex items-center justify-center text-primary w-12 h-12 rounded-full bg-[#3e62271a] cursor-pointer anim hover:text-white hover:bg-primary"></span>
+        </div>
+      </header>
+      <div class="" [ngClass]="isAccounting ? 'w-full' : 'w-full p-5 lg:p-6 xl:p-7 2xl:p-8'">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+   
+    
+  </div>
+</div>
