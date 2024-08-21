@@ -14,10 +14,17 @@ import isOnline from 'is-online';
 export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   networkStatus: any;
   networkStatus$: Subscription = Subscription.EMPTY;
-  isExpand:boolean = false;
-  isAccountingExpand:boolean = false;
-  isAccounting:boolean = false;
+  isSchool:boolean = false;
+  isSchoolManagement:boolean = false;
+  isExam:boolean = false;
+  isFees:boolean = false;
+  isCommunication:boolean = false;
+  isAdministrative:boolean = false;
+  isReports:boolean = false;
+  isAdmin:boolean = false;
+  isSetting:boolean = false;
   isShow:boolean = true;
+  isAccounting:boolean = false;
 
   constructor(private router: Router,
     private toastr:ToastrService
@@ -48,13 +55,13 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   }
   
   checkRoutesPath(){
-    setTimeout(() => {
-      if(window.location.hash.search('#/reports') != -1){
-        this.isAccounting = true;
-      } else {
-        this.isAccounting = false;
-      }
-    }, 300);
+    // setTimeout(() => {
+    //   if(window.location.hash.search('#/reports') != -1){
+    //     this.isAccounting = true;
+    //   } else {
+    //     this.isAccounting = false;
+    //   }
+    // }, 300);
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,5 @@
 <div class="w-full flex h-screen">
-  <!--  [ngClass]="isExpand ? 'pl-4 xl:pl-7':'px-4 xl:px-7'" -->
+  <!--  [ngClass]="isSchool ? 'pl-4 xl:pl-7':'px-4 xl:px-7'" -->
   <aside class="fixed inset-y-0 left-0 w-[290px] h-full bg-white border-r-2 border-gray_2 pb-6 z-50 xl:z-auto overflow-y-auto px-4 xl:px-7 anim group" [ngClass]="isShow ? 'translate-x-0' : '-translate-x-full'">
     <div class="sticky top-0 logo bg-white py-8 z-[11]">
       <a href="sm-dashboard" class="flex items-center xl:justify-center h-24 pl-1.5 xl:pl-0">
@@ -7,228 +7,298 @@
       </a>
     </div>
     <ul class="w-full h-auto overflow-x-hidden text-gray_1 space-y-1.5 anim" (click)="checkRoutesPath()">
+      <li [ngClass]="isSchool ? 'h-[400px] xl:h-[193px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isSchool = !isSchool;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-master text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-master_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">School Management</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isSchool ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isSchool ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'sm-dashboard'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <!-- <span class="icon_hide block icon-payment text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
+              <span class="icon_show hidden icon-payment_fill text-primary text-xl lg:text-2xl xl:text-xl"></span> -->
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Dashboard</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'schools'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Schools</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'ac-year'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Academic Year</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'branch'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Branch</span>
+            </div>
+          </li>
+        </ul>
       <li>
-        <div [routerLink]="'dashboard'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md  group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
+        <div [routerLink]="'dashboard'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md  group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="icon_hide block icon-dashboard text-gray_1 text-xl xl:text-2xl"></span>
           <span class="icon_show hidden icon-dashboard_fill text-primary text-xl xl:text-2xl"></span>
           <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Dashboard</span>
         </div>
       </li>
-      <li>
-        <div [routerLink]="'useranalysis'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-user text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-user_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">User Analysis</span>
-        </div>
-      </li>
-      <li [ngClass]="isExpand ? 'h-[400px] xl:h-[830px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
-        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isExpand = !isExpand;isAccountingExpand = false">
+      <li [ngClass]="isSchoolManagement ? 'h-[400px] xl:h-[300px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isSchoolManagement = !isSchoolManagement;isSchool = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="icon_hide block icon-master text-gray_1 text-xl xl:text-2xl"></span>
           <span class="icon_show hidden icon-master_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Masters</span>
-          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isExpand ? 'rotate-[270deg]':'rotate-90'"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Academic Manage</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isSchoolManagement ? 'rotate-[270deg]':'rotate-90'"></span>
         </div>
-        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isExpand ? 'h-auto':'h-0'">
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isSchoolManagement ? 'h-auto':'h-0'">
           <li>
-            <div [routerLink]="'payment'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-payment text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-payment_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Payment Category</span>
+            <div [routerLink]="'class'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Class</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'expenses'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-expenses text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-expenses_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Expenses Category</span>
+            <div [routerLink]="'section'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Section</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'size'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-size text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-size_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Size</span>
+            <div [routerLink]="'subject'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Subject</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'coupon'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-coupon text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-coupon-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Festival Coupon</span>
+            <div [routerLink]="'student'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Student</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'productcoupon'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-coupon text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-coupon-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Product Coupon</span>
+            <div [routerLink]="'teachers'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Teachers</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'blogscategory'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-story_category text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-story_category_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Blog Category</span>
+            <div [routerLink]="'timetable'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Timetable</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'blogs'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-story text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-story_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Blog</span>
+            <div [routerLink]="'attendance'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Attendance</span>
             </div>
           </li>
           <li>
-            <div [routerLink]="'plan'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-subscription text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-subscription_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Subscription Plan</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'productbenefits'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-product_benefits text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-productbenefit-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Product Benefits</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'staffmembers'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-staff_members text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-staff_members_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Staff Members</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'gallery'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-gallery text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-gallery-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Gallery</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'banner'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-banner-unlill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-banner-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Banner</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'pages'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-page-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-page-Fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Pages</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'advertising'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-advertisement-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-advertisement-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Advertisement</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'chatbot'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-chat-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-chat-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Manage Chatbot</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'customerreview'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-customer-review-unfill text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-customer-review-fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Customer Review</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'users'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-user text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-user_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Users</span>
+            <div [routerLink]="'homework'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Homework</span>
             </div>
           </li>
         </ul>
       </li>
-      <!-- <li>
-        <div [routerLink]="'subscriptionuser'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-subscribe text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-subscribe_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Subscription User</span>
+      <li [ngClass]="isExam ? 'h-[150px] xl:h-[162px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isExam = !isExam;isSchool = false;isSchoolManagement=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Examination</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isExam ? 'rotate-[270deg]':'rotate-90'"></span>
         </div>
-      </li> -->
-      <li>
-        <div [routerLink]="'product'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-e_commerce text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-e_commerce_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Product</span>
-        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isExam ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'exams'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Exams</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'create-timetable'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Create Timetable</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'marks'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Marks</span>
+            </div>
+          </li>
+        </ul>
       </li>
-      <li>
-        <div [routerLink]="'orders'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-order text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-order_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Orders</span>
+      <li [ngClass]="isFees ? 'h-[150px] xl:h-[120px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isFees = !isFees;isSchool = false;isSchoolManagement=false;isExam=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Fee Management</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isFees ? 'rotate-[270deg]':'rotate-90'"></span>
         </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isFees ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'fee-invoice'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Fee Invoices</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'payment'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Payment History</span>
+            </div>
+          </li>
+        </ul>
       </li>
-      <li>
-        <div [routerLink]="'plan-orders'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-subscription text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-subscription_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Plan Orders</span>
+      <li [ngClass]="isCommunication ? 'h-[150px] xl:h-[162px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isCommunication = !isCommunication;isSchool = false;isSchoolManagement=false;isExam=false;isFees=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Communication</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isCommunication ? 'rotate-[270deg]':'rotate-90'"></span>
         </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isCommunication ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'meeting'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Meeting</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'notice'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Notice</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'complaint'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Complaint</span>
+            </div>
+          </li>
+        </ul>
       </li>
-      <li [ngClass]="isAccountingExpand ? 'h-[150px] xl:h-[142px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
-        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isAccountingExpand = !isAccountingExpand;isExpand = false">
+      <li [ngClass]="isAdministrative ? 'h-[150px] xl:h-[162px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isAdministrative = !isAdministrative;isSchool = false;isSchoolManagement=false;isExam=false;isFees=false;isAccounting=false;isCommunication=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Administrative</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isAdministrative ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isAdministrative ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'leave'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Leave</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'event'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Event</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'visitor'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Visitor</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li [ngClass]="isAccounting ? 'h-[150px] xl:h-[120px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isAccounting = !isAccounting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
           <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
           <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Accounting</span>
-          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isAccountingExpand ? 'rotate-[270deg]':'rotate-90'"></span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isAccounting ? 'rotate-[270deg]':'rotate-90'"></span>
         </div>
-        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isAccountingExpand ? 'h-auto':'h-0'">
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isAccounting ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'income'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Income</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'expense'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Expense</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      
+      <li>
+        <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-invoice_details text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-invoice_details_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Certificate</span>
+        </div>
+      </li>
+
+      <li [ngClass]="isReports ? 'h-[150px] xl:h-[270px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isReports = !isReports;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isAdmin=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Reports</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isReports ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isReports ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'rpt-student'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Students Report</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'rpt-teachers'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Teachers Report</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'rpt-attendance'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Attendance Report</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'rpt-examination'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Examination  Report</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'rpt-income'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Income Report</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'rpt-expense'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Expense Report</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li [ngClass]="isAdmin ? 'h-[150px] xl:h-[120px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isAdmin = !isAdmin;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isSetting=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Admin Master</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isAdmin ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isAdmin ? 'h-auto':'h-0'">
+          <li>
+            <div [routerLink]="'admin-user'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Admin Setup</span>
+            </div>
+          </li>
+          <li>
+            <div [routerLink]="'role'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Role & Permissions</span>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li [ngClass]="isSetting ? 'h-[150px] xl:h-[162px] active':'h-[50px] xl:h-[46px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+        <div class="relative flex items-center rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-none xl:rounded-br-none xl:group-hover:rounded-tr-none xl:group-hover:rounded-br-none px-2 xl:px-3.5 py-2 anim" (click)="isSetting = !isSetting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;">
+          <span class="icon_hide block icon-accounting text-gray_1 text-xl xl:text-2xl"></span>
+          <span class="icon_show hidden icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
+          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Settings</span>
+          <span class="opacity-0 group-hover:opacity-100 xl:opacity-100 xl:block absolute top-1/2 -translate-y-1/2 left-[190px] icon-next_arrow text-gray_1 anim" [ngClass]="isSetting ? 'rotate-[270deg]':'rotate-90'"></span>
+        </div>
+        <!-- <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 xl:px-3 xl:pl-5" [ngClass]="isSetting ? 'h-auto':'h-0'">
           <li>
             <div [routerLink]="'analysis'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-expenses text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-expenses_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Analysis</span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Admin Setup</span>
             </div>
           </li>
           <li>
             <div [routerLink]="'reports'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim">
-              <span class="icon_hide block icon-payment text-gray_1 text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="icon_show hidden icon-payment_fill text-primary text-xl lg:text-2xl xl:text-xl"></span>
-              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Report</span>
+              <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-3">Role & Permissions</span>
             </div>
           </li>
-        </ul>
-      </li>
-      <li>
-        <div [routerLink]="'expense'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-setting text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-setting_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Expense</span>
-        </div>
-      </li>
-      <li>
-        <div [routerLink]="'contact-us'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-contact-unfil text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-contact-fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Contact Us</span>
-        </div>
-      </li>
-      <li>
-        <div [routerLink]="'support'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-support-unfill text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-support-fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Support</span>
-        </div>
-      </li>
-      <li>
-        <div [routerLink]="'invoicesettings'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl xl:rounded-tr-full xl:rounded-br-full xl:group-hover:rounded-tr-full xl:group-hover:rounded-br-full overflow-hidden px-2 xl:px-3.5 py-2 anim" (click)="isExpand = false;isAccountingExpand = false">
-          <span class="icon_hide block icon-invoice_details text-gray_1 text-xl xl:text-2xl"></span>
-          <span class="icon_show hidden icon-invoice_details_fill text-primary text-xl xl:text-2xl"></span>
-          <span class="block text-gray_1 whitespace-nowrap text-base xl:text-sm ml-5 group-hover:ml-3 lg:ml-3">Invoice Settings</span>
-        </div>
+        </ul> -->
       </li>
     </ul>
   </aside>
