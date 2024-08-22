@@ -51,15 +51,15 @@ export class AddEditSchoolsComponent {
         couponid: this.couponId
       }
 
-      this._couponService.getProductCouponById(param).subscribe((result: any) => {
-        if (result && result.IsSuccess) {
-          this.setCouponData(result?.Data);
-        } else {
-          this._globalFunctions.successErrorHandling(result, this, true);
-        }
-      }, (error: any) => {
-        this._globalFunctions.errorHanding(error, this, true);
-      });
+      // this._couponService.getProductCouponById(param).subscribe((result: any) => {
+      //   if (result && result.IsSuccess) {
+      //     this.setCouponData(result?.Data);
+      //   } else {
+      //     this._globalFunctions.successErrorHandling(result, this, true);
+      //   }
+      // }, (error: any) => {
+      //   this._globalFunctions.errorHanding(error, this, true);
+      // });
     }
   }
 
