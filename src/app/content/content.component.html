@@ -7,7 +7,7 @@
       </a>
     </div>
     <ul class="px-4 pt-5 anim space-y-1" (click)="checkRoutesPath()">
-      <li [ngClass]="isSchool ? 'h-[170px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isSchool ? 'h-[180px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSchool = !isSchool;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
           <span class="icon_show icon-sm-dashboard_fill text-primary text-xl xl:text-2xl"></span>
@@ -25,14 +25,14 @@
         </ul>
       </li>
       <li class="h-[40px]">
-        <div [routerLink]="'dashboard'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2 cursor-pointer" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+        <div [routerLink]="'dashboard'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
           <span class="icon_show icon-dashboard_fill text-primary text-xl xl:text-2xl"></span>
           </span>
           <span class="text-14 font-bold text-t2 inline-block ml-2">Dashboard</span>
         </div>
       </li>
-      <li [ngClass]="isSchoolManagement ? 'h-[300px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isSchoolManagement ? 'h-[310px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSchoolManagement = !isSchoolManagement;isSchool = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
           <span class="icon_show icon-academic-manage_fill text-primary text-xl xl:text-2xl"></span>
@@ -53,7 +53,7 @@
           <li [routerLink]="'Homework'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">Homework</li>
         </ul>
       </li>
-      <li [ngClass]="isExam ? 'h-[135px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isExam ? 'h-[145px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isExam = !isExam;isSchool = false;isSchoolManagement=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
           <span class="icon_show icon-examination_fill text-primary text-xl xl:text-2xl"></span>
@@ -69,7 +69,7 @@
           <li [routerLink]="'marks'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">marks</li>
         </ul>
       </li>
-      <li [ngClass]="isFees ? 'h-[110px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isFees ? 'h-[120px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isFees = !isFees;isSchool = false;isSchoolManagement=false;isExam=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-fee-management_fill text-primary text-xl xl:text-2xl"></span>
@@ -84,7 +84,7 @@
           <li [routerLink]="'payment'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">payment</li>
         </ul>
       </li>
-      <li [ngClass]="isCommunication ? 'h-[135px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isCommunication ? 'h-[145px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isCommunication = !isCommunication;isSchool = false;isSchoolManagement=false;isExam=false;isFees=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-communication_fill text-primary text-xl xl:text-2xl"></span>
@@ -100,7 +100,7 @@
           <li [routerLink]="'complaint'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">complaint</li>
         </ul>
       </li>
-      <li [ngClass]="isAdministrative ? 'h-[135px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isAdministrative ? 'h-[145px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isAdministrative = !isAdministrative;isSchool = false;isSchoolManagement=false;isExam=false;isFees=false;isAccounting=false;isCommunication=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-administrative_fill text-primary text-xl xl:text-2xl"></span>
@@ -116,7 +116,7 @@
           <li [routerLink]="'visitor'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">visitor</li>
         </ul>
       </li>
-      <li [ngClass]="isAccounting ? 'h-[100px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isAccounting ? 'h-[110px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isAccounting = !isAccounting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-accounting_fill text-primary text-xl xl:text-2xl"></span>
@@ -132,14 +132,14 @@
         </ul>
       </li>
       <li class="h-[40px]">
-        <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2 cursor-pointer" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
+        <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isReports=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-certificate_fill text-primary text-xl xl:text-2xl"></span>
           </span>
           <span class="text-14 font-bold text-t2 inline-block ml-2">Certificate</span>
         </div>
       </li>
-      <li [ngClass]="isReports ? 'h-[230px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isReports ? 'h-[240px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isReports = !isReports;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isAccounting=false;isAdmin=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-reports_fill text-primary text-xl xl:text-2xl"></span>
@@ -158,7 +158,7 @@
           <li [routerLink]="'rpt-expense'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">Expense Report</li>
         </ul>
       </li>
-      <li [ngClass]="isAdmin ? 'h-[100px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
+      <li [ngClass]="isAdmin ? 'h-[110px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
         <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isAdmin = !isAdmin;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isSetting=false;">
           <span class="inline-block">
             <span class="icon_show icon-admin-user_fill text-primary text-xl xl:text-2xl"></span>
@@ -197,7 +197,7 @@
         </ul>
       </li> -->
       <li>
-        <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2 cursor-pointer" (click)="isSetting = !isSetting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;">
+        <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSetting = !isSetting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;">
           <span class="inline-block">
             <span class="icon_show icon-setting_fill text-primary text-xl xl:text-2xl"></span>
           </span>
