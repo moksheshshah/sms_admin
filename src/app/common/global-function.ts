@@ -172,6 +172,19 @@ export class GlobalFunctions{
       that.isLoading = false;
     }
   }
+
+  toTitleCase(str:string) {
+    return str.replace(
+      /\w\S*/g,
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      }
+    );
+  }
+
+  toUpperCase(str: string){
+    return str.toUpperCase();
+  }
 }
 
 // Basic btoa(rzp_test_xLCgO4y8whu5mi:XcmjX9kA8a8uqhLPnhOXoH9U)
