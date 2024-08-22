@@ -1,3 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
+*{
+  font-family: "Montserrat", sans-serif;
+}
+.anim{@apply transition-all duration-300;}
+.wrapper{@apply max-w-[1440px] px-5 mx-auto;}
+.toggle-button.active .drop_arrow{@apply rotate-0;}
+
+.h2{@apply text-24 lg:text-26 2xl:text-36 font-bold text-dark block;}
+.h3{@apply text-18 lg:text-20 2xl:text-24 font-bold text-primary block;}
+.text24{@apply text-20 lg:text-22 2xl:text-24 font-bold text-dark;}
+.text20{@apply text-16 lg:text-18 2xl:text-20 font-bold text-dark;}
+.text18{@apply text-14 lg:text-16 2xl:text-18 font-bold text-primary;}
+.text_titel{@apply text-16 xl:text-16 font-semibold text-primary;}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #0C0F35;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
 @tailwind utilities;

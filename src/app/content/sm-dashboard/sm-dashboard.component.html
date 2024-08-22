@@ -1,331 +1,95 @@
-<div class="w-full">
-  <div class="w-full flex">
-    <strong class="text-28 ">School managemanet</strong>
-    <!-- <div class="relative mt-4 lg:mt-0 ml-auto">
-      <mat-form-field appearance="outline" class="w-full" placeholder="Coupon Status" style="min-width: 180px !important;">
-        <mat-select class="w-full" [(ngModel)]="selCurrecyType" (selectionChange)="filterData()" [ngModelOptions]="{standalone: true}">
-          <mat-option [value]="'all'">All</mat-option>
-          <mat-option [value]="'inr'">INR &#8377;</mat-option>
-          <mat-option [value]="'usd'">USD &#36; </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div> -->
-  </div>
-  <div class="w-full mt-4 xl:mt-7">
-    <div
-      class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-6">
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Total Users</p>
+<div class="w-full space-y-2 lg:space-y-5 2xl:space-y-7">
+  <span class="h2">School Management</span>
+  <div class="flex flex-wrap -mx-3.5">
+    <div class="w-full sm:w-1/2 2xl:w-1/3 p-3.5 relative">
+      <div class="relative z-10 w-full rounded-3xl bg-white px-5 py-6 2xl:px-6 2xl:py-[30px] border border-transparent group hover:border-white/20 hover:bg-primary/5 hover:backdrop-blur-lg cursor-pointer anim">
+        <div class="flex items-center space-x-4">
+          <span class="inline-block">
+            <svg class="w-7 h-7 lg:w-9 lg:h-9 2xl:w-12 2xl:h-12" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M35.0651 32.5833C36.4609 31.6666 38.2943 32.6666 38.2943 34.3333V37.0208C38.2943 39.6666 36.2318 42.5 33.7526 43.3333L27.1068 45.5416C25.9401 45.9375 24.0443 45.9375 22.8984 45.5416L16.2526 43.3333C13.7526 42.5 11.7109 39.6666 11.7109 37.0208V34.3125C11.7109 32.6666 13.5443 31.6666 14.9193 32.5625L19.2109 35.3541C20.8568 36.4583 22.9401 37 25.0234 37C27.1068 37 29.1901 36.4583 30.8359 35.3541L35.0651 32.5833Z" fill="#3B418B"/> <path d="M41.6276 13.4584L29.1484 5.27087C26.8984 3.79171 23.1901 3.79171 20.9401 5.27087L8.39844 13.4584C4.3776 16.0625 4.3776 21.9584 8.39844 24.5834L11.7318 26.75L20.9401 32.75C23.1901 34.2292 26.8984 34.2292 29.1484 32.75L38.2943 26.75L41.1484 24.875V31.25C41.1484 32.1042 41.8568 32.8125 42.7109 32.8125C43.5651 32.8125 44.2734 32.1042 44.2734 31.25V21C45.1068 18.3125 44.2526 15.1875 41.6276 13.4584Z" fill="#3B418B"/> </svg>
+          </span>
+          <span class="h3">Brillient Primary School</span>
+        </div>
+        <span class="block my-3 lg:my-4 2xl:my-5 border-t-2 border-t4 group-hover:border-white/50"></span>
+        <div class="flex flex-wrap -mx-2">
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Students</span>
+            <span class="text18 block">4000</span>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalUsers}}</strong>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Teachers</span>
+            <span class="text18 block">30</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Classes</span>
+            <span class="text18 block">24</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Branches</span>
+            <span class="text18 block">5</span>
           </div>
         </div>
       </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Plan Orders</p>
+      <span class="w-32 h-64 rotate-45 blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30"></span>
+    </div>
+    <div class="w-full sm:w-1/2 2xl:w-1/3 p-3.5 relative">
+      <div class="relative z-10 w-full rounded-3xl bg-white px-5 py-6 2xl:px-6 2xl:py-[30px] border border-transparent group hover:border-white/20 hover:bg-primary/5 hover:backdrop-blur-lg cursor-pointer anim">
+        <div class="flex items-center space-x-4">
+          <span class="inline-block">
+            <svg class="w-7 h-7 lg:w-9 lg:h-9 2xl:w-12 2xl:h-12" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M35.0651 32.5833C36.4609 31.6666 38.2943 32.6666 38.2943 34.3333V37.0208C38.2943 39.6666 36.2318 42.5 33.7526 43.3333L27.1068 45.5416C25.9401 45.9375 24.0443 45.9375 22.8984 45.5416L16.2526 43.3333C13.7526 42.5 11.7109 39.6666 11.7109 37.0208V34.3125C11.7109 32.6666 13.5443 31.6666 14.9193 32.5625L19.2109 35.3541C20.8568 36.4583 22.9401 37 25.0234 37C27.1068 37 29.1901 36.4583 30.8359 35.3541L35.0651 32.5833Z" fill="#3B418B"/> <path d="M41.6276 13.4584L29.1484 5.27087C26.8984 3.79171 23.1901 3.79171 20.9401 5.27087L8.39844 13.4584C4.3776 16.0625 4.3776 21.9584 8.39844 24.5834L11.7318 26.75L20.9401 32.75C23.1901 34.2292 26.8984 34.2292 29.1484 32.75L38.2943 26.75L41.1484 24.875V31.25C41.1484 32.1042 41.8568 32.8125 42.7109 32.8125C43.5651 32.8125 44.2734 32.1042 44.2734 31.25V21C45.1068 18.3125 44.2526 15.1875 41.6276 13.4584Z" fill="#3B418B"/> </svg>
+          </span>
+          <span class="h3">Saraswati Vidhyalay</span>
+        </div>
+        <span class="block my-3 lg:my-4 2xl:my-5 border-t-2 border-t4 group-hover:border-white/50"></span>
+        <div class="flex flex-wrap -mx-2">
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Students</span>
+            <span class="text18 block">4000</span>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalsubscriptionplanSold}}</strong>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Teachers</span>
+            <span class="text18 block">30</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Classes</span>
+            <span class="text18 block">24</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Branches</span>
+            <span class="text18 block">5</span>
           </div>
         </div>
       </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Pending Orders</p>
+      <span class="w-32 h-64 rotate-45 blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30"></span>
+    </div>
+    <div class="w-full sm:w-1/2 2xl:w-1/3 p-3.5 relative">
+      <div class="relative z-10 w-full rounded-3xl bg-white px-5 py-6 2xl:px-6 2xl:py-[30px] border border-transparent group hover:border-white/20 hover:bg-primary/5 hover:backdrop-blur-lg cursor-pointer anim">
+        <div class="flex items-center space-x-4">
+          <span class="inline-block">
+            <svg class="w-7 h-7 lg:w-9 lg:h-9 2xl:w-12 2xl:h-12" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M35.0651 32.5833C36.4609 31.6666 38.2943 32.6666 38.2943 34.3333V37.0208C38.2943 39.6666 36.2318 42.5 33.7526 43.3333L27.1068 45.5416C25.9401 45.9375 24.0443 45.9375 22.8984 45.5416L16.2526 43.3333C13.7526 42.5 11.7109 39.6666 11.7109 37.0208V34.3125C11.7109 32.6666 13.5443 31.6666 14.9193 32.5625L19.2109 35.3541C20.8568 36.4583 22.9401 37 25.0234 37C27.1068 37 29.1901 36.4583 30.8359 35.3541L35.0651 32.5833Z" fill="#3B418B"/> <path d="M41.6276 13.4584L29.1484 5.27087C26.8984 3.79171 23.1901 3.79171 20.9401 5.27087L8.39844 13.4584C4.3776 16.0625 4.3776 21.9584 8.39844 24.5834L11.7318 26.75L20.9401 32.75C23.1901 34.2292 26.8984 34.2292 29.1484 32.75L38.2943 26.75L41.1484 24.875V31.25C41.1484 32.1042 41.8568 32.8125 42.7109 32.8125C43.5651 32.8125 44.2734 32.1042 44.2734 31.25V21C45.1068 18.3125 44.2526 15.1875 41.6276 13.4584Z" fill="#3B418B"/> </svg>
+          </span>
+          <span class="h3">Saraswati Vidhyalay</span>
+        </div>
+        <span class="block my-3 lg:my-4 2xl:my-5 border-t-2 border-t4 group-hover:border-white/50"></span>
+        <div class="flex flex-wrap -mx-2">
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Students</span>
+            <span class="text18 block">4000</span>
           </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalpendingOrders}}</strong>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Teachers</span>
+            <span class="text18 block">30</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Classes</span>
+            <span class="text18 block">24</span>
+          </div>
+          <div class="w-1/2 p-2 space-y-1 2xl:space-y-2">
+            <span class="text20 block">Total Branches</span>
+            <span class="text18 block">5</span>
           </div>
         </div>
       </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Ready To Ship Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalreadyToShipOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Shipped Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalshippedOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Delivered Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totaldeliveredOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Cancelled Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalcancelledOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">RTO Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalrtoOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Refund Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalrefundOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">COD Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalcodOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Paid Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalpaidOrders}}</strong>
-          </div>
-        </div>
-      </div>
-      <div class="w-full h-full">
-        <div class="w-full h-full flex flex-col border border-gray_3 rounded-3xl p-4 xl:px-6 xl:py-5">
-          <div class="flex items-center">
-            <div class="">
-              <div class="w-11 h-11 flex items-center justify-center border border-gray_3 rounded-2xl">
-                <span class="block icon-order_fill text-primary text-[24px]"></span>
-              </div>
-            </div>
-            <p class="text-base font-medium pl-3">Replace Orders</p>
-          </div>
-          <div class="flex items-center justify-between pt-4 mt-auto">
-            <strong class="block text-2xl font-bold tracking-wide animate-pulse" *ngIf="isCountLoading">XXXX</strong>
-            <strong class="block text-2xl" *ngIf="!isCountLoading">{{countData?.totalreplaceorder}}</strong>
-          </div>
-        </div>
-      </div>
+      <span class="w-32 h-64 rotate-45 blur-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-30"></span>
     </div>
   </div>
-  
-      <div class="w-full mt-4 xl:mt-7">
-        <div class="chartjs-wrapper w-full bg-light border border-gray_3 rounded-xl p-6 xl:p-7 3xl:p-8" [ngClass]="isOrderChartLoading ? 'bg-slate-300/30 backdrop-blur-sm' : ''">
-          <div class="flex flex-wrap items-center justify-between" >
-            <strong class="block text-xl lg:text-2xl whitespace-nowrap">Order Reports</strong><form class="flex flex-wrap md:flex-nowrap items-center -mx-2">
-              <div class="w-full relative cursor-pointer p-2">
-                <input type="text" (change)="onOrderReportDateChange($event)" pInputText class="w-full text-base border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none px-4 py-1.5" ngxDaterangepickerMd [showCustomRangeLabel]="true"
-                  [alwaysShowCalendars]="true" [ranges]="ranges" [linkedCalendars]="true" [isInvalidDate]="isInvalidDate"
-                  [showClearButton]="true" placeholder="Select Dates..." *ngIf="!isOrderChartLoading">
-              </div>
-            </form>
-          </div>
-
-          <canvas class="w-full h-full" id="orderChartData" #orderChartData></canvas>
-          <div *ngIf="isOrderChartLoading" class="absolute inset-0 w-full h-full flex items-center justify-center">
-            <div class="flex flex-col items-center justify-center">
-              <div class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex mt-4 xl:mt-7">
-        <div class="w-1/2 3xl:w-5/12">
-          <div class="chartjs-wrapper w-full">
-            <strong class="block text-xl lg:text-2xl whitespace-nowrap pb-6">User Data OverViews</strong>
-            <div class="flex items-center" [ngClass]="isCountLoading ? 'bg-slate-300/30 backdrop-blur-sm' : ''">
-              <canvas id="userCountChartData" #userCountChartData></canvas>
-              <div class="flex flex-col space-y-11 ml-11 pr-5" *ngIf="!isCountLoading" >
-                <div class="w-full">
-                  <div class="flex items-center">
-                    <span class="block w-2 h-2 rounded-full bg-green mr-4"></span>
-                    <span class="block text-lg text-gray_1">Active Users</span>
-                  </div>
-                  <span class="block text-[22px] font-medium mt-2 ml-6">{{countData.activeusers}}</span>
-                </div>
-                <div class="w-full">
-                  <div class="flex items-center">
-                    <span class="block w-2 h-2 rounded-full bg-[#5388D8] mr-4"></span>
-                    <span class="block text-lg text-gray_1">In Active Users</span>
-                  </div>
-                  <span class="block text-[22px] font-medium mt-2 ml-6">{{countData.inactiveusers}}</span>
-                </div>
-              </div>
-              <div *ngIf="isCountLoading" class="absolute inset-0 w-full h-full flex items-center justify-center">
-                <div class="flex flex-col items-center justify-center">
-                  <div class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
-                </div>
-              </div>
-            </div>
-            </div>
-           
-          </div>
-        </div>
-        <div class="w-1/2 3xl:w-7/12">
-          <div class="flex flex-wrap items-center justify-between pb-6">
-            <strong class="block text-xl lg:text-2xl whitespace-nowrap">User OverViews</strong>
-          </div>
-          <div class="w-full relative overflow-hidden">
-            <div class=" border border-gray_3 overflow-x-auto relative">
-              <table mat-table matSort [dataSource]="userPriData" class="mat-elevation-z8"
-                *ngIf="userPriData.filteredData.length > 0">
-                <ng-container matColumnDef="fullname">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> User Name </th>
-                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap flex items-center font-semibold">
-                    <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10 " *ngIf="element?.profile_pic">
-                      <img class="w-full h-full rounded-full object-cover"
-                        [src]="(element?.profile_pic) ? constants.baseImageUrl + element?.profile_pic : constants.userDefaultImage"
-                        alt="">
-                    </div>
-                    <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10" *ngIf="!element?.profile_pic">
-                      <img class="w-full h-full rounded-full object-cover" [src]="constants.userDefaultImage" alt="">
-                    </div>
-                    <div class="text-justify ml-2">
-                      {{element.fullname ? element.fullname : '-'}}
-                    </div>
-                  </td>
-                </ng-container>
-
-                <ng-container matColumnDef="gender">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> gender </th>
-                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold"> {{element.gender | titlecase }} </td>
-                </ng-container>
-
-
-                <ng-container matColumnDef="email">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Email Address </th>
-                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold"> {{element.mobile ?
-                    element.email : '-'}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="mobile">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Mobile number </th>
-                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold"> {{element.mobile ?
-                    element.mobile : '-'}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <div class="w-full">
-                <div class="w-full flex justify-center p-5" *ngIf="userPriData.filteredData.length == 0">
-                  <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
-                    <strong class="block text-xl lg:text-2xl 2xl:text-2xl text-center">User not found..!</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <p [routerLink]="'/useranalysis'"
-              class="block text-base font-medium pt-2 text-primary underline text-center cursor-pointer"> View All</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="isTableLoading"
-      class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-50">
-      <div class="flex flex-col items-center justify-center">
-        <div class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
-        </div>
-        <p class="block text-base font-medium pt-2">Plase wait</p>
-      </div>
-    </div>
+</div>
