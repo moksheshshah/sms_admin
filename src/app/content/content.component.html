@@ -215,9 +215,15 @@
           </span>
           <span class="text-18 lg:text-[20px] 2xl:text-24 text-dark font-extrabold block">Brillient Primary School</span>
         </div>
-  
-        <span class="p-2.5 2xl:p-4 bg-t6 inline-block ml-auto rounded-md">
-          <span class="icon_show icon-shuffle-data text-primary text-xl xl:text-2xl"></span>
+        
+        <div class="flex items-center space-x-2 relative ml-4 2xl:ml-6">
+          <span class="icon-calendar_fill text24 font-normal text-primary"></span>
+          <span class="text18 font-normal mr-2">2023 - 2024</span>
+          <span class="icon-arrow-down text18 font-normal text-primary"></span>
+        </div>
+
+        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md">
+          <span class="icon_show icon-shuffle-data text-primary text-xl 2xl:text-2xl leading-none"></span>
         </span>
         <label for="main_search" class="p-2.5 2xl:p-4 rounded-md bg-t6 md:flex space-x-2 max-w-64 2xl:max-w-[350px] w-full ml-4 2xl:ml-6 hidden">
           <span>
@@ -225,8 +231,8 @@
           </span>
           <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search student,teacher etc..." id="main_search"/>
         </label>
-        <span class="p-2.5 2xl:p-4 bg-t6 inline-block rounded-md ml-4 2xl:ml-6">
-          <span class="icon_show icon-user text-primary text-xl xl:text-2xl"></span>
+        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6">
+          <span class="icon_show icon-user text-primary text-xl 2xl:text-2xl leading-none"></span>
         </span>
       </header>
       <div class="" [ngClass]="isAccounting ? 'w-full' : 'w-full p-5 lg:p-6 2xl:p-7'">

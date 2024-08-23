@@ -25,6 +25,7 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   isSetting:boolean = false;
   isShow:boolean = true;
   isAccounting:boolean = false;
+productCouponForm: any;
 
   constructor(private router: Router,
     private toastr:ToastrService

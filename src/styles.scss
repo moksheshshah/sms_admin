@@ -44,3 +44,37 @@
   background-color: #3B418B !important;
 }
 .text-primary-error{@apply text-red-600;}
+
+// selact and date input 
+.mat-mdc-form-field-infix{
+  min-height: auto !important;
+  padding: 0 !important;
+  z-index: 3;
+}
+.mat-datepicker-toggle .mat-mdc-icon-button.mat-mdc-button-base {
+  height: auto !important;
+  padding: 0 12px;
+}
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+  display: none;
+}
+.p-inputtext:enabled:focus{
+  box-shadow: none !important;
+}
+
+.dropdown .mdc-text-field, .date .mdc-text-field{@apply w-full bg-white text-16 xl:text-lg border-0 text-dark placeholder:text-t3 rounded-lg outline-none py-[9px] xl:py-[13px] px-4;}
+.date .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading, .date .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing, .dropdown .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading, .dropdown .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: #CBD4E1 !important;
+  background-color: #fff;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline .mdc-notched-outline__trailing{
+  border-width: 1px !important;
+}
+.dropdown .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing, 
+.date .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__trailing{
+  border-radius: 0 7px 7px 0 !important;
+}
+.dropdown .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading, 
+.date .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline .mdc-notched-outline__leading {
+  border-radius: 7px 0 0 7px !important;
+}
