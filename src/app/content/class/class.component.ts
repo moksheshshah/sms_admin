@@ -9,11 +9,12 @@ import { ToastrService } from 'ngx-toastr';
 import { ClassService } from './class.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEditClassComponent } from './add-edit-class/add-edit-class.component';
+import { CONSTANTS } from '../../common/constants';
 
 export interface SizeElement {
-  size_name: string;
-  description: string;
-  status: boolean;
+  class_name: string;
+  section: string;
+  total_std: string;
   action: any;
 }
 
@@ -27,13 +28,14 @@ export class ClassComponent {
   SIZE_DATA: SizeElement[] = [];
   totalSizeData: any;
   searchSize: any = "";
-  displayedColumns: string[] = ['size_name', 'description', 'status', 'action'];
+  displayedColumns: string[] = ['class_name', 'section', 'total_std', 'action'];
   sizeData = new MatTableDataSource<SizeElement>(this.SIZE_DATA);
   selection = new SelectionModel<SizeElement>(true, []);
   name: string = "";
   @ViewChild(MatSort, { static: false }) sizeSort!: MatSort;
   pageNo: any;
   limit: any;
+constants: any = CONSTANTS;
 
   constructor(
     private _router: Router,
@@ -102,7 +104,8 @@ export class ClassComponent {
 
   addSize() {
     const dialogRef = this.dialog.open(AddEditClassComponent, {
-      width: '700px',
+      width: '410px',
+      height: 'fit-content',
       data: [{ result: null },
       { btnName: "Add" }
       ],

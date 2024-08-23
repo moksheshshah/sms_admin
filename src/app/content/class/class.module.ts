@@ -11,6 +11,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { PaginatorModule } from 'primeng/paginator';
 import { AddEditClassComponent } from './add-edit-class/add-edit-class.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { ImageModule } from 'primeng/image';
 
 const routes:Routes = [
   {
@@ -35,7 +39,11 @@ const routes:Routes = [
     ReactiveFormsModule,
     InputTextareaModule ,
     InputTextModule,
-    PaginatorModule 
+    PaginatorModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    ImageModule
   ]
 })
 export class ClassModule { }

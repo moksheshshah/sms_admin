@@ -1,22 +1,26 @@
-<div class="max-w-4xl w-full rounded-[50px] bg-white p-7 lg:p-8 xl:p-8 2xl:p-9">
-  <div class="flex items-center justify-between">
-    <span class="block text-2xl lg:text-[32px] font-bold">{{data[1].btnName}} Size</span>
+<div class="max-w-4xl w-full rounded-3xl bg-white p-7 lg:p-8 xl:p-8 2xl:p-9">
+  <div class="flex items-center justify-end">
     <span class="block icon-arrow-left text-2xl font-extrabold cursor-pointer" (click)="closeDailog()"></span>
   </div>
+  <span class="block text-24 font-bold text-center">{{data[1].btnName}}  New Class</span>
   <form class="flex flex-wrap mt-6 xl:mt-8" #sizeNgForm="ngForm" [formGroup]="sizeForm" (ngSubmit)="onSubmitAction()">
     <div class="w-full relative pb-6 mb-1">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Size Name<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
-        <input type="text" pInputText [formControlName]="'size_name'" class="w-full text-16 xl:text-lg border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Size Name">
+      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Class Name<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+        <input type="text" pInputText [formControlName]="'size_name'" class="w-full text-16 xl:text-lg border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of class">
         <span class="error-message text-primary-error block text-sm font-semibold absolute bottom-0 inset-x-0 pt-2"
         *ngIf="sizeForm.get('size_name').hasError('required') && (sizeForm.get('size_name').dirty || sizeForm.get('size_name').touched)">
         Size Name is required.</span>
     </div>
-    <div class="w-full relative pb-6 mb-1">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Description</label>
-        <textarea pInputTextarea  name="questionText" [formControlName]="'description'" class="w-full max-h-[180px] min-h-[90px] overflow-y-auto text-[16px] border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2.5 px-4 ng-pristine ng-invalid ng-touched" placeholder="Description..."></textarea>
-        <!-- <small class="error-message text-primary"
-        *ngIf="sizeForm.get('description').hasError('required') && (sizeForm.get('description').dirty || sizeForm.get('description').touched)">
-        Description is required.</small> -->
+   
+    <div class="w-full relative pb-6 pt-0">
+      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <mat-form-field appearance="outline" class="w-full dropdown">
+        <mat-select placeholder="Select sections" [formControlName]="'description'" multiple>
+          <mat-option [value]="'A'">A</mat-option>
+          <mat-option [value]="'B'">B</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="error-message block absolute bottom-0 left-2.5 text-sm font-semibold text-primary-error" *ngIf="sizeForm.get('description').hasError('required') && (sizeForm.get('description').dirty || sizeForm.get('description').touched)">description type is required.</span>
     </div>
     <!-- <div class="w-1/2 pb-7">
       <label for="item_name" class="block text-sm font-medium ">Size Status</label>
@@ -27,7 +31,7 @@
     </div>  -->
     <div class="w-full flex items-center justify-center">
       <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center border-2 border-primary rounded-lg px-6 py-2 outline-none bg-primary hover:bg-white anim group">
-        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Save</span>
+        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Create</span>
         <span class="block" *ngIf="isBtnLoading">
           <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
         </span>

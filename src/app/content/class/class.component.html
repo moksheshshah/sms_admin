@@ -1,82 +1,86 @@
 <div class="w-full">
   <div class="w-full flex items-center">
-      <strong class="block text-28 w-1/2">Size</strong>
-      <div class="flex items-center justify-end space-x-4 ml-auto w-1/2">
-          <button type="button" class="flex items-center btn-primary text-sm font-bold cursor-pointer"
-              (click)="addSize()">
-              <span class="icon-add text-inherit"></span>
-              <span class="block text-inherit ml-3 whitespace-nowrap">Add New</span>
+      <div class="flex items-center md:items-start flex-wrap w-full">
+          <p class="text24 order-1">All Classes</p>
+          <button class="order-2 sm:order-3 flex items-center ml-auto sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2.5 2xl:py-4 2xl:px-5 border border-primary rounded-lg bg-primary hover:bg-transparent group anim" (click)="addSize()">
+            <span class="inline-block">
+              <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            </span>
+            <span class="text18 text-white group-hover:text-primary">Add New</span>
           </button>
+          <label for="main_search" class="mt-3 sm:mt-0 order-3 sm:order-2 p-2.5 2xl:p-4 rounded-md bg-white flex space-x-2 sm:max-w-64 2xl:max-w-[350px] w-full ml-auto">
+            <span>
+              <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+            </span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search School" id="main_search" (keyup)="onKeySearch($event)"/>
+          </label>
       </div>
   </div>
-  <div class="flex flex-wrap mt-6 xl:mt-8">
-      <div class="w-full relative">
-          <div class="w-full border border-b-0 border-gray_3 overflow-hidden">
-              <div class="w-full px-4 2xl:px-8 py-4 xl:py-5 2xl:py-6">
-                  <div class="xl:max-w-3xl w-full flex items-center bg-gray_5 rounded-[40px] p-3.5 xl:p-4">
-                      <input type="text" name="search" id="search" class="w-full bg-transparent text-[16px] outline-none placeholder:text-lg" placeholder="Search..." (keyup)="onKeySearch($event)">
-                      <label for="search" class="h-[18px] flex items-center justify-center cursor-pointer text-gray_1 font-semibold ml-2"><span class="icon-search text-lg"></span></label>
-                  </div>
-              </div>
-          </div>
-          <div class="w-full relative overflow-hidden">
-              <div class=" border border-t-0 border-gray_3 overflow-x-auto relative">
-                  <table mat-table matSort [dataSource]="sizeData" class="mat-elevation-z8" *ngIf="sizeData.filteredData.length > 0">
-                      <!-- Size Name Column -->
-                      <ng-container matColumnDef="size_name">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Size Name </th>
-                          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold"> {{element.size_name}} </td>
-                      </ng-container>
-      
-                      <!-- Description Column -->
-                      <ng-container matColumnDef="description">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Description </th>
-                          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold"> {{element.description ? element.description : '-'}} </td>
-                      </ng-container>
-      
-                      <!-- Status Column -->
-                      <ng-container matColumnDef="status">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Status </th>
-                          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold">
-                              <p-inputSwitch [(ngModel)]="element.status"
-                                  (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
-                          </td>
-                      </ng-container>
-      
-                      <!-- Action Column -->
-                      <ng-container matColumnDef="action">
-                          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap"> Action </th>
-                          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-semibold">
-                              <div class="flex space-x-3">
-                                  <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editSize($event,element)"></span>
-                                  <span class="block icon-delete text-xl cursor-pointer text-red-600 anim" (click)="changeStatusAction($event,element)"></span>
-                              </div>
-                          </td>
-                      </ng-container>
-      
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </table>
-                  <div class="w-full"> 
-                      <div class="w-full flex justify-center p-5" *ngIf="sizeData.filteredData.length == 0">
-                          <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
-                              <strong class="block text-xl lg:text-2xl 2xl:text-2xl text-center">Sizes not found..!</strong>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="sizeData.filteredData.length > 0">
-                  <p-paginator (onPageChange)="getSize($event)" [first]="1" [rows]="limit" [totalRecords]="totalSizeData" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
-              </div>
-              <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center border border-t-0 border-gray_3 bg-gray-400/10 backdrop-blur-sm z-10">
-                  <div class="flex flex-col items-center justify-center">
-                      <div 
-                          class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
-                      </div>
-                      <p class="block text-base font-medium pt-2">Plase wait</p>
-                  </div>
-              </div>
-          </div>
-      </div>
+  <div class="w-full relative py-6 xl:py-8">
+    <div class="w-full relative overflow-hidden">
+        <div class="rounded-xl overflow-x-auto relative">
+            <table mat-table matSort [dataSource]="sizeData" class="mat-elevation-z8" *ngIf="sizeData.filteredData.length > 0">
+  
+                <!-- Size Name Column -->
+                <ng-container matColumnDef="class_name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Class Name </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'1st'}} </td>
+                </ng-container>
+  
+                <!-- Size Name Column -->
+                <ng-container matColumnDef="section">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Sections </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'A, B, C, D'}} </td>
+                </ng-container>
+
+                <!-- Size Name Column -->
+                <ng-container matColumnDef="total_std">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Sections </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'2000'}} </td>
+                </ng-container>
+    
+                  <!-- Status Column -->
+                  <!-- <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Status </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                        <p-inputSwitch [(ngModel)]="element.status"
+                            (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
+                    </td>
+                </ng-container> -->
+    
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                        <div class="flex space-x-3">
+                            <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editSize($event,element)"></span>
+                            <span class="block icon-delete text-xl cursor-pointer text-red-600 anim"></span>
+                        </div>
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div class="w-full"> 
+                <div class="w-full flex justify-center p-5" *ngIf="sizeData.filteredData.length == 0">
+                    <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                        <strong class="block text-xl lg:text-2xl 2xl:text-2xl text-center"> Festival Coupons not found..!</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="sizeData.filteredData.length > 0">
+            <p-paginator [first]="1" [rows]="limit" (onPageChange)="getSize($event)"  [totalRecords]="totalSizeData" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+        </div>
+        <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+            <div class="flex flex-col items-center justify-center">
+                <div
+                    class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                </div>
+                <p class="block text-base font-medium pt-2">Plase wait</p>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
