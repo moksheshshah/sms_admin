@@ -25,7 +25,14 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   isSetting:boolean = false;
   isShow:boolean = true;
   isAccounting:boolean = false;
-productCouponForm: any;
+  productCouponForm: any;
+  filteredProductKey: any = '2023 - 2024';
+  sortYear: any = [
+    { key:'2023 - 2024', value:'2023 - 2024' },
+    { key:'2022 - 2023', value:'2022 - 2023' },
+    { key:'2021 - 2022', value:'2021 - 2022' },
+    { key:'2020 - 2021', value:'2020 - 2021' },
+  ];
 
   constructor(private router: Router,
     private toastr:ToastrService

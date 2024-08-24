@@ -95,22 +95,11 @@ export class AddEditSchoolsComponent {
 
   prepareAddEditExpenseForm() {
     this.productCouponForm = this._formBuilder.group({
-      couponid: [''],
       banner: [''],
-      name: ['', [Validators.required]],
-      coupon_code: ['', [Validators.required]],
-      currency: ['INR', [Validators.required]],
-      variant: ['', Validators.required],
-      maxlimit: [0, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
-      userlimit: ["single", [Validators.required]],
-      discount_type: ['amount', [Validators.required]],
-      discount: [0, [Validators.required, Validators.pattern(/^[.\d]+$/)]],
-      starttime: ['', [Validators.required]],
-      endtime: ['', [Validators.required]],
-      webview: [true],
-      mobileview: [true],
-      brief: ['', Validators.required],
-      tc: ['']
+      school_name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: [null, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      address: ['', [Validators.required]],
     });
   }
 

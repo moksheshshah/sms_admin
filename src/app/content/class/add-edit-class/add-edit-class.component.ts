@@ -5,6 +5,7 @@ import { ClassService } from '../class.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { GlobalFunctions } from '../../../common/global-function';
+import { MatOption } from '@angular/material/core';
 
 @Component({
   selector: 'app-add-edit-class',
@@ -14,6 +15,15 @@ import { GlobalFunctions } from '../../../common/global-function';
 export class AddEditClassComponent {
   isBtnLoading:boolean = false;
   sizeForm: any = FormGroup;
+  isBtnChange:boolean = false;
+  sectionList:any = [
+    { key:'A', value:'A' }, 
+    { key:'B', value:'B' }, 
+    { key:'C', value:'C' }, 
+    { key:'D', value:'D' }, 
+    { key:'E', value:'E' }, 
+  ];
+  @ViewChild('allSelected') allSelected: MatOption | any;
   @ViewChild('sizeNgForm') sizeNgForm: any;
 
   constructor(
@@ -36,14 +46,30 @@ export class AddEditClassComponent {
 
   init(): void {
     this.sizeForm = this.fb.group({
-      size_name: [null, Validators.required],
-      description: [null],
+      class_name: [null, Validators.required],
+      section: [null, Validators.required],
       // status: [true, Validators.required]
     });
   }
 
   get f() {
     return this.sizeForm.controls;
+  }
+
+  tosslePerOne(all: any): any {
+    if (this.allSelected.selected) {
+      this.allSelected.deselect();
+      return false;
+    }
+    if (this.sizeForm.controls.section.value.length == this.sectionList.length)
+      this.allSelected.select();
+  }
+  toggleAllSelection() {
+    if (this.allSelected.selected) {
+      this.sizeForm.controls.section.patchValue([...this.sectionList.map((item: any) => item.value), 0]);
+    } else {
+      this.sizeForm.controls.section.patchValue([]);
+    }
   }
 
   setSizeData() {
@@ -53,6 +79,9 @@ export class AddEditClassComponent {
   }
 
   onSubmitAction(): void {
+    let sectionArray = this.sizeForm.value.section.filter((i:any) => i != 0);
+    console.log(sectionArray);
+
     this.isBtnLoading = true;
     if (!this.sizeForm.valid) {
       this._toastr.clear();

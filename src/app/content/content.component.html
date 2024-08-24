@@ -215,11 +215,22 @@
           </span>
           <span class="text-18 lg:text-[20px] 2xl:text-24 text-dark font-extrabold block">Brillient Primary School</span>
         </div>
-        
-        <div class="flex items-center space-x-2 relative ml-4 2xl:ml-6">
+
+        <!-- <div class="flex items-center space-x-2 relative ml-4 2xl:ml-6">
           <span class="icon-calendar_fill text24 font-normal text-primary"></span>
           <span class="text18 font-normal mr-2">2023 - 2024</span>
           <span class="icon-arrow-down text18 font-normal text-primary"></span>
+        </div> -->
+
+        <div class="flex items-center space-x-2 relative ml-4 2xl:ml-6">
+          <mat-form-field appearance="outline" class="w-full dropdown">
+            <span class="icon-calendar_fill text24 font-normal text-primary"></span>
+            <mat-select [(ngModel)]="filteredProductKey" name="sortReivew">
+              <mat-option  *ngFor="let item of sortYear; let i = index" [value]="item.value">
+                <span class="text18 font-normal mr-2">{{item?.key}}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md">

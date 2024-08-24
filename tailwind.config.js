@@ -18,7 +18,7 @@ module.exports = {
         'error':'#B01212',
         'success':'#00632B',
         'warning':'#EFB008',
-        'info': '#2563EB'
+        'info': '#2563EB',
       },
       fontSize:{
         '14':['14px','20px'],

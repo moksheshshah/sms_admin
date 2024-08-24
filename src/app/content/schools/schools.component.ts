@@ -13,14 +13,9 @@ import { SchoolsService } from './schools.service';
 
 export interface CouponComponent{
   banner:any;
-  coupon_code:string;
-  name:string;
-  userlimit:any;
-  maxlimit:any;
-  currency:any;
-  // min_amount:any;
-  starttime:any;
-  endtime:any;
+  phone:string;
+  email:string;
+  address:any;
   status:any;
   action:any;
 }
@@ -36,7 +31,7 @@ export class SchoolsComponent {
   COUPON_DATA:CouponComponent[]=[];
   totalCoupon:any;
   searchCoupon:any;
-  displayedColumns:string[]=['banner','coupon_code','name','userlimit','maxlimit','currency','starttime','endtime','status','action'];
+  displayedColumns:string[]=['banner','phone','email','address','status','action'];
   couponData = new MatTableDataSource<CouponComponent>(this.COUPON_DATA);
   selection = new SelectionModel<CouponComponent>(true , []);
   name:string = '';
@@ -154,6 +149,45 @@ export class SchoolsComponent {
 
   imageOnError(event: any) {
     event.target.src = this.constants.defaultImage;
+  }
+
+  deleteSchool(element:any){
+    this.isTableLoading = true;
+    const dialogRef = this._dialog.open(CommonModalComponent,{
+      width:'410px',
+      height:'fit-content',
+      data:{
+        title:'Confirmation!',
+        message:'Are you sure you want to delete the School? Please note that all data related to this School will be deleted.',
+        buttonNames:[{firstBtn:"Cancle",secondBtn:'Yes, Delete'}]
+      }
+    });
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res){
+        let param = {
+          couponid : element?.id,
+        }
+        this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
+          if(result && result.IsSuccess){
+            this._toastr.clear();
+            this._toastr.success(result?.Message || "Status updated successfully." , "Success");
+            this.getAllCouponList();
+            this.isTableLoading = false;
+          } else {
+            this.getAllCouponList();
+            this.isTableLoading = false;
+            this._globalFunctions.successErrorHandling(result,this,true);
+          }
+        },(error:any)=>{
+          this.getAllCouponList();
+          this.isTableLoading = false;
+          this._globalFunctions.errorHanding(error,this,true)
+        })
+      } else {
+        this.getAllCouponList();
+        this.isTableLoading = false;
+      }
+    });
   }
 
 }

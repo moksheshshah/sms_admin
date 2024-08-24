@@ -133,3 +133,9 @@
 .icon-user:before {
   content: "\e922";
 }
+.icon-close:before {
+  content: "\e91c";
+}
+.icon-upload:before {
+  content: "\e925";
+}

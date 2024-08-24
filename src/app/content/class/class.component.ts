@@ -90,7 +90,7 @@ constants: any = CONSTANTS;
   editSize(e: any, resData: any) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(AddEditClassComponent, {
-      width: '700px',
+      width: '410px',
       data: [{ result: resData },
       { btnName: "Edit" }
       ],
@@ -107,7 +107,7 @@ constants: any = CONSTANTS;
       width: '410px',
       height: 'fit-content',
       data: [{ result: null },
-      { btnName: "Add" }
+      { btnName: "Add New" }
       ],
       disableClose: true
     });
@@ -120,7 +120,7 @@ constants: any = CONSTANTS;
     //e.stopPropagation();
     this.isTableLoading = true;
     const dialogRef = this.dialog.open(CommonModalComponent, {
-      width: '600px',
+      width: '410px',
       data: {
         title: "Confirmation",
         message: "Are you sure you want to change the Status?",
@@ -156,5 +156,43 @@ constants: any = CONSTANTS;
     });
   }
 
+  deleteClass(element:any){
+    this.isTableLoading = true;
+    const dialogRef = this.dialog.open(CommonModalComponent,{
+      width:'410px',
+      height:'fit-content',
+      data:{
+        title:'Confirmation!',
+        message:'Are you sure you want to delete the School? Please note that all data related to this School will be deleted.',
+        buttonNames:[{firstBtn:"Cancle",secondBtn:'Yes, Delete'}]
+      }
+    });
+    dialogRef.afterClosed().subscribe((res)=>{
+      if(res){
+        let param = {
+          couponid : element?.id,
+        }
+        this._sizeService.changeStaus(param).subscribe((result:any)=>{
+          if(result && result.IsSuccess){
+            this._toastr.clear();
+            this._toastr.success(result?.Message || "Status updated successfully." , "Success");
+            this.getSize();
+            this.isTableLoading = false;
+          } else {
+            this.getSize();
+            this.isTableLoading = false;
+            this._globalFunctions.successErrorHandling(result,this,true);
+          }
+        },(error:any)=>{
+          this.getSize();
+          this.isTableLoading = false;
+          this._globalFunctions.errorHanding(error,this,true)
+        })
+      } else {
+        this.getSize();
+        this.isTableLoading = false;
+      }
+    });
+  }
 
 }
