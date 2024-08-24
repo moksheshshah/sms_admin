@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { ImageModule } from 'primeng/image';
+import { MatInputModule } from '@angular/material/input';
 
 const routes:Routes = [
   {
@@ -37,10 +38,11 @@ const routes:Routes = [
     InputSwitchModule,
     MatSortModule,
     ReactiveFormsModule,
-    InputTextareaModule ,
-    InputTextModule,
+    // InputTextareaModule ,
+    // InputTextModule,
     PaginatorModule,
     MatFormFieldModule,
+    MatInputModule,
     MatOptionModule,
     MatSelectModule,
     ImageModule

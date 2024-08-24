@@ -1,1 +1,106 @@
-<p>branch works!</p>
+<div class="flex items-center md:items-start flex-wrap">
+  <span class="text24 order-1">All Branch List </span>
+  <button class="order-2 sm:order-3 flex items-center ml-auto sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2.5 2xl:py-4 2xl:px-5 border border-primary rounded-lg bg-primary hover:bg-transparent group anim" (click)="addProductCoupon()">
+    <span class="inline-block">
+      <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+    </span>
+    <span class="text18 text-white group-hover:text-primary">Create New Branch</span>
+  </button>
+  <label for="main_search" class="mt-3 sm:mt-0 order-3 sm:order-2 p-2.5 2xl:p-4 rounded-md bg-white flex space-x-2 sm:max-w-64 2xl:max-w-[350px] w-full ml-auto">
+    <span>
+      <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+    </span>
+    <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Branch" id="main_search" (keyup)="onKeySearch($event)"/>
+  </label>
+</div>
+<div class="w-full relative py-6 xl:py-8">
+  <div class="w-full relative overflow-hidden">
+      <div class="rounded-xl overflow-x-auto relative">
+          <table mat-table matSort [dataSource]="couponData" class="mat-elevation-z8" *ngIf="couponData.filteredData.length > 0">
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="banner">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Branch Name </th>
+              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails  flex items-center">  
+              <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10" *ngIf="element?.banner && element?.banner != ''">
+                  <p-image src="./assets/images/logo.png" imageClass="w-full h-full object-cover rounded" styleClass="w-full h-full" [preview]="true" (error)="imageOnError($event)"></p-image>
+              </div>
+              <!-- <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10" *ngIf="!element?.banner || element?.banner == ''">
+                  <p-image [src]="constants.defaultImage" imageClass="w-full h-full object-cover rounded" styleClass="w-full h-full" [preview]="true" (error)="imageOnError($event)"></p-image>
+              </div> -->
+              <div class="text-justify ml-2">
+                {{'Kapodara Branch'}}
+              </div>
+              </td>
+            </ng-container>
+
+              <!-- Size Name Column -->
+              <ng-container matColumnDef="sname">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> School Name </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Brillient School'}} </td>
+              </ng-container>
+
+              <!-- Size Name Column -->
+              <ng-container matColumnDef="phone">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Phone </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'0987654321'}} </td>
+              </ng-container>
+
+              <!-- Size Name Column -->
+              <ng-container matColumnDef="email">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Email </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Brillientschool@gmail.com'}} </td>
+              </ng-container>
+  
+              <!-- Description Column -->
+              <ng-container matColumnDef="address">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Address </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Pal RTO , Surat , Gujarat - 200987'}} </td>
+              </ng-container>
+              
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Status </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                      <p-inputSwitch [(ngModel)]="element.status"
+                          (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
+                  </td>
+              </ng-container>
+  
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                  <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                      <div class="flex space-x-3">
+                          <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editProductCoupon($event,element)"></span>
+                          <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteSchool(element)"></span>
+                      </div>
+                  </td>
+              </ng-container>
+  
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <div class="w-full"> 
+              <div class="w-full flex justify-center p-5" *ngIf="couponData.filteredData.length == 0">
+                  <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Branch Create </strong>
+                    <span class="block lg:text-18 text-center text-t2"> Please add school first </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+          <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+      </div>
+      <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+          <div class="flex flex-col items-center justify-center">
+              <div
+                  class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+              </div>
+              <p class="block text-base font-medium pt-2">Plase wait</p>
+          </div>
+      </div>
+  </div>
+</div>
+
