@@ -5,7 +5,7 @@
   <span class="block text-24 font-bold text-center">{{data[1].btnName}} Class</span>
   <form class="flex flex-wrap mt-6 xl:mt-8" #sizeNgForm="ngForm" [formGroup]="sizeForm" (ngSubmit)="onSubmitAction()">
     <div class="w-full relative pb-6 mb-1">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Academic Year<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Academic Year<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <input type="text" pInputText [formControlName]="'year'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Enter Academic Year">
         <span class="error-message"
         *ngIf="sizeForm.get('year').hasError('required') && (sizeForm.get('year').dirty || sizeForm.get('year').touched)">
@@ -13,7 +13,7 @@
     </div>
 
     <div class="w-full relative pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
         <input matInput
         [matDatepicker]="picker" [formControlName]="'starttime'" (click)="picker.open()"
@@ -27,7 +27,7 @@
     </div>
 
     <div class="w-full relative pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
         <input matInput
         [matDatepicker]="picker1" [formControlName]="'endtime'" (click)="picker1.open()"

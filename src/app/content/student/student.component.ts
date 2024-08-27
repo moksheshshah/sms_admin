@@ -49,6 +49,39 @@ export class StudentComponent {
   pageNo:any;
   limit:any;
   isTableLoading:boolean = false; 
+  classList:any = [
+    { key:'1st', value:'1' }, 
+    { key:'2nd', value:'2' }, 
+    { key:'3rd', value:'3' }, 
+    { key:'4th', value:'4' }, 
+    { key:'5th', value:'5' }, 
+  ];
+  sectionList:any = [
+    { key:'A', value:'A' }, 
+    { key:'B', value:'B' }, 
+    { key:'C', value:'C' }, 
+    { key:'D', value:'D' }, 
+    { key:'E', value:'E' }, 
+  ];
+  genderList:any = [
+    { key:'Male', value:'male' },
+    { key:'Female', value:'female' },
+    { key:'Other', value:'other' },
+  ];
+  sortBy:any = [
+    { key:'A To Z', value:'A To Z' },
+    { key:'1 To 10', value:'1 To 10' },
+    { key:'a To z', value:'a To z' },
+  ];
+  religionList:any = [
+    { key:'Hindu', value:'hindu' },
+    { key:'Christian', value:'christian' },
+    { key:'Jain', value:'jain' },
+    { key:'Sikh', value:'sikh' },
+    { key:'Buddhist ', value:'buddhist ' },
+    { key:'Muslim', value:'muslim' },
+  ];
+  selClass:any;
   @ViewChild(MatSort,{static:false}) couponSort!:MatSort;
   @ViewChild('paginator', { static: true }) paginator!: Paginator
 

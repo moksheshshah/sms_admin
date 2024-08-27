@@ -14,12 +14,12 @@
   </div>
   <form class="flex flex-wrap coupon-form -mx-2.5 mt-6 xl:mt-8" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Branch Name<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Branch Name<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'branch_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter branch name">
       <span class="error-message" *ngIf="productCouponForm.get('branch_name').hasError('required') && (productCouponForm.get('branch_name').dirty || productCouponForm.get('branch_name').touched)">Branch Name is required.</span>
     </div>
     <div class="w-full lg:w-1/4 relative px-2.5 pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">School Name<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">School Name<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Select School" [(ngModel)]="selectClass">
           <mat-option  *ngFor="let item of schoolsData; let i = index" [value]="item.value">
@@ -30,18 +30,18 @@
       <span class="error-message" *ngIf="productCouponForm.get('schools').hasError('required') && (productCouponForm.get('schools').dirty || productCouponForm.get('schools').touched)">Please select any one School.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Email:<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email:<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'email'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter email" >
       <span class="error-message" *ngIf="productCouponForm.get('email').hasError('required') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Email is required.</span>
       <span class="error-message" *ngIf="productCouponForm.get('email').hasError('pattern') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Please enter valid Email.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Phone No.<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Phone No.<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'phone'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter phone no" >
       <span class="error-message" *ngIf="productCouponForm.get('phone').hasError('required') && (productCouponForm.get('phone').dirty || productCouponForm.get('phone').touched)">Phone is required.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Address</label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Address</label>
       <input type="text" pInputText [formControlName]="'address'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter address">
       <span class="error-message" *ngIf="productCouponForm.get('address').hasError('required') && (productCouponForm.get('address').dirty || productCouponForm.get('address').touched)">Address is required.</span>
     </div>
