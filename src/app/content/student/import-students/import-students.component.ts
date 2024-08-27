@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './import-students.component.scss'
 })
 export class ImportStudentsComponent {
-couponId: any;
 
 }
