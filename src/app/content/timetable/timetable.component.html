@@ -1,1 +1,39 @@
-<p>timetable works!</p>
+<div class="w-full mt-6 lg:mt-8 xl:mt-10 2xl:mt-12">
+  <mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+    <mat-tab>
+      <ng-template mat-tab-label class="relative">
+        <span>
+         Student
+        </span>
+        <div class="absolute top-2 -right-3">
+          <span class="relative flex h-2 w-2">
+            <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span> -->
+            <!-- <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span> -->
+          </span>
+        </div>
+      </ng-template>
+      <!--  *ngIf="selectedTab == 0" -->
+      <div class="w-full">
+        <app-student-timetable-list></app-student-timetable-list>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label class="relative">
+        <span>
+        Teacher
+        </span>
+        <div class="absolute top-2 -right-3">
+          <span class="relative flex h-2 w-2">
+            <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span> -->
+          </span>
+        </div>
+      </ng-template>
+      <!--  *ngIf="selectedTab == 1" -->
+      <div class="w-full">
+        <app-teacher-timetable-list></app-teacher-timetable-list>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</div>
