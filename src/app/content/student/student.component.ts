@@ -15,7 +15,6 @@ import { SchoolsService } from '../schools/schools.service';
 
 
 export interface CouponComponent{
-  checkbox:any;
   photo:any;
   adms_no:any;
   roll_no:any;
@@ -38,7 +37,7 @@ export class StudentComponent {
   COUPON_DATA:CouponComponent[]=[];
   totalCoupon:any;
   searchCoupon:any;
-  displayedColumns:string[]=['checkbox','photo','adms_no','roll_no','student_name','class','father_name','phone','gender','address','status','action'];
+  displayedColumns:string[]=['photo','adms_no','roll_no','student_name','class','father_name','phone','gender','address','status','action'];
   couponData = new MatTableDataSource<CouponComponent>(this.COUPON_DATA);
   selection = new SelectionModel<CouponComponent>(true , []);
   name:string = '';
