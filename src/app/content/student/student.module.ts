@@ -17,6 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { NgxEditorModule } from 'ngx-editor';
 import { MatTableModule } from '@angular/material/table';
+import { ImportStudentsComponent } from './import-students/import-students.component';
 
 const routes:Routes = [
   {
@@ -26,13 +27,18 @@ const routes:Routes = [
   {
     path:':id',
     component:AddEditStudentComponent,
-  }
+  },
+  {
+    path:'studentdata/importStudents',
+    component:ImportStudentsComponent,
+  },
 ]
 
 @NgModule({
   declarations: [
     StudentComponent,
-    AddEditStudentComponent
+    AddEditStudentComponent,
+    ImportStudentsComponent
   ],
   imports: [
     CommonModule,

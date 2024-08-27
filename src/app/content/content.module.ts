@@ -168,6 +168,7 @@ const routes: Routes = [
     path:'role',
     loadChildren: () => import('./role-permissions/role-permissions.module').then(m=>m.RolePermissionsModule)
   },
+  { path: '**', pathMatch:'full',redirectTo:'sm-dashboard' },
 ];
 
 @NgModule({

@@ -109,11 +109,16 @@ export class StudentComponent {
 
   editStudent(event:any,resData:any){
     event.stopPropagation();
-    this._router.navigate(['student/', resData?.id])
+    this._router.navigate(['student/', resData?.id]);
   }
 
   addStudent(){
-    this._router.navigate(['student/', "studentdetail"])
+    this._router.navigate(['student/', "studentdetail"]);
+  }
+  
+  importStudent(event:any){
+    event.stopPropagation();
+    this._router.navigate(['/student/studentdata/importStudents']);
   }
 
   changeStatusAction(event:any,resData:any){
