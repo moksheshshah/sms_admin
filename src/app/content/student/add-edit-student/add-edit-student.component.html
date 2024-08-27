@@ -95,12 +95,12 @@
         <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Start Date<span
             class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
-          <input matInput [matDatepicker]="picker" [formControlName]="'starttime'" (click)="picker.open()"
+          <input matInput [matDatepicker]="picker1" [formControlName]="'starttime'" (click)="picker1.open()"
             placeholder="Select Date">
           <span matSuffix>
-            <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
           </span>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <span class="error-message block absolute top-[80%] bottom-0 text-sm font-semibold text-primary-error"
           *ngIf="productCouponForm.get('starttime').hasError('required') && (productCouponForm.get('starttime').dirty || productCouponForm.get('starttime').touched)">Start
@@ -227,12 +227,12 @@
           <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Date Of Birth<span
               class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
           <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
-            <input matInput [matDatepicker]="picker" [formControlName]="'dob'" (click)="picker.open()"
+            <input matInput [matDatepicker]="picker2" [formControlName]="'dob'" (click)="picker2.open()"
               placeholder="Select Date">
             <span matSuffix>
-              <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker-toggle [for]="picker2"></mat-datepicker-toggle>
             </span>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
           <span class="error-message block absolute top-[80%] bottom-0 text-sm font-semibold text-primary-error"
             *ngIf="productCouponForm.get('dob').hasError('required') && (productCouponForm.get('dob').dirty || productCouponForm.get('dob').touched)">
