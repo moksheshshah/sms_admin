@@ -17,6 +17,9 @@
 .text16{@apply text-16 xl:text-16 font-semibold text-primary}
 .text_titel{@apply text-16 xl:text-16 font-semibold text-primary;}
 .btn_primary{@apply flex items-center ml-auto text-sm sm:text-16 xl:text-18 sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2 2xl:py-2.5 2xl:px-5 border border-primary rounded-lg bg-primary hover:bg-transparent anim;}
+
+.btn_secondry{@apply flex items-center ml-auto text-sm sm:text-16 xl:text-18 sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2 2xl:py-2.5 2xl:px-5 border border-primary rounded-lg bg-transparent hover:bg-primary anim;}
+
 .search{@apply mt-3 sm:mt-0 order-3 sm:order-2 p-2.5 2xl:p-4 2xl:py-3 rounded-md bg-white flex space-x-2 w-full ml-auto;}
 
 ::-webkit-scrollbar {
