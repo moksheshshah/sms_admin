@@ -7,7 +7,7 @@
     <div class="w-full relative pb-6 mb-1">
       <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Academic Year<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <input type="text" pInputText [formControlName]="'year'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Enter Academic Year">
-        <span class="error-message text-primary-error block text-sm font-semibold absolute bottom-0 inset-x-0 pt-2"
+        <span class="error-message"
         *ngIf="sizeForm.get('year').hasError('required') && (sizeForm.get('year').dirty || sizeForm.get('year').touched)">
         Academic Year is required.</span>
     </div>
@@ -23,7 +23,7 @@
         </span>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <span class="error-message block absolute top-[80%] bottom-0 text-sm font-semibold text-primary-error" *ngIf="sizeForm.get('starttime').hasError('required') && (sizeForm.get('starttime').dirty || sizeForm.get('starttime').touched)">Start Date is required.</span>
+      <span class="error-message" *ngIf="sizeForm.get('starttime').hasError('required') && (sizeForm.get('starttime').dirty || sizeForm.get('starttime').touched)">Start Date is required.</span>
     </div>
 
     <div class="w-full relative pt-0">
@@ -37,7 +37,7 @@
         </span>
         <mat-datepicker #picker1></mat-datepicker>
       </mat-form-field>
-      <span class="error-message block absolute top-[80%] bottom-0 text-sm font-semibold text-primary-error" *ngIf="sizeForm.get('endtime').hasError('required') && (sizeForm.get('endtime').dirty || sizeForm.get('endtime').touched)">End Date is required.</span>
+      <span class="error-message" *ngIf="sizeForm.get('endtime').hasError('required') && (sizeForm.get('endtime').dirty || sizeForm.get('endtime').touched)">End Date is required.</span>
     </div>
     <div class="w-full flex items-center justify-center">
       <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center border-2 border-primary rounded-lg px-5 py-4 outline-none bg-primary hover:bg-white anim group">

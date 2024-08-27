@@ -7,7 +7,7 @@
     <div class="w-full relative pb-6 mb-1">
       <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Class Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <input type="text" pInputText [formControlName]="'class_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of class">
-        <span class="error-message text-primary-error block text-sm font-semibold absolute bottom-0 inset-x-0 pt-2"
+        <span class="error-message"
         *ngIf="sizeForm.get('class_name').hasError('required') && (sizeForm.get('class_name').dirty || sizeForm.get('class_name').touched)">
         Class Name is required.</span>
     </div>
@@ -21,7 +21,7 @@
             (click)="tosslePerOne(allSelected.viewValue)">{{item?.key}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <span class="error-message text-primary-error block text-sm font-semibold absolute bottom-0 inset-x-0 pt-2"
+      <span class="error-message"
       *ngIf="sizeForm.get('section').hasError('required') && (sizeForm.get('section').dirty || sizeForm.get('section').touched)">
       Please select any one section.
     </span>
