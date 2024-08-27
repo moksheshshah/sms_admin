@@ -61,9 +61,9 @@
     </div>
 </div>
 <div class="w-full relative py-6 xl:py-8">
-    <div class="w-full relative overflow-hidden">
-        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative">
-            <table mat-table matSort [dataSource]="couponData" class="mat-elevation-z8 h-full" >
+    <div class="w-full relative">
+        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
+            <table mat-table matSort [dataSource]="couponData" class="h-full" >
 
 
                 <!-- <ng-container matColumnDef="checkbox">
@@ -160,10 +160,10 @@
       
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              </table>
-              <div class="w-full"> 
+            </table>
+            <div class="w-full"> 
                 <div class="w-full flex justify-center p-5" *ngIf="couponData.filteredData.length == 0">
-                    <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                    <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
                       <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No School Added </strong>
                       <span class="block lg:text-18 text-center text-t2"> Please add school first </span>
                     </div>

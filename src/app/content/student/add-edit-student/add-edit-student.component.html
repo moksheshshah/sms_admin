@@ -1,13 +1,12 @@
 <div class="w-full rounded-[50px]">
   <div class="w-full flex items-center">
-    <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/student'"></span>
+    <!-- <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/student'"></span> -->
     <span class="block text24 mr-5">{{couponId != "studentdetail" ? "Edit" : "Add"}} Student
       | Admission Form</span>
     <!-- <button type="button" [routerLink]="'/student'" class="flex items-center border-2 border-primary rounded-lg px-6 py-2 outline-none text-primary bg-white anim group ml-auto mr-5">
           <span class="text-base font-medium leading-[22px] text-primary bg-white anim">Cancel</span>
         </button> -->
-    <button type="button" mat-flat-button (click)="onSubmitAction()"
-      class="flex items-center border-2 border-primary rounded-lg px-5 py-4 outline-none bg-transparent hover:bg-primary ml-auto anim group">
+    <button type="button" mat-flat-button (click)="onSubmitAction()" class="btn_secondry anim group ml-auto">
       <span class="text-base font-medium leading-[22px] text-primary group-hover:text-white anim">Reset</span>
       <span class="block" *ngIf="isBtnLoading">
         <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -19,8 +18,7 @@
         </svg>
       </span>
     </button>
-    <button type="button" mat-flat-button (click)="onSubmitAction()"
-      class="flex items-center border-2 border-primary rounded-lg px-5 py-4 outline-none bg-primary hover:bg-white ml-6 anim group">
+    <button type="button" mat-flat-button (click)="onSubmitAction()" class="btn_primary anim group">
       <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Submit</span>
       <span class="block" *ngIf="isBtnLoading">
         <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
