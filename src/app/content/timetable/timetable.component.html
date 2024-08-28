@@ -1,3 +1,26 @@
+<div class="w-full flex items-center">
+  <div class="flex items-center md:items-start flex-wrap w-full">
+      <p class="text24 order-1">Timetable</p>
+      <button class="order-2 sm:order-3 btn_secondry group anim">
+          <span class="inline-block">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-primary group-hover:text-white"></span>
+          </span>
+          <span class="text18 text-primary group-hover:text-white">Import</span>
+      </button>
+      <button class="order-2 sm:order-3 btn_primary group anim">
+        <span class="inline-block">
+          <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+        </span>
+        <span class="text18 text-white group-hover:text-primary">Create New Timetable</span>
+      </button>
+      <label for="main_search" class="search sm:max-w-64 2xl:max-w-[350px]">
+        <span>
+          <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+        </span>
+        <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search School" id="main_search" />
+      </label>
+  </div>
+</div>
 <div class="w-full mt-6 lg:mt-8 xl:mt-10 2xl:mt-12 tabs relative">
   <mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
     <mat-tab>
