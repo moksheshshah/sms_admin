@@ -27,8 +27,13 @@ export interface sutdentTimetableComponent{
 }
 
 const STDTIMETABLE_DATA:sutdentTimetableComponent[]=[
-  {day: 'Mon', lec_one:'English', teachername:"ABC", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
-  {day: 'Mon', lec_one:'English', teachername:"ABC", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Mon', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Tues', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Wed', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Thu', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Fri', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+  {day: 'Sat', lec_one:'English', teachername:"JohnDoe", lec_two:'Gujarati', lec_three:'Maths', lec_four:'Science', breck:'', lec_five:'English', lec_six:'Gujarati', lec_seven:'Maths', lec_eight:'Science'},
+
 ];
 
 @Component({
