@@ -12,9 +12,10 @@ import { Router } from '@angular/router';
 import { Paginator } from 'primeng/paginator';
 import { CommonModalComponent } from '../../common-modal/common-modal.component';
 import { SchoolsService } from '../schools/schools.service';
+import { ClassService } from '../class/class.service';
 
 
-export interface CouponComponent{
+export interface sutdentComponent{
   photo:any;
   adms_no:any;
   roll_no:any;
@@ -34,12 +35,12 @@ export interface CouponComponent{
   styleUrl: './student.component.scss'
 })
 export class StudentComponent {
-  COUPON_DATA:CouponComponent[]=[];
+  COUPON_DATA:sutdentComponent[]=[];
   totalCoupon:any;
   searchCoupon:any;
   displayedColumns:string[]=['photo','adms_no','roll_no','student_name','class','father_name','phone','gender','address','status','action'];
-  couponData = new MatTableDataSource<CouponComponent>(this.COUPON_DATA);
-  selection = new SelectionModel<CouponComponent>(true , []);
+  couponData = new MatTableDataSource<sutdentComponent>(this.COUPON_DATA);
+  selection = new SelectionModel<sutdentComponent>(true , []);
   name:string = '';
   constants:any = CONSTANTS;
   selCouponValidityStatus:any="Active";
@@ -88,7 +89,7 @@ export class StudentComponent {
   constructor(
     private _globalFunctions:GlobalFunctions,
     private _toastr:ToastrService,
-    private _couponService:SchoolsService,
+    private _couponService:ClassService,
     private _dialog:MatDialog,
     private _router: Router,
   ){}
@@ -122,11 +123,11 @@ export class StudentComponent {
       search:this.searchCoupon || '',
     }
 
-    this._couponService.getProductCouponList(filter).subscribe((result:any)=>{
+    this._couponService.getSize(filter).subscribe((result:any)=>{
       if(result && result.IsSuccess){
         this.totalCoupon = result?.Data?.totalDocs;
         this.COUPON_DATA = result.Data.docs;
-        this.couponData = new MatTableDataSource<CouponComponent>(this.COUPON_DATA);
+        this.couponData = new MatTableDataSource<sutdentComponent>(this.COUPON_DATA);
         this.couponData.sort = this.couponSort;
         this.isTableLoading = false;
       } else {

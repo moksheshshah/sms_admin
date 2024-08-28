@@ -1,8 +1,7 @@
 <div class="w-full rounded-[50px]">
   <div class="w-full flex items-center">
-    <!-- <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/student'"></span> -->
-    <span class="block text24 mr-5">{{couponId != "studentdetail" ? "Edit" : "Add"}} Student
-      | Admission Form</span>
+    <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/student'"></span>
+    <span class="block text24 mr-5">{{pageType}} Student | Admission Form</span>
     <!-- <button type="button" [routerLink]="'/student'" class="flex items-center border-2 border-primary rounded-lg px-6 py-2 outline-none text-primary bg-white anim group ml-auto mr-5">
           <span class="text-base font-medium leading-[22px] text-primary bg-white anim">Cancel</span>
         </button> -->
@@ -31,583 +30,628 @@
       </span>
     </button>
   </div>
-  <form class="coupon-form mt-6 xl:mt-8 space-y-2.5" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">01 Admission Information</span>
-      <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
-        <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-          <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Student Photo * <span class="text-[#EFB008]"></span></label>
-          <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-            <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
-              <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
-                <div class="">
-                  <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                    [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                  <label for="expenses_image" class="block cursor-pointer">
-                    <span class="icon-camera text-xl text-white"></span>
-                  </label>
-                </div>
-                <button mat-icon-button>
-                  <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
-                </button>
-              </div>
-            </div>
-            <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
-              <div class="w-full h-full">
-                <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
-                  [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                  (change)="uploadItemImage($event)">
-                <label for="expenses_image" class="block cursor-pointer h-full">
-                  <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
-                    <span class="icon-upload text-3xl mr-2"></span>
-                    <span class="text-16 font-medium text-nowrap">Upload Logo</span>
+
+  <div class="w-full mt-6 lg:mt-6">
+    <mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+      <mat-tab label="Personal Details">
+        <form class="coupon-form mt-6 xl:mt-8 space-y-2.5" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">01 Admission Information</span>
+            <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
+              <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
+                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Student Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
+                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
+                      <div class="">
+                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
+                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
+                        <label for="expenses_image" class="block cursor-pointer">
+                          <span class="icon-camera text-xl text-white"></span>
+                        </label>
+                      </div>
+                      <button mat-icon-button>
+                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                      </button>
+                    </div>
                   </div>
-                </label>
+                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
+                    <div class="w-full h-full">
+                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
+                        [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
+                        (change)="uploadItemImage($event)">
+                      <label for="expenses_image" class="block cursor-pointer h-full">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
+                          <span class="icon-upload text-3xl mr-2"></span>
+                          <span class="text-16 font-medium text-nowrap">Upload Logo</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
+                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
-              <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+              <div class="max-w-[1155px]">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Admission No.<span
+                          class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                      <input type="text" pInputText [formControlName]="'admission_no'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Admission No.">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('admission_no').hasError('required') && (productCouponForm.get('admission_no').dirty || productCouponForm.get('admission_no').touched)">Admission
+                      No. is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                      <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+                        <input matInput [matDatepicker]="picker1" [formControlName]="'starttime'" (click)="picker1.open()"
+                          placeholder="Select Date">
+                        <span matSuffix>
+                          <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
+                        </span>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('starttime').hasError('required') && (productCouponForm.get('starttime').dirty || productCouponForm.get('starttime').touched)">Start
+                        Date is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Roll No. <span
+                          class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;</span></label>
+                      <input type="text" pInputText [formControlName]="'roll_no'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Roll No.">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('roll_no').hasError('required') && (productCouponForm.get('roll_no').dirty || productCouponForm.get('roll_no').touched)">Roll
+                      No. is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Class (Applied for)<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                      <mat-form-field appearance="outline" class="w-full dropdown">
+                        <mat-select placeholder="Select class" [formControlName]="'classes'">
+                          <!-- <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option> -->
+                          <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('classes').hasError('required') && (productCouponForm.get('classes').dirty || productCouponForm.get('classes').touched)">
+                        Please select any one section.
+                      </span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                      <mat-form-field appearance="outline" class="w-full dropdown">
+                        <mat-select placeholder="Select sections" [formControlName]="'sections'">
+                          <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('sections').hasError('required') && (productCouponForm.get('sections').dirty || productCouponForm.get('sections').touched)">
+                        Please select any one section.
+                      </span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Enrolled Year<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                      <mat-form-field appearance="outline" class="w-full dropdown">
+                        <mat-select placeholder="Select Enrolled Year" [formControlName]="'enrolled_year'">
+                          <mat-option *ngFor="let item of yearList" [value]="item.value">{{item?.key}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('enrolled_year').hasError('required') && (productCouponForm.get('enrolled_year').dirty || productCouponForm.get('enrolled_year').touched)">
+                        Please select any one section.
+                      </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="max-w-[1155px]">
-          <div class="flex flex-wrap">
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Admission No.<span
+          <!-- Personal Information  -->
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">02 Personal Information</span>
+            <div class="flex flex-wrap -mx-2.5">
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Student Name<span
                     class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
-                <input type="text" pInputText [formControlName]="'admission_no'"
+                <input type="text" pInputText [formControlName]="'student_name'"
                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="Admission No.">
+                  placeholder="Name Of Student">
                 <span class="error-message"
-                  *ngIf="productCouponForm.get('admission_no').hasError('required') && (productCouponForm.get('admission_no').dirty || productCouponForm.get('admission_no').touched)">Admission
-                No. is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-                <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
-                  <input matInput [matDatepicker]="picker1" [formControlName]="'starttime'" (click)="picker1.open()"
-                    placeholder="Select Date">
-                  <span matSuffix>
-                    <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
-                  </span>
-                  <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('starttime').hasError('required') && (productCouponForm.get('starttime').dirty || productCouponForm.get('starttime').touched)">Start
-                  Date is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Roll No. <span
-                    class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;</span></label>
-                <input type="text" pInputText [formControlName]="'roll_no'"
-                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="Roll No.">
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('roll_no').hasError('required') && (productCouponForm.get('roll_no').dirty || productCouponForm.get('roll_no').touched)">Roll
-                No. is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Class (Applied for)<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-                <mat-form-field appearance="outline" class="w-full dropdown">
-                  <mat-select placeholder="Select class" [formControlName]="'classes'">
-                    <!-- <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option> -->
-                    <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('classes').hasError('required') && (productCouponForm.get('classes').dirty || productCouponForm.get('classes').touched)">
-                  Please select any one section.
-                </span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-                <mat-form-field appearance="outline" class="w-full dropdown">
-                  <mat-select placeholder="Select sections" [formControlName]="'sections'">
-                    <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('sections').hasError('required') && (productCouponForm.get('sections').dirty || productCouponForm.get('sections').touched)">
-                  Please select any one section.
-                </span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Enrolled Year<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-                <mat-form-field appearance="outline" class="w-full dropdown">
-                  <mat-select placeholder="Select Enrolled Year" [formControlName]="'enrolled_year'">
-                    <mat-option *ngFor="let item of yearList" [value]="item.value">{{item?.key}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('enrolled_year').hasError('required') && (productCouponForm.get('enrolled_year').dirty || productCouponForm.get('enrolled_year').touched)">
-                  Please select any one section.
-                </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Personal Information  -->
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">02 Personal Information</span>
-      <div class="flex flex-wrap -mx-2.5">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Student Name<span
-              class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
-          <input type="text" pInputText [formControlName]="'student_name'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Name Of Student">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('student_name').hasError('required') && (productCouponForm.get('student_name').dirty || productCouponForm.get('student_name').touched)">Student
-            Name is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No. <span
-              class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
-          <input type="text" pInputText [formControlName]="'mobile_no'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Mobile No.">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('mobile_no').hasError('required') && (productCouponForm.get('mobile_no').dirty || productCouponForm.get('mobile_no').touched)">Mobile
-            No. is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email <span
-              class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
-          <input type="email" pInputText [formControlName]="'email'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Email">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('email').hasError('required') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Email
-            is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Gender<span
-              class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-          <mat-form-field appearance="outline" class="w-full dropdown">
-            <mat-select placeholder="Select Gender" [formControlName]="'gender'">
-              <mat-option *ngFor="let item of genderList" [value]="item.value">{{item?.key}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <span class="error-message"
-            *ngIf="productCouponForm.get('gender').hasError('required') && (productCouponForm.get('gender').dirty || productCouponForm.get('gender').touched)">
-            Please select Gender.
-          </span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Date Of Birth<span
-              class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-          <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
-            <input matInput [matDatepicker]="picker2" [formControlName]="'dob'" (click)="picker2.open()"
-              placeholder="Select Date">
-            <span matSuffix>
-              <mat-datepicker-toggle [for]="picker2"></mat-datepicker-toggle>
-            </span>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-          <span class="error-message"
-            *ngIf="productCouponForm.get('dob').hasError('required') && (productCouponForm.get('dob').dirty || productCouponForm.get('dob').touched)">
-            Date Of Birth is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Blood Group<span
-              class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-          <mat-form-field appearance="outline" class="w-full dropdown">
-            <mat-select placeholder="Select Gender" [formControlName]="'blood_group'">
-              <mat-option *ngFor="let item of bloodGroupList" [value]="item.value">{{item?.key}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <span class="error-message"
-            *ngIf="productCouponForm.get('blood_group').hasError('required') && (productCouponForm.get('blood_group').dirty || productCouponForm.get('blood_group').touched)">
-            Blood Group is required..
-          </span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Hight <span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="email" pInputText [formControlName]="'hight'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Height">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('hight').hasError('required') && (productCouponForm.get('hight').dirty || productCouponForm.get('hight').touched)">Hight
-            is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Weight <span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="email" pInputText [formControlName]="'weight'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Select Weight">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('weight').hasError('required') && (productCouponForm.get('weight').dirty || productCouponForm.get('weight').touched)">Weight
-            is required.</span>
-        </div>
-      </div>
-    </div>
-    <!-- Parents Information  -->
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">03 Parents Information</span>
-      <!-- Father information  -->
-      <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
-        <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-          <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Father Photo * <span class="text-[#EFB008]"></span></label>
-          <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-            <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
-              <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
-                <div class="">
-                  <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                    [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                  <label for="expenses_image" class="block cursor-pointer">
-                    <span class="icon-camera text-xl text-white"></span>
-                  </label>
-                </div>
-                <button mat-icon-button>
-                  <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
-                </button>
+                  *ngIf="productCouponForm.get('student_name').hasError('required') && (productCouponForm.get('student_name').dirty || productCouponForm.get('student_name').touched)">Student
+                  Name is required.</span>
               </div>
-            </div>
-            <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
-              <div class="w-full h-full">
-                <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
-                  [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                  (change)="uploadItemImage($event)">
-                <label for="expenses_image" class="block cursor-pointer h-full">
-                  <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
-                    <span class="icon-upload text-3xl mr-2"></span>
-                    <span class="text-16 font-medium text-nowrap">Upload Logo</span>
-                  </div>
-                </label>
-              </div>
-            </div>
-            <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
-              <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
-            </div>
-          </div>
-        </div>
-        <div class="max-w-[1155px]">
-          <div class="flex flex-wrap">
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Father Name<span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                    <input type="text" pInputText [formControlName]="'father_name'"
-                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                    placeholder="Enter Name">
-                    <span class="error-message"
-                    *ngIf="productCouponForm.get('father_name').hasError('required') && (productCouponForm.get('father_name').dirty || productCouponForm.get('father_name').touched)">Father
-                    Name is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Occupation<span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="text" pInputText [formControlName]="'f_occupation'"
-                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="Enter occupation">
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('f_occupation').hasError('required') && (productCouponForm.get('f_occupation').dirty || productCouponForm.get('f_occupation').touched)">Occupation
-                  is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No. <span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="text" pInputText [formControlName]="'f_mobile_no'"
+                    class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                <input type="text" pInputText [formControlName]="'mobile_no'"
                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
                   placeholder="Enter Mobile No.">
                 <span class="error-message"
-                  *ngIf="productCouponForm.get('f_mobile_no').hasError('required') && (productCouponForm.get('f_mobile_no').dirty || productCouponForm.get('f_mobile_no').touched)">Mobile
+                  *ngIf="productCouponForm.get('mobile_no').hasError('required') && (productCouponForm.get('mobile_no').dirty || productCouponForm.get('mobile_no').touched)">Mobile
                   No. is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Qualification <span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="text" pInputText [formControlName]="'f_qualification'"
-                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="Enter Qualification">
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('f_qualification').hasError('required') && (productCouponForm.get('f_qualification').dirty || productCouponForm.get('f_qualification').touched)">Qualification
-                  is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email <span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="email" pInputText [formControlName]="'f_email'"
+                    class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                <input type="email" pInputText [formControlName]="'email'"
                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
                   placeholder="Enter Email">
                 <span class="error-message"
-                  *ngIf="productCouponForm.get('f_email').hasError('required') && (productCouponForm.get('f_email').dirty || productCouponForm.get('f_email').touched)">Email
+                  *ngIf="productCouponForm.get('email').hasError('required') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Email
                   is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Parent Address <span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="email" pInputText [formControlName]="'f_address'"
-                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="Enter Address">
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Gender<span
+                    class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <mat-form-field appearance="outline" class="w-full dropdown">
+                  <mat-select placeholder="Select Gender" [formControlName]="'gender'">
+                    <mat-option *ngFor="let item of genderList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
                 <span class="error-message"
-                  *ngIf="productCouponForm.get('f_address').hasError('required') && (productCouponForm.get('f_address').dirty || productCouponForm.get('f_address').touched)">Parent
-                  Address is required.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Mother information  -->
-      <div class="flex flex-wrap lg:flex-nowrap -mx-2.5 mt-2.5">
-        <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-          <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Mother Photo * <span class="text-[#EFB008]"></span></label>
-          <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-            <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
-              <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
-                <div class="">
-                  <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                    [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                  <label for="expenses_image" class="block cursor-pointer">
-                    <span class="icon-camera text-xl text-white"></span>
-                  </label>
-                </div>
-                <button mat-icon-button>
-                  <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
-                </button>
+                  *ngIf="productCouponForm.get('gender').hasError('required') && (productCouponForm.get('gender').dirty || productCouponForm.get('gender').touched)">
+                  Please select Gender.
+                </span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Date Of Birth<span
+                    class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+                  <input matInput [matDatepicker]="picker2" [formControlName]="'dob'" (click)="picker2.open()"
+                    placeholder="Select Date">
+                  <span matSuffix>
+                    <mat-datepicker-toggle [for]="picker2"></mat-datepicker-toggle>
+                  </span>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('dob').hasError('required') && (productCouponForm.get('dob').dirty || productCouponForm.get('dob').touched)">
+                  Date Of Birth is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Blood Group<span
+                    class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <mat-form-field appearance="outline" class="w-full dropdown">
+                  <mat-select placeholder="Select Gender" [formControlName]="'blood_group'">
+                    <mat-option *ngFor="let item of bloodGroupList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('blood_group').hasError('required') && (productCouponForm.get('blood_group').dirty || productCouponForm.get('blood_group').touched)">
+                  Blood Group is required..
+                </span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Hight <span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="email" pInputText [formControlName]="'hight'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter Height">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('hight').hasError('required') && (productCouponForm.get('hight').dirty || productCouponForm.get('hight').touched)">Hight
+                  is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Weight <span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="email" pInputText [formControlName]="'weight'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Select Weight">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('weight').hasError('required') && (productCouponForm.get('weight').dirty || productCouponForm.get('weight').touched)">Weight
+                  is required.</span>
               </div>
             </div>
-            <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
-              <div class="w-full h-full">
-                <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
-                  [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                  (change)="uploadItemImage($event)">
-                <label for="expenses_image" class="block cursor-pointer h-full">
-                  <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
-                    <span class="icon-upload text-3xl mr-2"></span>
-                    <span class="text-16 font-medium text-nowrap">Upload Logo</span>
+          </div>
+          <!-- Parents Information  -->
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">03 Parents Information</span>
+            <!-- Father information  -->
+            <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
+              <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
+                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Father Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
+                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
+                      <div class="">
+                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
+                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
+                        <label for="expenses_image" class="block cursor-pointer">
+                          <span class="icon-camera text-xl text-white"></span>
+                        </label>
+                      </div>
+                      <button mat-icon-button>
+                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                      </button>
+                    </div>
                   </div>
-                </label>
+                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
+                    <div class="w-full h-full">
+                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
+                        [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
+                        (change)="uploadItemImage($event)">
+                      <label for="expenses_image" class="block cursor-pointer h-full">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
+                          <span class="icon-upload text-3xl mr-2"></span>
+                          <span class="text-16 font-medium text-nowrap">Upload Logo</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
+                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+                  </div>
+                </div>
+              </div>
+              <div class="max-w-[1155px]">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Father Name<span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                          <input type="text" pInputText [formControlName]="'father_name'"
+                          class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                          placeholder="Enter Name">
+                          <span class="error-message"
+                          *ngIf="productCouponForm.get('father_name').hasError('required') && (productCouponForm.get('father_name').dirty || productCouponForm.get('father_name').touched)">Father
+                          Name is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Occupation<span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                      <input type="text" pInputText [formControlName]="'f_occupation'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter occupation">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('f_occupation').hasError('required') && (productCouponForm.get('f_occupation').dirty || productCouponForm.get('f_occupation').touched)">Occupation
+                        is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No. <span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                      <input type="text" pInputText [formControlName]="'f_mobile_no'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Mobile No.">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('f_mobile_no').hasError('required') && (productCouponForm.get('f_mobile_no').dirty || productCouponForm.get('f_mobile_no').touched)">Mobile
+                        No. is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Qualification <span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                      <input type="text" pInputText [formControlName]="'f_qualification'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Qualification">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('f_qualification').hasError('required') && (productCouponForm.get('f_qualification').dirty || productCouponForm.get('f_qualification').touched)">Qualification
+                        is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email <span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                      <input type="email" pInputText [formControlName]="'f_email'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Email">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('f_email').hasError('required') && (productCouponForm.get('f_email').dirty || productCouponForm.get('f_email').touched)">Email
+                        is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Parent Address <span
+                          class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                      <input type="email" pInputText [formControlName]="'f_address'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Address">
+                      <span class="error-message"
+                        *ngIf="productCouponForm.get('f_address').hasError('required') && (productCouponForm.get('f_address').dirty || productCouponForm.get('f_address').touched)">Parent
+                        Address is required.</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
-              <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+            <!-- Mother information  -->
+            <div class="flex flex-wrap lg:flex-nowrap -mx-2.5 mt-2.5">
+              <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
+                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Mother Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
+                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
+                      <div class="">
+                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
+                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
+                        <label for="expenses_image" class="block cursor-pointer">
+                          <span class="icon-camera text-xl text-white"></span>
+                        </label>
+                      </div>
+                      <button mat-icon-button>
+                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
+                    <div class="w-full h-full">
+                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
+                        [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
+                        (change)="uploadItemImage($event)">
+                      <label for="expenses_image" class="block cursor-pointer h-full">
+                        <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
+                          <span class="icon-upload text-3xl mr-2"></span>
+                          <span class="text-16 font-medium text-nowrap">Upload Logo</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
+                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+                  </div>
+                </div>
+              </div>
+              <div class="max-w-[1155px]">
+                <div class="flex flex-wrap">
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mother Name<span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="text" pInputText [formControlName]="'mother_name'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter Name">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('mother_name').hasError('required') && (productCouponForm.get('mother_name').dirty || productCouponForm.get('mother_name').touched)">Mother
+                    Name is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Occupation<span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="text" pInputText [formControlName]="'m_occupation'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter occupation">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('m_occupation').hasError('required') && (productCouponForm.get('m_occupation').dirty || productCouponForm.get('m_occupation').touched)">Occupation
+                    is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No. <span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="text" pInputText [formControlName]="'m_mobile_no'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter Mobile No.">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('m_mobile_no').hasError('required') && (productCouponForm.get('m_mobile_no').dirty || productCouponForm.get('m_mobile_no').touched)">Mobile
+                    No. is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Qualification <span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="text" pInputText [formControlName]="'m_qualification'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter Qualification">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('m_qualification').hasError('required') && (productCouponForm.get('m_qualification').dirty || productCouponForm.get('m_qualification').touched)">Qualification
+                    is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email <span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="email" pInputText [formControlName]="'m_email'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter Email">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('m_email').hasError('required') && (productCouponForm.get('m_email').dirty || productCouponForm.get('m_email').touched)">Email
+                    is required.</span>
+                  </div>
+                  <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Parent Address <span
+                      class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                  <input type="email" pInputText [formControlName]="'m_address'"
+                    class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                    placeholder="Enter Email">
+                  <span class="error-message"
+                    *ngIf="productCouponForm.get('m_address').hasError('required') && (productCouponForm.get('m_address').dirty || productCouponForm.get('m_address').touched)">Parent
+                    Address is required.</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="max-w-[1155px]">
-          <div class="flex flex-wrap">
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mother Name<span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="text" pInputText [formControlName]="'mother_name'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter Name">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('mother_name').hasError('required') && (productCouponForm.get('mother_name').dirty || productCouponForm.get('mother_name').touched)">Mother
-              Name is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Occupation<span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="text" pInputText [formControlName]="'m_occupation'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter occupation">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('m_occupation').hasError('required') && (productCouponForm.get('m_occupation').dirty || productCouponForm.get('m_occupation').touched)">Occupation
-              is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No. <span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="text" pInputText [formControlName]="'m_mobile_no'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter Mobile No.">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('m_mobile_no').hasError('required') && (productCouponForm.get('m_mobile_no').dirty || productCouponForm.get('m_mobile_no').touched)">Mobile
-              No. is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Qualification <span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="text" pInputText [formControlName]="'m_qualification'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter Qualification">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('m_qualification').hasError('required') && (productCouponForm.get('m_qualification').dirty || productCouponForm.get('m_qualification').touched)">Qualification
-              is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email <span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="email" pInputText [formControlName]="'m_email'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter Email">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('m_email').hasError('required') && (productCouponForm.get('m_email').dirty || productCouponForm.get('m_email').touched)">Email
-              is required.</span>
-            </div>
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/3 relative pb-5 px-2.5 pt-0">
-              <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Parent Address <span
-                class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-            <input type="email" pInputText [formControlName]="'m_address'"
-              class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-              placeholder="Enter Email">
-            <span class="error-message"
-              *ngIf="productCouponForm.get('m_address').hasError('required') && (productCouponForm.get('m_address').dirty || productCouponForm.get('m_address').touched)">Parent
-              Address is required.</span>
+          <!-- Religion & Category -->
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">04 Religion & Category</span>
+            <div class="flex flex-wrap -mx-2.5">
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Nationality<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'nationality'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter Nationality">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('nationality').hasError('required') && (productCouponForm.get('nationality').dirty || productCouponForm.get('nationality').touched)">Nationality
+                  is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Religion<span
+                    class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <mat-form-field appearance="outline" class="w-full dropdown">
+                  <mat-select placeholder="Select Gender" [formControlName]="'religion'">
+                    <mat-option *ngFor="let item of religionList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('religion').hasError('required') && (productCouponForm.get('religion').dirty || productCouponForm.get('religion').touched)">
+                  Religion is required.
+                </span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Cast<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'cast'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter cast">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('cast').hasError('required') && (productCouponForm.get('cast').dirty || productCouponForm.get('cast').touched)">Cast
+                  is required.</span>
+              </div>
             </div>
           </div>
-        </div>
+          <!-- Bank Account Details -->
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">05 Bank Account Details</span>
+            <div class="flex flex-wrap -mx-2.5">
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Bank Name<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'bank_name'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter Bank Name">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('bank_name').hasError('required') && (productCouponForm.get('bank_name').dirty || productCouponForm.get('bank_name').touched)">Bank
+                  Name is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Bank Branch<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'bank_branch'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter Bank Branch">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('bank_branch').hasError('required') && (productCouponForm.get('bank_branch').dirty || productCouponForm.get('bank_branch').touched)">Bank
+                  Branch is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Account No.<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'account_no'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter Account No.">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('account_no').hasError('required') && (productCouponForm.get('account_no').dirty || productCouponForm.get('account_no').touched)">Account
+                  No. is required.</span>
+              </div>
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">IFSC Code<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'ifsc_code'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="Enter IFSC Code">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('ifsc_code').hasError('required') && (productCouponForm.get('ifsc_code').dirty || productCouponForm.get('ifsc_code').touched)">IFSC
+                  Code is required.</span>
+              </div>
+            </div>
+          </div>
+          <!-- Student Address -->
+           <div class="w-full">
+             <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">06 Student Address</span>
+             <div class="flex flex-wrap -mx-2.5">
+               <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Address<span
+                     class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                 <input type="text" pInputText [formControlName]="'address'"
+                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                   placeholder="Enter Address">
+                 <span class="error-message"
+                   *ngIf="productCouponForm.get('address').hasError('required') && (productCouponForm.get('address').dirty || productCouponForm.get('address').touched)">Address
+                   is required.</span>
+               </div>
+               <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Pin Code<span
+                     class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                 <input type="text" pInputText [formControlName]="'pin_code'"
+                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                   placeholder="Enter Pin Code">
+                 <span class="error-message"
+                   *ngIf="productCouponForm.get('pin_code').hasError('required') && (productCouponForm.get('pin_code').dirty || productCouponForm.get('pin_code').touched)">Pin
+                   Code is required.</span>
+               </div>
+               <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">City<span
+                     class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                 <input type="text" pInputText [formControlName]="'city'"
+                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                   placeholder="Enter City">
+                 <span class="error-message"
+                   *ngIf="productCouponForm.get('city').hasError('required') && (productCouponForm.get('city').dirty || productCouponForm.get('city').touched)">Account
+                   No. is required.</span>
+               </div>
+               <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">State<span
+                     class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                 <input type="text" pInputText [formControlName]="'state'"
+                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                   placeholder="Enter State">
+                 <span class="error-message"
+                   *ngIf="productCouponForm.get('state').hasError('required') && (productCouponForm.get('state').dirty || productCouponForm.get('state').touched)">State
+                   is required.</span>
+               </div>
+               <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                 <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Country<span
+                     class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                 <input type="text" pInputText [formControlName]="'country'"
+                   class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                   placeholder="Enter Country">
+                 <span class="error-message"
+                   *ngIf="productCouponForm.get('country').hasError('required') && (productCouponForm.get('country').dirty || productCouponForm.get('country').touched)">Country
+                   is required.</span>
+               </div>
+             </div>
+          </div>
+          <!-- Detail For Login Student Portal -->
+          <div class="w-full">
+            <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">07 Student Address</span>
+            <div class="flex flex-wrap -mx-2.5">
+              <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No.<span
+                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                <input type="text" pInputText [formControlName]="'mobile_no'"
+                  class="w-full text-16 xl:text-lg border border-t4 text-dark bg-[#E2E8F0] placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                  placeholder="+91 9876543298">
+                <span class="error-message"
+                  *ngIf="productCouponForm.get('mobile_no').hasError('required') && (productCouponForm.get('mobile_no').dirty || productCouponForm.get('mobile_no').touched)">Mobile
+                  No is required.</span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-tab>
+      <div *ngIf="pageType == 'Edit'">
+        <mat-tab>
+          <ng-template mat-tab-label class="relative">
+            <span>
+              Attendance
+            </span>
+          </ng-template>
+          <!--  *ngIf="selectedTab == 0" -->
+          <div class="w-full">
+            <app-student-attendance-list></app-student-attendance-list>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label class="relative">
+            <span>
+            Fee
+            </span>
+          </ng-template>
+          <!--  *ngIf="selectedTab == 1" -->
+          <div class="w-full">
+            <app-student-fee-list></app-student-fee-list>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label class="relative">
+            <span>
+              Examination
+            </span>
+          </ng-template>
+          <!--  *ngIf="selectedTab == 1" -->
+          <div class="w-full">
+            <app-student-examination-list></app-student-examination-list>
+          </div>
+        </mat-tab>
+
       </div>
-    </div>
-    <!-- Religion & Category -->
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">04 Religion & Category</span>
-      <div class="flex flex-wrap -mx-2.5">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Nationality<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'nationality'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Nationality">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('nationality').hasError('required') && (productCouponForm.get('nationality').dirty || productCouponForm.get('nationality').touched)">Nationality
-            is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Religion<span
-              class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
-          <mat-form-field appearance="outline" class="w-full dropdown">
-            <mat-select placeholder="Select Gender" [formControlName]="'religion'">
-              <mat-option *ngFor="let item of religionList" [value]="item.value">{{item?.key}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <span class="error-message"
-            *ngIf="productCouponForm.get('religion').hasError('required') && (productCouponForm.get('religion').dirty || productCouponForm.get('religion').touched)">
-            Religion is required.
-          </span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Cast<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'cast'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter cast">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('cast').hasError('required') && (productCouponForm.get('cast').dirty || productCouponForm.get('cast').touched)">Cast
-            is required.</span>
-        </div>
-      </div>
-    </div>
-    <!-- Bank Account Details -->
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">05 Bank Account Details</span>
-      <div class="flex flex-wrap -mx-2.5">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Bank Name<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'bank_name'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Bank Name">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('bank_name').hasError('required') && (productCouponForm.get('bank_name').dirty || productCouponForm.get('bank_name').touched)">Bank
-            Name is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Bank Branch<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'bank_branch'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Bank Branch">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('bank_branch').hasError('required') && (productCouponForm.get('bank_branch').dirty || productCouponForm.get('bank_branch').touched)">Bank
-            Branch is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Account No.<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'account_no'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter Account No.">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('account_no').hasError('required') && (productCouponForm.get('account_no').dirty || productCouponForm.get('account_no').touched)">Account
-            No. is required.</span>
-        </div>
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">IFSC Code<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'ifsc_code'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="Enter IFSC Code">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('ifsc_code').hasError('required') && (productCouponForm.get('ifsc_code').dirty || productCouponForm.get('ifsc_code').touched)">IFSC
-            Code is required.</span>
-        </div>
-      </div>
-    </div>
-    <!-- Student Address -->
-     <div class="w-full">
-       <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">06 Student Address</span>
-       <div class="flex flex-wrap -mx-2.5">
-         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-           <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Address<span
-               class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-           <input type="text" pInputText [formControlName]="'address'"
-             class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-             placeholder="Enter Address">
-           <span class="error-message"
-             *ngIf="productCouponForm.get('address').hasError('required') && (productCouponForm.get('address').dirty || productCouponForm.get('address').touched)">Address
-             is required.</span>
-         </div>
-         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-           <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Pin Code<span
-               class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-           <input type="text" pInputText [formControlName]="'pin_code'"
-             class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-             placeholder="Enter Pin Code">
-           <span class="error-message"
-             *ngIf="productCouponForm.get('pin_code').hasError('required') && (productCouponForm.get('pin_code').dirty || productCouponForm.get('pin_code').touched)">Pin
-             Code is required.</span>
-         </div>
-         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-           <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">City<span
-               class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-           <input type="text" pInputText [formControlName]="'city'"
-             class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-             placeholder="Enter City">
-           <span class="error-message"
-             *ngIf="productCouponForm.get('city').hasError('required') && (productCouponForm.get('city').dirty || productCouponForm.get('city').touched)">Account
-             No. is required.</span>
-         </div>
-         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-           <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">State<span
-               class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-           <input type="text" pInputText [formControlName]="'state'"
-             class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-             placeholder="Enter State">
-           <span class="error-message"
-             *ngIf="productCouponForm.get('state').hasError('required') && (productCouponForm.get('state').dirty || productCouponForm.get('state').touched)">State
-             is required.</span>
-         </div>
-         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-           <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Country<span
-               class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-           <input type="text" pInputText [formControlName]="'country'"
-             class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-             placeholder="Enter Country">
-           <span class="error-message"
-             *ngIf="productCouponForm.get('country').hasError('required') && (productCouponForm.get('country').dirty || productCouponForm.get('country').touched)">Country
-             is required.</span>
-         </div>
-       </div>
-    </div>
-    <!-- Detail For Login Student Portal -->
-    <div class="w-full">
-      <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">07 Student Address</span>
-      <div class="flex flex-wrap -mx-2.5">
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-          <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No.<span
-              class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-          <input type="text" pInputText [formControlName]="'mobile_no'"
-            class="w-full text-16 xl:text-lg border border-t4 text-dark bg-[#E2E8F0] placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-            placeholder="+91 9876543298">
-          <span class="error-message"
-            *ngIf="productCouponForm.get('mobile_no').hasError('required') && (productCouponForm.get('mobile_no').dirty || productCouponForm.get('mobile_no').touched)">Mobile
-            No is required.</span>
-        </div>
-      </div>
-    </div>
-  </form>
+  
+    </mat-tab-group>
+  </div>
+
 </div>

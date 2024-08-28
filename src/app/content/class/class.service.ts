@@ -23,4 +23,8 @@ export class ClassService {
   changeStaus(data: any){
     return this.http.post(environment.appURL + 'admin/size/change', data, this._globalFunctions.getAuthorizationHeader());
   }
+
+  uploadCoupon(data:any){
+    return this.http.post(environment.appURL + 'admin/coupon/upload' , data , this._globalFunctions.getFileAuthorizationHeader());
+  }
 }

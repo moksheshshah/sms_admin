@@ -1,0 +1,71 @@
+<div class="w-full max-w-8xl shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+  
+  <div class="w-full relative py-6 xl:py-8">
+    <div class="w-full relative">
+        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
+            <table mat-table matSort [dataSource]="attendanceData" class="h-full">
+    
+                  <!-- Size Name Column -->
+                  <ng-container matColumnDef="date">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Date </th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.date}} </td>
+                  </ng-container>
+    
+                  <!-- Size Name Column -->
+                  <ng-container matColumnDef="day">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Day </th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.day}} </td>
+                  </ng-container>
+      
+                  <!-- Description Column -->
+                  <ng-container matColumnDef="present">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Present </th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 t_ditails text-success"> {{element?.present}} </td>
+                  </ng-container>
+  
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="absent">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Absent </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 t_ditails text-error"> {{element?.absent}} </td>
+                    </ng-container>
+  
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="pending">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Pending </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 t_ditails text-warning"> {{element?.pending}} </td>
+                    </ng-container>
+  
+                     <!-- Description Column -->
+                     <ng-container matColumnDef="leave">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Leave </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 t_ditails text-t2"> {{element?.leave}} </td>
+                    </ng-container>
+                  
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div class="w-full"> 
+                <div class="w-full flex justify-center p-5" *ngIf="attendanceData.length == 0"> <!--*ngIf="attendanceData.filteredData.length > 0"-->
+                    <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
+                      <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Attendnace </strong>
+                      <span class="block lg:text-18 text-center text-t2"> Please add attendnace first </span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="attendanceData.length > 0">
+                <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAttendanceList($event)"  [totalRecords]="totalattandance" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+            </div>
+            <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+                <div class="flex flex-col items-center justify-center">
+                    <div
+                        class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                    </div>
+                    <p class="block text-base font-medium pt-2">Plase wait</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+

@@ -10,6 +10,7 @@ import { GlobalFunctions } from '../../../common/global-function';
 import { MatDialog } from '@angular/material/dialog';
 import moment from 'moment';
 import { SchoolsService } from '../../schools/schools.service';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-add-edit-student',
@@ -17,8 +18,11 @@ import { SchoolsService } from '../../schools/schools.service';
   styleUrl: './add-edit-student.component.scss'
 })
 export class AddEditStudentComponent {
+  selectedTab: any;
+  isDataLoad: boolean = false;
   isUpload: boolean = false;
   isBtnLoading: boolean = false;
+  pageType: any = "Add new";
   productCouponForm: any = FormGroup;
   @ViewChild('couponNgForm') couponNgForm: any;
   constants: any = CONSTANTS;
@@ -88,21 +92,15 @@ export class AddEditStudentComponent {
     this.editor = new Editor();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
-    if (this.couponId != "productcoupondetail") {
-      let param = {
-        couponid: this.couponId
-      }
-
-      // this._couponService.getProductCouponById(param).subscribe((result: any) => {
-      //   if (result && result.IsSuccess) {
-      //     this.setCouponData(result?.Data);
-      //   } else {
-      //     this._globalFunctions.successErrorHandling(result, this, true);
-      //   }
-      // }, (error: any) => {
-      //   this._globalFunctions.errorHanding(error, this, true);
-      // });
+    if (this.couponId && this.couponId != "studentdetail") {
+      this.pageType = "Edit";
     }
+  }
+
+  tabChanged(tabChangeEvent: MatTabChangeEvent) {
+    this.selectedTab = tabChangeEvent.index
+    localStorage.setItem('tabIndex', this.selectedTab)
+    this.isDataLoad = !this.isDataLoad
   }
 
   getVarients() {

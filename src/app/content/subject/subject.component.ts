@@ -10,6 +10,7 @@ import { SchoolsService } from '../schools/schools.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CommonModalComponent } from '../../common-modal/common-modal.component';
+import { AddEditSubjectComponent } from './add-edit-subject/add-edit-subject.component';
 
 export interface CouponComponent{
   banner:any;
@@ -46,8 +47,17 @@ export class SubjectComponent {
     { key:'3rd', value:'3' },
     { key:'4th', value:'4' },
   ];
+  sectionData:any = [
+    { key:'A', value:'A' },
+    { key:'B', value:'B' },
+    { key:'C', value:'C' },
+    { key:'D', value:'D' },
+    { key:'E', value:'E' },
+  ]
   @ViewChild(MatSort,{static:false}) couponSort!:MatSort;
   @ViewChild('paginator', { static: true }) paginator!: Paginator
+classlist: any;
+sectionlist: any;
 
   constructor(
     private _globalFunctions:GlobalFunctions,
@@ -104,20 +114,42 @@ export class SubjectComponent {
     })
   }
 
-  editProductCoupon(event:any,resData:any){
+  editSubject(event:any,resData:any){
+    // event.stopPropagation();
+    // this._router.navigate(['schools/', resData?.id])
     event.stopPropagation();
-    this._router.navigate(['schools/', resData?.id])
+    const dialogRef = this._dialog.open(AddEditSubjectComponent, {
+      width: '450px',
+      data: [{ result: resData },
+      { btnName: "Edit" }
+      ],
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getAllCouponList();
+    });
   }
 
-  addProductCoupon(){
-    this._router.navigate(['schools/', "schoolsdetail"])
+  addSubject(){
+    // this._router.navigate(['schools/', "schoolsdetail"])
+    const dialogRef = this._dialog.open(AddEditSubjectComponent, {
+      width: '450px',
+      height: 'fit-content',
+      data: [{ result: null },
+      { btnName: "Add New" }
+      ],
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getAllCouponList();
+    });
   }
 
   imageOnError(event: any) {
     event.target.src = this.constants.defaultImage;
   }
 
-  deleteSchool(element:any){
+  deleteSubject(element:any){
     this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'410px',
@@ -130,28 +162,28 @@ export class SubjectComponent {
     });
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
-        let param = {
-          couponid : element?.id,
-        }
-        this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
-          if(result && result.IsSuccess){
-            this._toastr.clear();
-            this._toastr.success(result?.Message || "Status updated successfully." , "Success");
-            this.getAllCouponList();
-            this.isTableLoading = false;
-          } else {
-            this.getAllCouponList();
-            this.isTableLoading = false;
-            this._globalFunctions.successErrorHandling(result,this,true);
-          }
-        },(error:any)=>{
-          this.getAllCouponList();
-          this.isTableLoading = false;
-          this._globalFunctions.errorHanding(error,this,true)
-        })
-      } else {
-        this.getAllCouponList();
-        this.isTableLoading = false;
+      //   let param = {
+      //     couponid : element?.id,
+      //   }
+      //   this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
+      //     if(result && result.IsSuccess){
+      //       this._toastr.clear();
+      //       this._toastr.success(result?.Message || "Status updated successfully." , "Success");
+      //       this.getAllCouponList();
+      //       this.isTableLoading = false;
+      //     } else {
+      //       this.getAllCouponList();
+      //       this.isTableLoading = false;
+      //       this._globalFunctions.successErrorHandling(result,this,true);
+      //     }
+      //   },(error:any)=>{
+      //     this.getAllCouponList();
+      //     this.isTableLoading = false;
+      //     this._globalFunctions.errorHanding(error,this,true)
+      //   })
+      // } else {
+      //   this.getAllCouponList();
+      //   this.isTableLoading = false;
       }
     });
   }

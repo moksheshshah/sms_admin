@@ -18,6 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxEditorModule } from 'ngx-editor';
 import { MatTableModule } from '@angular/material/table';
 import { ImportStudentsComponent } from './import-students/import-students.component';
+import { StudentAttendanceListComponent } from './student-attendance-list/student-attendance-list.component';
+import { StudentFeeListComponent } from './student-fee-list/student-fee-list.component';
+import { StudentExaminationListComponent } from './student-examination-list/student-examination-list.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const routes:Routes = [
   {
@@ -38,7 +42,10 @@ const routes:Routes = [
   declarations: [
     StudentComponent,
     AddEditStudentComponent,
-    ImportStudentsComponent
+    ImportStudentsComponent,
+    StudentAttendanceListComponent,
+    StudentFeeListComponent,
+    StudentExaminationListComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +64,8 @@ const routes:Routes = [
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    NgxEditorModule
+    NgxEditorModule,
+    MatTabsModule
   ]
 })
 export class StudentModule { }

@@ -1,1 +1,93 @@
-<p>add-edit-subject works!</p>
+<div class="max-w-4xl w-full rounded-3xl bg-white p-7 lg:p-8 xl:p-8 2xl:p-9">
+  <div class="flex items-center justify-end">
+    <span class="block icon-close text-xl text-error cursor-pointer" (click)="closeDailog()"></span>
+  </div>
+  <span class="block text-24 font-bold text-center">{{data[1].btnName}} Class</span>
+  <form class="flex flex-wrap mt-6 xl:mt-8" #sizeNgForm="ngForm" [formGroup]="sizeForm" (ngSubmit)="onSubmitAction()">
+    <div class="w-full relative pb-6 mb-1">
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Subject name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+        <input type="text" pInputText [formControlName]="'subject_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of Student">
+        <span class="error-message"
+        *ngIf="sizeForm.get('subject_name').hasError('required') && (sizeForm.get('subject_name').dirty || sizeForm.get('subject_name').touched)">
+        Class Name is required.</span>
+    </div>
+
+    <div class="w-full relative pb-6 mb-1">
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Select Class<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <mat-form-field appearance="outline" class="w-full dropdown">
+        <mat-select placeholder="Select Class" [formControlName]="'class'">
+          <mat-option  *ngFor="let item of classData; let i = index" [value]="item.value">
+            <span class="text18 font-normal mr-2">{{item?.key}}</span>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="error-message"
+      *ngIf="sizeForm.get('class').hasError('required') && (sizeForm.get('class').dirty || sizeForm.get('class').touched)">
+      Please select any one section.
+    </span>
+    </div>
+    
+    <div class="w-full relative pb-6 mb-1">
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <mat-form-field appearance="outline" class="w-full dropdown">
+        <mat-select placeholder="Select sections" [formControlName]="'section'" multiple>
+          <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
+          <mat-option *ngFor="let item of sectionList" [value]="item.value"
+            (click)="tosslePerOne(allSelected.viewValue)">{{item?.key}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span class="error-message"
+      *ngIf="sizeForm.get('section').hasError('required') && (sizeForm.get('section').dirty || sizeForm.get('section').touched)">
+      Please select any one section.
+    </span>
+    </div>
+
+    <div class="w-full relative pb-6 mb-1">
+      <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">School Logo<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span><span class="text-[#EFB008] pl-3"> (Max size 100kb)</span></label>
+      <div class="w-full h-[126px] relative group">
+        <div class="w-full h-full absolute inset-x-0 z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
+          <div class="flex items-center space-x-3 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10" *ngIf="selectedItemImg">
+            <div class="">
+              <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false" [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
+              <label for="expenses_image" class="block cursor-pointer"><span class="icon-camera text-xl text-white"></span></label>
+            </div>
+            <button mat-icon-button>
+              <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+            </button>
+          </div>
+        </div>
+        <div class="w-full h-full absolute inset-x-0 flex items-center justify-center z-20" [ngClass]="{'opacity-0' : selectedItemImg}">
+          <div class="w-full">
+            <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false" [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'" (change)="uploadItemImage($event)">
+            <label for="expenses_image" class="block cursor-pointer">
+              <div class="w-full flex items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-11">
+                <span class="icon-upload text-3xl mr-2"></span>
+                <span class="text-18 font-medium">Upload Logo</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
+          <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex items-center justify-center">
+      <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center border-2 border-primary rounded-lg px-5 py-4 outline-none bg-primary hover:bg-white anim group">
+        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim" *ngIf="!isBtnChange">Create</span>
+        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim" *ngIf="isBtnChange">Update</span>
+        <span class="block" *ngIf="isBtnLoading">
+          <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+        </span>
+      </button>
+      <!-- <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center border-2 border-primary rounded-lg px-6 py-2 outline-none bg-primary hover:bg-white anim group">
+        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">{{data[1].btnName}} Size</span>
+        <span class="block" *ngIf="isBtnLoading">
+          <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+        </span>
+      </button> -->
+    </div>
+  </form>
+</div>
+

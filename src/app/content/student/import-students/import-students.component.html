@@ -1,143 +1,119 @@
 <div class="w-full flex items-center">
-  <div class="flex items-center justify-between md:items-start flex-wrap w-full">
-      <p class="text24 order-1">Import Students</p>
-      <button class="order-2 sm:order-3 flex items-center ml-auto sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2.5 2xl:py-4 2xl:px-5 border border-primary rounded-lg bg-primary hover:bg-transparent group anim">
-        <span class="inline-block">
-          <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
-        </span>
-        <span class="text18 text-white group-hover:text-primary">Download Sample File</span>
-      </button>
-      <!-- <label for="main_search" class="mt-3 sm:mt-0 order-3 sm:order-2 p-2.5 2xl:p-4 rounded-md bg-white flex space-x-2 sm:max-w-64 2xl:max-w-[350px] w-full ml-auto">
-        <span>
-          <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
-        </span>
-        <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search School" id="main_search" />
-      </label> -->
+  <div class="flex items-center md:items-start flex-wrap w-full">
+    <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/student'"></span>
+    <p class="text24 order-1">Import Students</p>
+    <button
+      class="order-3 flex items-center ml-auto space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2.5 2xl:py-4 2xl:px-5 border border-primary rounded-lg bg-primary hover:bg-transparent group anim">
+      <span class="inline-block">
+        <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+      </span>
+      <span class="text18 text-white group-hover:text-primary">Download Sample File</span>
+    </button>
   </div>
 </div>
 
 <div class="w-full max-w-8xl shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
   <h3 class="h3 text-black">Important instructions:</h3>
-  <ul class="list-disc pl-5"> 
-    <li class="">Mandatory Fields: Name, Class, Section, AdmissionType</li>
-    <li class="">Mandatory Fields: Name, Class, Section, AdmissionType</li>
-    <li class="">Mandatory Fields: Name, Class, Section, AdmissionType</li>
-    <li class="">Mandatory Fields: Name, Class, Section, AdmissionType</li>
+  <ul class="list-disc p-3 xl:p-6">
+    <li class="text-base font-medium">Mandatory Fields: <span class="text-t2">Don't change Dropdown fields data.</span>
+    </li>
+    <li class="text-t2 font-medium ">Mobile/Whatsapp numbers must be 10 digits number, you can leave empty if you have
+      invalid number.</li>
+    <li class="font-medium ">Date <span class="text-t2">format must be</span> DD-MM-YYYY. <span class="text-t2">Don't
+        use 9/8/12 or 10/27/23.</span></li>
+    <li class="text-t2 font-medium">Don't change Dropdown fields data.</li>
   </ul>
+
+  <div class="flex flex-wrap items-center ">
+    <label for="main_search" class=" p-1.5 2xl:p-2.5 rounded-md bg-white flex space-x-2 sm:max-w-64 2xl:max-w-[350px] w-full">
+      <span>
+        <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+      </span>
+      <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search"
+        name="search" placeholder="Search School" id="main_search" />
+    </label>
+
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+      <mat-form-field appearance="outline" class="w-full dropdown">
+        <mat-select placeholder="Massage Type" [(ngModel)]="massage">
+          <mat-option *ngFor="let item of massageData" [value]="item.value">{{item?.key}}</mat-option>
+        </mat-select>
+      </mat-form-field>          
+    </div>
+
+  <button class="btn_secondry group ml-auto anim" (click)="importStudent($event)">
+    <span class="icon_show icon-add text-xl xl:text-2xl text-primary group-hover:text-white"></span>
+    <span class="text18 text-primary group-hover:text-white">Import</span>
+  </button>
+
+  <button class="btn_secondry group anim" (click)="resetStudents()">
+    <span class="icon_show icon-add text-xl xl:text-2xl text-primary group-hover:text-white"></span>
+    <span class="text18 text-primary group-hover:text-white">Reset</span>
+  </button>
 </div>
 
 <div class="w-full relative py-6 xl:py-8">
   <div class="w-full relative overflow-hidden">
-      <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative">
-          <!-- <table mat-table matSort [dataSource]="couponData" class="mat-elevation-z8 h-full" > -->
+    <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative">
+      <table mat-table matSort [dataSource]="studentExcelData" class="mat-elevation-z8 h-full">
 
-              <!-- Description Column -->
-              <ng-container matColumnDef="photo">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Photo </th>
-                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails  flex items-center">  
-                <!-- <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10" *ngIf="element?.banner && element?.banner != ''">
-                    <p-image src="./assets/images/user2.png" imageClass="w-full h-full object-cover rounded" styleClass="w-full h-full" [preview]="true" (error)="imageOnError($event)"></p-image>
-                </div> -->
-                <!-- <div class="w-8 xl:w-9 2xl:w-10 h-8 xl:h-9 2xl:h-10" *ngIf="!element?.banner || element?.banner == ''">
-                    <p-image [src]="constants.defaultImage" imageClass="w-full h-full object-cover rounded" styleClass="w-full h-full" [preview]="true" (error)="imageOnError($event)"></p-image>
-                </div> -->
-                <div class="text-justify ml-2">
-              
-                </div>
-                </td>
-              </ng-container>
-  
-                <!-- Size Name Column -->
-                <ng-container matColumnDef="adms_no">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Adms No. </th>
-                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'01'}} </td>
-                </ng-container>
-  
-                <!-- Size Name Column -->
-                <ng-container matColumnDef="roll_no">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Roll No. </th>
-                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'01'}} </td>
-                </ng-container>
-    
-                <!-- Description Column -->
-                <ng-container matColumnDef="student_name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Student Name </th>
-                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Prayag Savaliya'}} </td>
-                </ng-container>
+      <!-- Roll No. Column -->
+      <ng-container matColumnDef="roll_no">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Roll No. </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.roll_no}} </td>
+      </ng-container>
 
-                  <!-- Description Column -->
-                  <ng-container matColumnDef="class">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Class </th>
-                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'1st - A'}} </td>
-                  </ng-container>
+      <!--  Student Name Column -->
+      <ng-container matColumnDef="student_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Student Name </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.student_name}} </td>
+      </ng-container>
 
-                  <!-- Description Column -->
-                  <ng-container matColumnDef="father_name">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Father Name </th>
-                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Umeshbhai s.'}} </td>
-                  </ng-container>
+      <!-- Class Column -->
+      <ng-container matColumnDef="class">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Class </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.class}} </td>
+      </ng-container>
 
-                   <!-- Description Column -->
-                   <ng-container matColumnDef="phone">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Mobile No. </th>
-                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'+91 9876543219'}} </td>
-                  </ng-container>
+      <!-- Section Column -->
+      <ng-container matColumnDef="section">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Section </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.section}} </td>
+      </ng-container>
 
-                   <!-- Description Column -->
-                   <ng-container matColumnDef="gender">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Gender </th>
-                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Male'}} </td>
-                  </ng-container>
+      <!--  Acdaminc Year Column -->
+      <ng-container matColumnDef="ac_year">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Acdaminc Year </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.ac_year}} </td>
+      </ng-container>
 
-                  <!-- Description Column -->
-                  <ng-container matColumnDef="address">
-                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Address </th>
-                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Pal RTO, Surat -345678'}} </td>
-                  </ng-container>
-                
-                  <!-- Status Column -->
-                  <!-- <ng-container matColumnDef="status">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Status </th>
-                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
-                        <p-inputSwitch [(ngModel)]="element.status"
-                            (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
-                    </td>
-                </ng-container> -->
-    
-                <!-- Action Column -->
-                <!-- <ng-container matColumnDef="action">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
-                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
-                        <div class="flex space-x-3">
-                            <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editStudent($event,element)"></span>
-                            <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteSchool(element)"></span>
-                        </div>
-                    </td>
-                </ng-container> -->
-    
-                <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table> -->
-            <div class="w-full"> 
-              <!-- <div class="w-full flex justify-center p-5" *ngIf="couponData.filteredData.length == 0"> -->
-                  <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
-                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Student Added </strong>
-                    <span class="block lg:text-18 text-center text-t2"> Please add student first </span>
-                  </div>
-              </div>
+      <!-- Massage Column -->
+      <ng-container matColumnDef="massage">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Massage </th>
+        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.massage}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+      <div class="w-full">
+        <div class="w-full flex justify-center p-5" *ngIf="studentExcelData.length == 0"> <!--*ngIf="studentExcelData.filteredData.length == 0"-->
+        <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+          <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Student Added </strong>
+          <span class="block lg:text-18 text-center text-t2"> Please add student first </span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2"> 
+        <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+    </div> -->
+    <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+        <div class="flex flex-col items-center justify-center">
+          <div class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
           </div>
-          <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
-              <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+           <p class="block text-base font-medium pt-2">Plase wait</p>
           </div>
-          <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
-              <div class="flex flex-col items-center justify-center">
-                  <div
-                      class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
-                  </div>
-                  <p class="block text-base font-medium pt-2">Plase wait</p>
-              </div>
-          </div> 
-      </div>-->
+        </div> 
+    </div>
   </div>
 </div>
-
