@@ -117,8 +117,9 @@
 .tabs mat-tab-group .mat-mdc-tab-header .mdc-tab {
   padding: 0;
 }
-.tabs mat-tab-group .mat-mdc-tab-header .mdc-tab:first-child {
+.tabs mat-tab-group .mat-mdc-tab-header .mdc-tab:not(:last-child){
   margin-right: 30px;
+  min-width: auto;
 }
 .tabs mat-tab-group .mat-mdc-tab-header .mdc-tab.mdc-tab--active span.mdc-tab__text-label span.text20{
   color: #3B418B;

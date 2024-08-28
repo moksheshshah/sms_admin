@@ -31,10 +31,13 @@
     </button>
   </div>
 
-  <div class="w-full mt-6 lg:mt-6">
+  <div class="w-full mt-6 lg:mt-6 tabs relative">
     <mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
-      <mat-tab label="Personal Details">
-        <form class="coupon-form mt-6 xl:mt-8 space-y-2.5" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
+      <mat-tab>
+        <ng-template mat-tab-label class="relative">
+          <span class="text20 text-t2">Personal Details</span>
+        </ng-template>
+        <form class="coupon-form mt-6 xl:mt-8 space-y-2.5 px-2.5" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
           <div class="w-full">
             <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">01 Admission Information</span>
             <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
@@ -617,9 +620,7 @@
       <div *ngIf="pageType == 'Edit'">
         <mat-tab>
           <ng-template mat-tab-label class="relative">
-            <span>
-              Attendance
-            </span>
+            <span class="text20 text-t2">Attendance</span>
           </ng-template>
           <!--  *ngIf="selectedTab == 0" -->
           <div class="w-full">
@@ -628,9 +629,7 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label class="relative">
-            <span>
-            Fee
-            </span>
+            <span class="text20 text-t2">Fee</span>
           </ng-template>
           <!--  *ngIf="selectedTab == 1" -->
           <div class="w-full">
@@ -639,9 +638,7 @@
         </mat-tab>
         <mat-tab>
           <ng-template mat-tab-label class="relative">
-            <span>
-              Examination
-            </span>
+            <span class="text20 text-t2">Examination</span>
           </ng-template>
           <!--  *ngIf="selectedTab == 1" -->
           <div class="w-full">
@@ -649,9 +646,9 @@
           </div>
         </mat-tab>
 
-      </div>
-  
+      </div>  
     </mat-tab-group>
+    <span class="w-full h-0.5 bg-t4 absolute top-[46px]"></span>
   </div>
 
 </div>

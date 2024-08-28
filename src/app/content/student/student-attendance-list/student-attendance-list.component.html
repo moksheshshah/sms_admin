@@ -1,5 +1,35 @@
-<div class="w-full max-w-8xl shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-white">
-  <div class="w-full relative py-6 xl:py-8">
+<div class="w-full max-w-8xl shadow-xl shadow-slate-100 rounded-2xl p-5 xl:p-7 mx-auto bg-white mt-5 2xl:mt-7">
+    <div class="flex items-baseline 2xl:items-start flex-wrap">
+        <span class="text24 order-1">Jul - 2024</span>
+        <div class="flex items-center space-x-3 lg:space-x-5 xl:space-x-7 pb-4 w-full 2xl:w-auto 2xl:pb-0 2xl:ml-10 order-3 2xl:order-2">
+            <span class="text20 text-[#00632B] whitespace-nowrap block">Present : 10</span>
+            <span class="text20 text-[#B01212] whitespace-nowrap block">Absent : 5</span>
+            <span class="text20 text-[#EFB008] whitespace-nowrap block">Leave : 2</span>
+            <span class="text20 text-[#585C8C] whitespace-nowrap block">Pending : 3</span>
+        </div>
+        <div class="flex items-center space-x-4 ml-auto w-max order-2 2xl:order-3">
+            <div class="w-full max-w-48 relative pb-5 px-2.5 pt-0">
+                <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+                  <input matInput [matDatepicker]="picker1" [formControlName]="'starttime'" (click)="picker1.open()"
+                    placeholder="Start Date">
+                  <span matSuffix>
+                    <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
+                  </span>
+                  <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="w-full max-w-48 relative pb-5 px-2.5 pt-0">
+                <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+                  <input matInput [matDatepicker]="picker2" [formControlName]="'starttime'" (click)="picker2.open()"
+                    placeholder="End Date">
+                  <span matSuffix>
+                    <mat-datepicker-toggle [for]="picker2"></mat-datepicker-toggle>
+                  </span>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
     <div class="w-full relative">
         <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
             <table mat-table matSort [dataSource]="attendanceData" class="h-full">
@@ -51,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="attendanceData.length > 0">
+            <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px]" *ngIf="attendanceData.length > 0">
                 <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAttendanceList($event)"  [totalRecords]="totalattandance" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
             </div>
             <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
@@ -64,7 +94,6 @@
             </div>
         </div>
     </div>
-  </div>
 </div>
 
 
