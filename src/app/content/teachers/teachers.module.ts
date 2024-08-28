@@ -17,6 +17,7 @@ import { NgxEditorModule } from 'ngx-editor';
 import { MatTableModule } from '@angular/material/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { ImageModule } from 'primeng/image';
+import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
 
 const routes:Routes = [
   {
@@ -51,7 +52,8 @@ const routes:Routes = [
     MatInputModule,
     NgxEditorModule,
     PaginatorModule,
-    ImageModule
+    ImageModule,
+    MatChipsModule
   ]
 })
 export class TeachersModule { }

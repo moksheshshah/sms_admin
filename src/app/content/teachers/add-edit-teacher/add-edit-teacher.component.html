@@ -384,7 +384,7 @@
     <!--  Assign Class & Section -->
     <div class="w-full">
         <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">07 Assign Class & Section</span>
-        <div class="w-full relative pb-6 xl:pb-8">
+        <div class="w-full relative flex pb-6 xl:pb-8">
             <div class="w-full relative overflow-hidden">
                 <div class="rounded-xl overflow-x-auto relative">
                     <table mat-table matSort [dataSource]="couponData" class="mat-elevation-z8 h-full">
@@ -392,7 +392,7 @@
                             <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Class Teacher </th>
                             <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails flex items-center"> 
                               <div class="w-20">
-                                <input type="radio" name="class_teacher" id="" class="mr-4">
+                                <!-- <input type="radio" name="class_teacher" id="" class="mr-4"> -->
                                 {{element?.class_teacher}}
                               </div>
                               <div class="flex items-center ml-[50px]">
@@ -426,21 +426,40 @@
                         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                     </table>
+                    
                 </div>
             </div>
-        </div>
-        <div class="flex flex-wrap -mx-2.5">
-            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Designation<span
-                    class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
-                <input type="text" pInputText [formControlName]="'designation'"
-                  class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
-                  placeholder="EX. English Teacher">
-                <span class="error-message"
-                  *ngIf="productCouponForm.get('designation').hasError('required') && (productCouponForm.get('designation').dirty || productCouponForm.get('designation').touched)">Enter Designation is required.</span>
+            <div class="w-full ml-5">
+                <div class="w-full sm:w-1/2 md:w-1/3 2xl:w-1/2 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Designation<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                    <input type="text" pInputText [formControlName]="'designation'"
+                      class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                      placeholder="EX. English Teacher">
+                    <span class="error-message"
+                      *ngIf="productCouponForm.get('designation').hasError('required') && (productCouponForm.get('designation').dirty || productCouponForm.get('designation').touched)">Enter Designation is required.</span>
+                </div>
+                <div class="w-full">
+                  <div class="w-full sm:w-1/2 md:w-1/3 2xl:w-1/2 relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-16 text-gray_1 font-semibold pb-2">Skills<span class="absolute top-0 text-red-600 text-[18] font-bold"></span></label>
+                    <mat-form-field class="example-form-field">
+                      <!-- <mat-label>Video keywords</mat-label> -->
+                      <input placeholder="New keyword..."
+                                [matChipInputFor]="chipGrid"
+                                (matChipInputTokenEnd)="add($event)"/>
+                      <mat-chip-grid #chipGrid aria-label="Enter keywords" [formControlName]="'skills'" >
+                        <mat-chip-row *ngFor="let keyword of keywords" (removed)="removeKeyword(keyword)">
+                          {{keyword}}
+                          <button matChipRemove aria-label="'remove ' + keyword">
+                            <span class="icon-close text-xs text-error font-semibold cursor-pointer"></span>
+                          </button>
+                        </mat-chip-row>
+                      </mat-chip-grid>
+                    </mat-form-field>
+                  </div>
+                </div>
             </div>
-           
-        </div>
+          </div>
      </div>
 
     <!-- Detail For Login Teacher Portal -->

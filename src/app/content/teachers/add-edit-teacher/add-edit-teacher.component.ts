@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CONSTANTS } from '../../../common/constants';
 import { MatOption } from '@angular/material/core';
@@ -10,6 +10,8 @@ import moment from 'moment';
 import { GlobalFunctions } from '../../../common/global-function';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 export interface CouponComponent {
   class_teacher: any;
@@ -87,6 +89,7 @@ export class AddEditTeacherComponent {
     { key: 'Sikh', value: 'sikh' },
     { key: 'Buddhist ', value: 'buddhist ' },
   ];
+  keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -177,7 +180,7 @@ export class AddEditTeacherComponent {
       ifsc_code: ['', [Validators.required]],
       mobile_no: ['', [Validators.required]],
       designation: ['', [Validators.required]],
-
+      skills: ['', [Validators.required]],
 
     });
   }
@@ -310,5 +313,26 @@ export class AddEditTeacherComponent {
     event.target.src = this.constants.defaultImage;
   }
 
+  announcer = inject(LiveAnnouncer);
+  removeKeyword(keyword: string) {
+    const index = this.keywords.indexOf(keyword);
+    if (index >= 0) {
+      this.keywords.splice(index, 1);
+
+      this.announcer.announce(`removed ${keyword}`);
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our keyword
+    if (value) {
+      this.keywords.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
 
 }
