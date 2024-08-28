@@ -28,9 +28,6 @@ export class AddEditStudentComponent {
   constants: any = CONSTANTS;
   selectedItemImg: any;
   couponId: any;
-  editor!: Editor;
-  toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
-  tremCondition_length: any = 0;
   varientsList: any = [];
   @ViewChild('allSelected') allSelected: MatOption | any;
   maultivariants: any = [];
@@ -89,7 +86,6 @@ export class AddEditStudentComponent {
 
   ngOnInit() {
     this.getVarients();
-    this.editor = new Editor();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
     if (this.couponId && this.couponId != "studentdetail") {
@@ -302,14 +298,6 @@ export class AddEditStudentComponent {
 
   imageOnError(event: any) {
     event.target.src = this.constants.defaultImage;
-  }
-
-  ingredientLength(event: any = '') {
-    this.tremCondition_length = event.length
-    if (event.length > 10000) {
-      this._toastr.clear();
-      this._toastr.error("You can not write more product description", 'Oops!');
-    }
   }
 
 
