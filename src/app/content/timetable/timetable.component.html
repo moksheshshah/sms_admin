@@ -1,10 +1,8 @@
-<div class="w-full mt-6 lg:mt-8 xl:mt-10 2xl:mt-12">
+<div class="w-full mt-6 lg:mt-8 xl:mt-10 2xl:mt-12 tabs relative">
   <mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
     <mat-tab>
       <ng-template mat-tab-label class="relative">
-        <span>
-         Student
-        </span>
+        <span class="text20 text-t2">Student</span>
         <div class="absolute top-2 -right-3">
           <span class="relative flex h-2 w-2">
             <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span> -->
@@ -19,9 +17,7 @@
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label class="relative">
-        <span>
-        Teacher
-        </span>
+        <span class="text20 text-t2">Teacher</span>
         <div class="absolute top-2 -right-3">
           <span class="relative flex h-2 w-2">
             <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span>
@@ -34,6 +30,6 @@
         <app-teacher-timetable-list></app-teacher-timetable-list>
       </div>
     </mat-tab>
-
   </mat-tab-group>
+  <span class="w-full h-0.5 bg-t4 absolute top-[46px]"></span>
 </div>
