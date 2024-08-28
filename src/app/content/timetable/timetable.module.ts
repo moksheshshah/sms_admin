@@ -9,6 +9,8 @@ import { TeacherTimetableListComponent } from './teacher-timetable-list/teacher-
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageModule } from 'primeng/image';
+import { PaginatorModule } from 'primeng/paginator';
 
 
 const routes:Routes = [
@@ -33,6 +35,8 @@ const routes:Routes = [
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
+    ImageModule,
+    PaginatorModule
   ]
 })
 export class TimetableModule { }
