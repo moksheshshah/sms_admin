@@ -10,9 +10,47 @@ export interface studentAttendanceListComponent{
   rollno:any;
   date1:any;
   date2:any;
+  date3:any;
+  date4:any;
+  date5:any;
+  date6:any;
+  date7:any;
+  date8:any;
+  date9:any;
+  date10:any;
+  date11:any;
+  date12:any;
+  date13:any;
+  date14:any;
+  date15:any;
+  date16:any;
+  date17:any;
+  date18:any;
+  date19:any;
+  date20:any;
+  date21:any;
+  date22:any;
+  date23:any;
+  date24:any;
+  date25:any;
+  date26:any;
+  date27:any;
+  date28:any;
+  date29:any;
+  date30:any;
+  date31:any;
+  total_attendace:any;
+  total_present:any;
+  total_absent:any;
+  total_leave:any;
 }
 const STDATTENDANCE_DATA:studentAttendanceListComponent[]=[
-  { student:'Abc',rollno:'01', date1:'P',date2:'-' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
+  { student: 'John Doe', rollno: '01', date1: 'P', date2: '-', date3: 'A', date4: 'P', date5: 'P', date6: '-', date7: '-', date8: '-', date9: '-', date10: '-', date11: '-', date12: 'L',date13: '-',date14: '-',date15: '-',date16: '-',date17: '-',date18: '-',date19: '-', date20: '-', date21: '-',date22: '-',date23: '-',date24: '-',date25: '-',date26: '-',date27: '-',date28: '-',date29: '-',date30: 'A',date31: 'A',total_attendace:'31',total_present:'24',total_absent:'06',total_leave:'01' },
 
 ];
 @Component({
@@ -24,7 +62,7 @@ export class StudentAttendanceListComponent {
   // STDATTENDANCE_DATA:studentAttendanceListComponent[]=[];
   totalCoupon:any;
   searchCoupon:any;
-  displayedColumns:string[]=['student','date1','date2'];
+  displayedColumns:string[]=['student','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','date17','date18','date19','date20','date21','date22','date23','date24','date25','date26','date27','date28','date29','date30','date31','total_attendace','total_present','total_absent','total_leave'];
   // studentAttendanceData = new MatTableDataSource<studentAttendanceListComponent>(this.STDATTENDANCE_DATA);
   studentAttendanceData = STDATTENDANCE_DATA
   selection = new SelectionModel<studentAttendanceListComponent>(true , []);
@@ -52,6 +90,7 @@ export class StudentAttendanceListComponent {
     { key:'E', value:'E' }, 
   ];
 selClass: any;
+couponData: any;
 
 getAllCouponList() {
 

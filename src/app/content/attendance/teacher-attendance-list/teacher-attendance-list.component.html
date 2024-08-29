@@ -1,1 +1,259 @@
-<p>teacher-attendance-list works!</p>
+<div class="w-full py-1 lg:py-2 px-5 xl:px-7 bg-white rounded-md mt-4">
+<div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
+        <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
+            <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Teacher" id="main_search"/>
+        </label>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+        <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+            <input matInput [matDatepicker]="picker1" (click)="picker1.open()"
+            placeholder="Select Month/Year">
+            <span matSuffix>
+            <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
+            </span>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3 justify-end ml-auto">
+        <button class="lg:order-4 btn_primary group anim">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Take Attendance</span>
+        </button>
+    </div>
+</div>
+</div>
+<div class="w-full relative py-6 xl:py-8">
+<div class="w-full relative">
+    <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white scrollbar">
+        <table mat-table matSort [dataSource]="teacherAttendanceData" class="h-full">
+            <ng-container matColumnDef="teacher">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Teachers</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> 
+                    <span class="block mb-1">{{element?.teacher}}</span> 
+                    <span class="block">M: {{element?.mobile_no}}</span> 
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date1">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">01</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date1}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date2">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">02</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date2}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date3">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">03</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date3}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date4">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">04</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date4}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date5">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">05</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date5}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date6">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">06</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date6}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date7">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">07</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date7}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date8">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">08</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date8}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date9">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">09</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date9}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date10">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">10</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date2}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date11">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">11</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date11}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date12">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">12</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date12}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date13">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">13</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date13}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date14">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">14</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date14}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date15">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">15</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date15}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date16">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">16</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date16}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date17">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">17</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date17}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date18">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">18</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date18}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date19">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">19</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date19}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date20">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">20</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date20}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date21">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">21</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date21}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date22">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">22</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date22}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date23">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">23</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date23}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date24">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">24</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date24}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date25">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">25</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date25}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date26">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">26</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date26}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date27">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">27</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date27}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date28">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">28</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date28}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date29">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">29</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date29}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date30">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">30</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date30}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="date31">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">31</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.date31}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="total_attendace">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Total Attendance</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.total_attendace}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="total_present">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Total Present</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.total_present}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="total_absent">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Total Absent</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.total_absent}}</span>  
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="total_leave">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Total Leave</th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                    <span class="block text-14 xl:text-16 text-t2">{{element?.total_leave}}</span>  
+                </td>
+            </ng-container>
+
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+            <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+        </div> -->
+    </div>
+</div>
+</div>

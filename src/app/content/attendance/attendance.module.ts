@@ -10,7 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { StudentAttendanceListComponent } from './student-attendance-list/student-attendance-list.component';
-import { TeacherAttendanceListComponent } from './teacher-attendance-list/teacher-attendance-list.component';
+import { teacherAttendanceListComponent } from './teacher-attendance-list/teacher-attendance-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -25,7 +25,7 @@ const routes:Routes = [
   declarations: [
     AttendanceComponent,
     StudentAttendanceListComponent,
-    TeacherAttendanceListComponent
+    teacherAttendanceListComponent
   ],
   imports: [
     CommonModule,
