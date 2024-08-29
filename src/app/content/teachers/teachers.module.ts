@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { ImageModule } from 'primeng/image';
 import {MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
+import { ImportTeacherComponent } from './import-teacher/import-teacher.component';
 
 const routes:Routes = [
   {
@@ -28,12 +29,17 @@ const routes:Routes = [
     path:':id',
     component:AddEditTeacherComponent,
   },
+  {
+    path:'teacherdata/importTeacher',
+    component:ImportTeacherComponent,
+  },
 ]
 
 @NgModule({
   declarations: [
     TeachersComponent,
-    AddEditTeacherComponent
+    AddEditTeacherComponent,
+    ImportTeacherComponent
   ],
   imports: [
     CommonModule,

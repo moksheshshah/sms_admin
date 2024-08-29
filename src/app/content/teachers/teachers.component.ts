@@ -189,4 +189,9 @@ export class TeachersComponent {
       }
     });
   }
+
+  importTeacher(event:any){
+    event.stopPropagation();
+    this._router.navigate(['/teachers/teacherdata/importTeacher']);
+  }
 }
