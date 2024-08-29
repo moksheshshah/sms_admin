@@ -12,7 +12,7 @@
         Class Name is required.</span>
     </div>
    
-    <div class="w-full relative pt-0">
+    <div class="w-full relative pb-6 pt-0">
       <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Select sections" [formControlName]="'section'" multiple>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="w-full flex items-center justify-center">
-      <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center border-2 border-primary rounded-lg px-5 py-4 outline-none bg-primary hover:bg-white anim group">
+      <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center btn_primary anim group">
         <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim" *ngIf="!isBtnChange">Create</span>
         <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim" *ngIf="isBtnChange">Update</span>
         <span class="block" *ngIf="isBtnLoading">

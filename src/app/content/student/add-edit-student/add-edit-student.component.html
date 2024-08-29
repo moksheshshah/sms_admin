@@ -42,28 +42,28 @@
             <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">01 Admission Information</span>
             <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
               <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Student Photo * <span class="text-[#EFB008]"></span></label>
-                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
+                <label for="student_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Student Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-40 relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-white/40 backdrop-blur-sm hidden items-center justify-center rounded-3xl absolute inset-0" [ngClass]="selectedItemImg ? 'group-hover:flex' : 'hidden'">
                     <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
                       <div class="">
-                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                        <label for="expenses_image" class="block cursor-pointer">
+                        <input type="file" name="student_image" id="student_image" class="hidden" [multiple]="false"
+                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event,'studentImg')">
+                        <label for="student_image" class="block cursor-pointer">
                           <span class="icon-camera text-xl text-white"></span>
                         </label>
                       </div>
                       <button mat-icon-button>
-                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                        <span class="block icon-delete text-error text-3xl" (click)="removeFillAvatar('studentImg')"></span>
                       </button>
                     </div>
                   </div>
                   <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
                     <div class="w-full h-full">
-                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
+                      <input type="file" name="student_image" id="student_image" class="hidden" [multiple]="false"
                         [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                        (change)="uploadItemImage($event)">
-                      <label for="expenses_image" class="block cursor-pointer h-full">
+                        (change)="uploadItemImage($event,'studentImg')">
+                      <label for="student_image" class="block cursor-pointer h-full">
                         <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
                           <span class="icon-upload text-3xl mr-2"></span>
                           <span class="text-16 font-medium text-nowrap">Upload Logo</span>
@@ -71,7 +71,7 @@
                       </label>
                     </div>
                   </div>
-                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl absolute inset-0 z-[1] mt-0" *ngIf="selectedItemImg">
                     <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
                   </div>
                 </div>
@@ -256,28 +256,26 @@
             <!-- Father information  -->
             <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
               <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Father Photo * <span class="text-[#EFB008]"></span></label>
-                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
-                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
+                <label for="father_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Father Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-40 relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-white/40 backdrop-blur-sm hidden items-center justify-center rounded-3xl absolute inset-0" [ngClass]="selectedFatherImg ? 'group-hover:flex' : 'hidden'">
+                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedFatherImg">
                       <div class="">
-                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                        <label for="expenses_image" class="block cursor-pointer">
+                        <input type="file" name="father_image" id="father_image" class="hidden" [accept]="" (change)="uploadItemImage($event,'fatherImg')">
+                        <label for="father_image" class="block cursor-pointer">
                           <span class="icon-camera text-xl text-white"></span>
                         </label>
                       </div>
                       <button mat-icon-button>
-                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar('fatherImg')"></span>
                       </button>
                     </div>
                   </div>
-                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
+                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedFatherImg}">
                     <div class="w-full h-full">
-                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
-                        [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                        (change)="uploadItemImage($event)">
-                      <label for="expenses_image" class="block cursor-pointer h-full">
+                      <input type="file" name="father_image" id="father_image" class="hidden" [accept]=""
+                        (change)="uploadItemImage($event,'fatherImg')">
+                      <label for="father_image" class="block cursor-pointer h-full">
                         <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
                           <span class="icon-upload text-3xl mr-2"></span>
                           <span class="text-16 font-medium text-nowrap">Upload Logo</span>
@@ -285,8 +283,8 @@
                       </label>
                     </div>
                   </div>
-                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
-                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl absolute inset-0 z-[1] mt-0" *ngIf="selectedFatherImg">
+                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedFatherImg : constants.baseImageUrl + selectedFatherImg">
                   </div>
                 </div>
               </div>
@@ -358,28 +356,28 @@
             <!-- Mother information  -->
             <div class="flex flex-wrap lg:flex-nowrap -mx-2.5 mt-2.5">
               <div class="w-full lg:w-[190px] pb-5 px-2.5 pt-0">
-                <label for="expenses_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Mother Photo * <span class="text-[#EFB008]"></span></label>
-                <div class="w-full h-[calc(100%-32px)] relative group max-w-sm lg:max-w-full">
-                  <div class="w-full h-full z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
-                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedItemImg">
+                <label for="mother_image" class="block relative text-16 text-gray_1 font-semibold pb-2">Mother Photo * <span class="text-[#EFB008]"></span></label>
+                <div class="w-full h-40 relative group max-w-sm lg:max-w-full">
+                  <div class="w-full h-full z-30 bg-white/40 backdrop-blur-sm hidden items-center justify-center rounded-3xl absolute inset-0" [ngClass]="selectedMotherImg ? 'group-hover:flex' : 'hidden'">
+                    <div class="flex items-center space-x-3 z-10" *ngIf="selectedMotherImg">
                       <div class="">
-                        <input type="file" name="expenses_image" id="coupon_image" class="hidden" [multiple]="false"
-                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event)">
-                        <label for="expenses_image" class="block cursor-pointer">
+                        <input type="file" name="mother_image" id="mother_image" class="hidden" [multiple]="false"
+                          [accept]="'image/jpeg, image/png'" (change)="uploadItemImage($event,'motherImg')">
+                        <label for="mother_image" class="block cursor-pointer">
                           <span class="icon-camera text-xl text-white"></span>
                         </label>
                       </div>
                       <button mat-icon-button>
-                        <span class="block icon-delete text-red-600 text-xl" (click)="removeFillAvatar()"></span>
+                        <span class="block icon-delete text-error text-3xl" (click)="removeFillAvatar('motherImg')"></span>
                       </button>
                     </div>
                   </div>
-                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedItemImg}">
+                  <div class="w-full h-full flex items-center justify-center z-20"[ngClass]="{'opacity-0' : selectedMotherImg}">
                     <div class="w-full h-full">
-                      <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false"
+                      <input type="file" name="mother_image" id="mother_image" class="hidden" [multiple]="false"
                         [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'"
-                        (change)="uploadItemImage($event)">
-                      <label for="expenses_image" class="block cursor-pointer h-full">
+                        (change)="uploadItemImage($event,'motherImg')">
+                      <label for="mother_image" class="block cursor-pointer h-full">
                         <div class="w-full h-full flex flex-col items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-7">
                           <span class="icon-upload text-3xl mr-2"></span>
                           <span class="text-16 font-medium text-nowrap">Upload Logo</span>
@@ -387,8 +385,8 @@
                       </label>
                     </div>
                   </div>
-                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl relative z-[1] mt-0" *ngIf="selectedItemImg">
-                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedItemImg : constants.baseImageUrl + selectedItemImg">
+                  <div class="w-full h-full bg-gray_4 border-2 border-dashed border-primary overflow-hidden rounded-3xl absolute inset-0 z-[1] mt-0" *ngIf="selectedMotherImg">
+                    <img class="object-cover w-full h-full" [src]=" !isUpload ? constants.baseImageUrl + selectedMotherImg : constants.baseImageUrl + selectedMotherImg">
                   </div>
                 </div>
               </div>

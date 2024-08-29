@@ -27,6 +27,8 @@ export class AddEditStudentComponent {
   @ViewChild('couponNgForm') couponNgForm: any;
   constants: any = CONSTANTS;
   selectedItemImg: any;
+  selectedMotherImg: any;
+  selectedFatherImg: any;
   couponId: any;
   varientsList: any = [];
   @ViewChild('allSelected') allSelected: MatOption | any;
@@ -131,6 +133,7 @@ export class AddEditStudentComponent {
 
   prepareAddEditExpenseForm() {
     this.productCouponForm = this._formBuilder.group({
+      student_img:['',Validators.required],
       admission_no: ['',Validators.required],
       roll_no: ['',Validators.required],
       starttime: ['', Validators.required],
@@ -144,12 +147,14 @@ export class AddEditStudentComponent {
       blood_group: ['',Validators.required],
       hight: ['',Validators.required],
       weight: ['',Validators.required],
+      father_img:['',Validators.required],
       father_name: ['',Validators.required],
       f_occupation: ['', [Validators.required]],
       f_mobile_no: ['', [Validators.required]],
       f_qualification: ['', [Validators.required]],
       f_email: ['', [Validators.required]],
       f_address: ['', [Validators.required]],
+      mother_img:['',Validators.required],
       mother_name: ['', [Validators.required]],
       m_occupation: ['', [Validators.required]],
       m_mobile_no: ['', [Validators.required]],
@@ -251,7 +256,7 @@ export class AddEditStudentComponent {
     );
   }
 
-  uploadItemImage(event: any): void {
+  uploadItemImage(event: any,type:any): void {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
       if (!this.constants.imagearray.includes(file.type)) {
@@ -266,13 +271,25 @@ export class AddEditStudentComponent {
       if (file.size / 1024 / 1024 <= 5) {
         const fileObj: any = new FormData();
         fileObj.append('file', file);
-        this._couponService.uploadCoupon(fileObj).subscribe(
+        this._couponService.getImage(fileObj).subscribe(
           (result: any) => {
             if (result && result.IsSuccess) {
-              this.selectedItemImg = result.Data.path;
-              this.isUpload = true;
-              const itemImageFormControl = this.productCouponForm.get('banner');
-              itemImageFormControl.setValue(result.Data.path);
+              if(type === 'studentImg'){
+                this.selectedItemImg = result.Data.imagePath;
+                this.isUpload = true;
+                const itemImageFormControl = this.productCouponForm.get('student_img');
+                itemImageFormControl.setValue(result.Data.imagePath);
+              } else if(type === 'fatherImg'){
+                this.selectedFatherImg = result.Data.imagePath;
+                this.isUpload = true;
+                const itemImageFormControl = this.productCouponForm.get('father_img');
+                itemImageFormControl.setValue(result.Data.imagePath);
+              } else if(type === 'motherImg'){
+                this.selectedMotherImg = result.Data.imagePath;
+                this.isUpload = true;
+                const itemImageFormControl = this.productCouponForm.get('mother_img');
+                itemImageFormControl.setValue(result.Data.imagePath);
+              } else
 
               this._toastr.clear();
               this._toastr.success(result.Message, 'Success');
@@ -290,10 +307,20 @@ export class AddEditStudentComponent {
     }
   }
 
-  removeFillAvatar(): void {
-    const itemFillImageFormControl = this.productCouponForm.get('banner');
-    itemFillImageFormControl.setValue(null);
-    this.selectedItemImg = null;
+  removeFillAvatar(type:any): void {
+    if(type == 'studentImg'){
+      const itemFillImageFormControl = this.productCouponForm.get('student_img');
+      itemFillImageFormControl.setValue(null);
+      this.selectedItemImg = null;
+    } else if(type == 'fatherImg'){
+      const itemFillImageFormControl = this.productCouponForm.get('father_img');
+      itemFillImageFormControl.setValue(null);
+      this.selectedFatherImg = null;
+    } else if(type == 'motherImg'){
+      const itemFillImageFormControl = this.productCouponForm.get('mother_img');
+      itemFillImageFormControl.setValue(null);
+      this.selectedMotherImg = null;
+    }
   }
 
   imageOnError(event: any) {

@@ -33,4 +33,7 @@ export class SchoolsService {
   getAllVarientList(){
     return this.http.get(environment.appURL + 'admin/product/variants/list', this._globalFunctions.getAuthorizationHeader());
   }
+  getImage(data:any ){
+    return this.http.post(environment.appURL + 'admin/customerreview/upload', data, this._globalFunctions.getFileAuthorizationHeader());
+ }
 }

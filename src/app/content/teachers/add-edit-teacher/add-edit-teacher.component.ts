@@ -1,5 +1,5 @@
 import { Component, inject, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CONSTANTS } from '../../../common/constants';
 import { MatOption } from '@angular/material/core';
 import { SchoolsService } from '../../schools/schools.service';
@@ -10,19 +10,19 @@ import moment from 'moment';
 import { GlobalFunctions } from '../../../common/global-function';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { MatChipInputEvent } from '@angular/material/chips';
+import { error } from 'jquery';
+import Swal from 'sweetalert2';
 
 export interface CouponComponent {
   class_teacher: any;
 }
 
-const COUPON_DATA:CouponComponent[]=[
-  { class_teacher:'1st' },
-  { class_teacher:'2nd' },
-  { class_teacher:'3rd' },
-  { class_teacher:'4th' },
-  { class_teacher:'5th' },
+const COUPON_DATA: CouponComponent[] = [
+  { class_teacher: '1st' },
+  { class_teacher: '2nd' },
+  { class_teacher: '3rd' },
+  { class_teacher: '4th' },
+  { class_teacher: '5th' },
 ];
 
 @Component({
@@ -89,7 +89,8 @@ export class AddEditTeacherComponent {
     { key: 'Sikh', value: 'sikh' },
     { key: 'Buddhist ', value: 'buddhist ' },
   ];
-  keywords = ['angular', 'how-to', 'tutorial', 'accessibility'];
+  skillData: any = [];
+  qualification_details: any;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -123,38 +124,9 @@ export class AddEditTeacherComponent {
     }
   }
 
-  getVarients() {
-    this._bannerService.getAllVarientList().subscribe((result: any) => {
-      if (result && result.IsSuccess) {
-        this.varientsList = result.Data;
-      } else {
-        this.isBtnLoading = false;
-        this._globalFunctions.successErrorHandling(result, this, true)
-      }
-    }, (error: any) => {
-      this.isBtnLoading = false;
-      this._globalFunctions.errorHanding(error, this, true);
-    })
-  }
-
-  tosslePerOne(all: any): any {
-    if (this.allSelected.selected) {
-      this.allSelected.deselect();
-      return false;
-    }
-    if (this.productCouponForm.controls.variant.value.length == this.varientsList.length)
-      this.allSelected.select();
-  }
-  toggleAllSelection() {
-    if (this.allSelected.selected) {
-      this.productCouponForm.controls.variant.patchValue([...this.varientsList.map((item: any) => item._id), 0]);
-    } else {
-      this.productCouponForm.controls.variant.patchValue([]);
-    }
-  }
-
   prepareAddEditExpenseForm() {
     this.productCouponForm = this._formBuilder.group({
+      profile_img:['',Validators.required],
       teacher_name: ['', Validators.required],
       t_mobile_no: ['', Validators.required],
       email: [null, [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
@@ -181,8 +153,57 @@ export class AddEditTeacherComponent {
       mobile_no: ['', [Validators.required]],
       designation: ['', [Validators.required]],
       skills: ['', [Validators.required]],
-
+      qualificationDetails: this._formBuilder.array([this.addMoreRows()])
     });
+    this.qualification_details = this.productCouponForm.controls['qualificationDetails'] as FormArray;
+  }
+
+  get qualificationGroup(){
+    return this.productCouponForm.controls['qualificationDetails'] as FormArray;
+  }
+
+  addMoreRows(obj:any = {}){
+    return this._formBuilder.group({
+      qualification: ['', Validators.required],
+      college: ['', Validators.required],
+      passing_year: ['', Validators.required]
+    });
+  }
+
+  addMoreQualification(){
+    this.productCouponForm.get('qualificationDetails').controls.forEach((element: any, index: any) => {
+      if (this.productCouponForm.get('qualificationDetails').invalid) {
+        Object.keys(element.controls).forEach((key) => {
+          this.productCouponForm.get('qualificationDetails').controls[index].controls[key].touched = true;
+          this.productCouponForm.get('qualificationDetails').controls[index].controls[key].markAsDirty();
+        });
+        return;
+      }
+    });
+    if (this.qualification_details.value.length && this.productCouponForm.get('qualificationDetails').valid) {
+      this.qualification_details.push(this.addMoreRows());
+    }
+    // this.qualification_details.push(this.addMoreRows());
+  }
+
+  removeRows(index:any){
+    if(index >= 1){
+      this.qualification_details.removeAt(index);
+    }
+  }
+
+  getVarients() {
+    // this._bannerService.getAllVarientList().subscribe((result: any) => {
+    //   if (result && result.IsSuccess) {
+    //     this.varientsList = result.Data;
+    //   } else {
+    //     this.isBtnLoading = false;
+    //     this._globalFunctions.successErrorHandling(result, this, true)
+    //   }
+    // }, (error: any) => {
+    //   this.isBtnLoading = false;
+    //   this._globalFunctions.errorHanding(error, this, true);
+    // })
   }
 
   setCouponData(data: any) {
@@ -190,25 +211,27 @@ export class AddEditTeacherComponent {
     // data?.variant.map((item: any) => {
     //   variantsIds.push(item._id);
     // })
-    this.productCouponForm.get('variant').setValue(data?.variant?._id);
-    this.productCouponForm.get('banner').setValue(data.banner);
-    this.selectedItemImg = data.banner ? data.banner : '';
-    this.productCouponForm.get('name').setValue(data.name);
-    this.productCouponForm.get('coupon_code').setValue(data.coupon_code);
-    this.productCouponForm.get('currency').setValue(data.currency);
-    this.productCouponForm.get('maxlimit').setValue(data.maxlimit);
-    this.productCouponForm.get('userlimit').setValue(data.userlimit);
-    this.productCouponForm.get('discount_type').setValue(data.discount_type);
-    this.productCouponForm.get('discount').setValue(data.discount);
-    this.productCouponForm.get('starttime').setValue(new Date(data.starttime));
-    this.productCouponForm.get('endtime').setValue(new Date(data.endtime));
-    this.productCouponForm.get('webview').setValue(data.iswebview);
-    this.productCouponForm.get('mobileview').setValue(data.ismobileview);
-    this.productCouponForm.get('brief').setValue(data.brief);
-    this.productCouponForm.get('tc').setValue(data.tc);
+    // this.productCouponForm.get('variant').setValue(data?.variant?._id);
+    // this.productCouponForm.get('banner').setValue(data.banner);
+    // this.selectedItemImg = data.banner ? data.banner : '';
+    // this.productCouponForm.get('name').setValue(data.name);
+    // this.productCouponForm.get('coupon_code').setValue(data.coupon_code);
+    // this.productCouponForm.get('currency').setValue(data.currency);
+    // this.productCouponForm.get('maxlimit').setValue(data.maxlimit);
+    // this.productCouponForm.get('userlimit').setValue(data.userlimit);
+    // this.productCouponForm.get('discount_type').setValue(data.discount_type);
+    // this.productCouponForm.get('discount').setValue(data.discount);
+    // this.productCouponForm.get('starttime').setValue(new Date(data.starttime));
+    // this.productCouponForm.get('endtime').setValue(new Date(data.endtime));
+    // this.productCouponForm.get('webview').setValue(data.iswebview);
+    // this.productCouponForm.get('mobileview').setValue(data.ismobileview);
+    // this.productCouponForm.get('brief').setValue(data.brief);
+    // this.productCouponForm.get('tc').setValue(data.tc);
   }
 
   onSubmitAction(): void {
+    console.log(this.productCouponForm.value);
+    
     this.isBtnLoading = true;
     if (this.productCouponForm.invalid) {
       Object.keys(this.productCouponForm.controls).forEach((key) => {
@@ -284,7 +307,7 @@ export class AddEditTeacherComponent {
             if (result && result.IsSuccess) {
               this.selectedItemImg = result.Data.path;
               this.isUpload = true;
-              const itemImageFormControl = this.productCouponForm.get('banner');
+              const itemImageFormControl = this.productCouponForm.get('profile_img');
               itemImageFormControl.setValue(result.Data.path);
 
               this._toastr.clear();
@@ -304,7 +327,7 @@ export class AddEditTeacherComponent {
   }
 
   removeFillAvatar(): void {
-    const itemFillImageFormControl = this.productCouponForm.get('banner');
+    const itemFillImageFormControl = this.productCouponForm.get('profile_img');
     itemFillImageFormControl.setValue(null);
     this.selectedItemImg = null;
   }
@@ -313,26 +336,32 @@ export class AddEditTeacherComponent {
     event.target.src = this.constants.defaultImage;
   }
 
-  announcer = inject(LiveAnnouncer);
-  removeKeyword(keyword: string) {
-    const index = this.keywords.indexOf(keyword);
+  addSkills() {
+    const newSkill = this.productCouponForm.controls.skills.value;
+    if (newSkill && !this.skillData.includes(newSkill)) {
+      if (this.skillData.length < 5) {
+        this.skillData.push(newSkill);
+        this.productCouponForm.controls.skills.setValue('');
+      } else {
+        Swal.fire({
+          title: "Oops!",
+          text: 'Maximum 5 Skill Added',
+          icon: "error"
+        });
+      }
+    } else if (newSkill) {
+      Swal.fire({
+        title: "Oops!",
+        text: 'Skill already exists',
+        icon: "error"
+      });
+    }
+  }
+
+  removeSkill(skill: any) {
+    const index = this.skillData.indexOf(skill);
     if (index >= 0) {
-      this.keywords.splice(index, 1);
-
-      this.announcer.announce(`removed ${keyword}`);
+      this.skillData.splice(index, 1);
     }
   }
-
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our keyword
-    if (value) {
-      this.keywords.push(value);
-    }
-
-    // Clear the input value
-    event.chipInput!.clear();
-  }
-
 }
