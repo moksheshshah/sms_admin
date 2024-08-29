@@ -1,1 +1,280 @@
-<p>teacher-timetable-list works!</p>
+<div class="mt-5 xl:mt-7">
+    <mat-accordion class="space-y-5 drop_table">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title><span class="text16">Teacher : John Doe</span></mat-panel-title>
+          <mat-panel-description class="justify-end">
+            <div class="flex items-center justify-end space-x-3">
+              <span class="icon-edit block text-xl cursor-pointer text-primary anim"></span>
+              <span class="block icon-delete text-xl cursor-pointer text-error anim"></span>
+              <span class="block icon-arrow-down text-xl cursor-pointer text-primary anim"></span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="w-full relative py-6 xl:py-8">
+          <div class="w-full relative">
+              <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white dark_hrad">
+                  <table mat-table matSort [dataSource]="stdTimetableData" class="h-full">
+                  
+                        <!-- Size Name Column -->
+                        <ng-container matColumnDef="day">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Day </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap text16 t_ditails2 text-dark"> {{element?.day}} </td>
+                        </ng-container>
+          
+                        <!-- Size Name Column -->
+                        <ng-container matColumnDef="lec_one">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> I<br>09:00 TO 10:00 </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_one}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <!-- Description Column -->
+                        <ng-container matColumnDef="lec_two">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">II<br>10:00 TO 11:00 </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                              <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_two}}</span>
+                            </td>
+                        </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_three">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> III<br>11:00 TO 12:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_three}}</span>
+                              </td>
+                          </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_four">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> IV<br>12:00 TO 01:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_four}}</span>
+                              </td>
+                          </ng-container>
+      
+                           <!-- Description Column -->
+                           <ng-container matColumnDef="breck">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Breck<br>01:00 TO 02:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-primary">{{element?.breck}} </span>
+                            </ng-container>
+      
+                           <!-- Description Column -->
+                           <ng-container matColumnDef="lec_five">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> V<br>09:00 TO 10:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_five}}</span>
+                              </td>
+                          </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_six">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VI<br>10:00 TO 11:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_six}}</span>
+                              </td>
+                          </ng-container>
+  
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_seven">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VII<br>11:00 TO 12:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_seven}}</span>
+                              </td>
+                          </ng-container>
+  
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_eight">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VIII<br>12:00 TO 01:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                              <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_eight}}</span>
+                              </td>
+                          </ng-container>
+            
+                        <!-- Action Column -->
+                        <!-- <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <div class="flex space-x-3">
+                                    <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editStudent($event,element)"></span>
+                                    <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteSchool(element)"></span>
+                                </div>
+                            </td>
+                        </ng-container> -->
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <div class="w-full"> 
+                      <div class="w-full flex justify-center p-5" *ngIf="stdTimetableData.length == 0"> <!--*ngIf="stdTimetableData.filteredData.length == 0"-->
+                          <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
+                            <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Student Added </strong>
+                            <span class="block lg:text-18 text-center text-t2"> Please add student first </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+                      <div class="flex flex-col items-center justify-center">
+                          <div
+                              class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                          </div>
+                          <p class="block text-base font-medium pt-2">Plase wait</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="mt-2 xl:mt-4">
+    <mat-accordion class="space-y-5 drop_table">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title><span class="text16">Teacher : John Doe</span></mat-panel-title>
+          <mat-panel-description class="justify-end">
+            <div class="flex items-center justify-end space-x-3">
+              <span class="icon-edit block text-xl cursor-pointer text-primary anim"></span>
+              <span class="block icon-delete text-xl cursor-pointer text-error anim"></span>
+              <span class="block icon-arrow-down text-xl cursor-pointer text-primary anim"></span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="w-full relative py-6 xl:py-8">
+          <div class="w-full relative">
+              <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white dark_hrad">
+                  <table mat-table matSort [dataSource]="stdTimetableData" class="h-full">
+                  
+                        <!-- Size Name Column -->
+                        <ng-container matColumnDef="day">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Day </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap text16 t_ditails2 text-dark"> {{element?.day}} </td>
+                        </ng-container>
+          
+                        <!-- Size Name Column -->
+                        <ng-container matColumnDef="lec_one">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> I<br>09:00 TO 10:00 </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_one}}</span>
+                            </td>
+                        </ng-container>
+            
+                        <!-- Description Column -->
+                        <ng-container matColumnDef="lec_two">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">II<br>10:00 TO 11:00 </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                              <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_two}}</span>
+                            </td>
+                        </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_three">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> III<br>11:00 TO 12:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_three}}</span>
+                              </td>
+                          </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_four">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> IV<br>12:00 TO 01:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_four}}</span>
+                              </td>
+                          </ng-container>
+      
+                           <!-- Description Column -->
+                           <ng-container matColumnDef="breck">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Breck<br>01:00 TO 02:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <span class="block text-14 xl:text-16 text-primary">{{element?.breck}} </span>
+                            </ng-container>
+      
+                           <!-- Description Column -->
+                           <ng-container matColumnDef="lec_five">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> V<br>09:00 TO 10:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>  
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_five}}</span>
+                              </td>
+                          </ng-container>
+      
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_six">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VI<br>10:00 TO 11:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_six}}</span>
+                              </td>
+                          </ng-container>
+  
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_seven">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VII<br>11:00 TO 12:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                                <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_seven}}</span>
+                              </td>
+                          </ng-container>
+  
+                          <!-- Description Column -->
+                          <ng-container matColumnDef="lec_eight">
+                              <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> VIII<br>12:00 TO 01:00 </th>
+                              <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                  <span class="block text-14 xl:text-16 text-t2">{{element?.class_section}}</span>
+                              <span class="block text-14 xl:text-16 text-primary font-bold mb-2">{{element?.lec_eight}}</span>
+                              </td>
+                          </ng-container>
+            
+                        <!-- Action Column -->
+                        <!-- <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                            <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                                <div class="flex space-x-3">
+                                    <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editStudent($event,element)"></span>
+                                    <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteSchool(element)"></span>
+                                </div>
+                            </td>
+                        </ng-container> -->
+            
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <div class="w-full"> 
+                      <div class="w-full flex justify-center p-5" *ngIf="stdTimetableData.length == 0"> <!--*ngIf="stdTimetableData.filteredData.length == 0"-->
+                          <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
+                            <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Student Added </strong>
+                            <span class="block lg:text-18 text-center text-t2"> Please add student first </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+                      <div class="flex flex-col items-center justify-center">
+                          <div
+                              class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                          </div>
+                          <p class="block text-base font-medium pt-2">Plase wait</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+      </mat-expansion-panel>
+    </mat-accordion>
+</div>
