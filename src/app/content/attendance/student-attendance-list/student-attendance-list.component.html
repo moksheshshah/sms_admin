@@ -31,7 +31,7 @@
         </mat-form-field>
     </div>
     <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3 justify-end ml-auto">
-        <button class="lg:order-4 btn_primary group anim">
+        <button class="lg:order-4 btn_primary group anim" (click)="takeAttendance($event)">
             <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
             <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Take Attendance</span>
         </button>
@@ -268,6 +268,9 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-        </div>
+            <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+                <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList()"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+            </div> -->
+        </div> 
     </div>
 </div>

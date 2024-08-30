@@ -13,11 +13,22 @@ import { StudentAttendanceListComponent } from './student-attendance-list/studen
 import { teacherAttendanceListComponent } from './teacher-attendance-list/teacher-attendance-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PaginatorModule } from 'primeng/paginator';
+import { TeacherTakeAttendanceComponent } from './teacher-attendance-list/teacher-take-attendance/teacher-take-attendance.component';
+import { StudentTakeAttendanceComponent } from './student-take-attendance/student-take-attendance.component';
 
 const routes:Routes = [
   {
     path:'',
     component:AttendanceComponent,
+  },
+  {
+    path:'studenttakeattendance',
+    component:StudentTakeAttendanceComponent,
+  },
+  {
+    path:'teachertakeattendance',
+    component:TeacherTakeAttendanceComponent,
   }
 ]
 
@@ -25,7 +36,9 @@ const routes:Routes = [
   declarations: [
     AttendanceComponent,
     StudentAttendanceListComponent,
-    teacherAttendanceListComponent
+    teacherAttendanceListComponent,
+    TeacherTakeAttendanceComponent,
+    StudentTakeAttendanceComponent
   ],
   imports: [
     CommonModule,

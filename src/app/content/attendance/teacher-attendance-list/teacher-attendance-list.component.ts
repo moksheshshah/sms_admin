@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component } from '@angular/core';
 import { CONSTANTS } from '../../../common/constants';
+import { Router } from '@angular/router';
 
 export interface teacherAttendanceListComponent {
   teacher: any;
@@ -98,10 +99,15 @@ export class teacherAttendanceListComponent {
   selClass: any;
   couponData: any;
 
+  constructor(private _router:Router){}
+
   getAllCouponList() {
 
   }
 
-
+  takeAttandance(event:any){
+    event.stopPropagation();
+    this._router.navigate(['/attendance/teachertakeattendance']);
+  }
 
 }

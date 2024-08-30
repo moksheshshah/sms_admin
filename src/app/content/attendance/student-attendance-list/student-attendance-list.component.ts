@@ -3,6 +3,7 @@ import { sutdentComponent } from '../../student/student.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CONSTANTS } from '../../../common/constants';
+import { Router } from '@angular/router';
 
 
 export interface studentAttendanceListComponent{
@@ -92,8 +93,15 @@ export class StudentAttendanceListComponent {
 selClass: any;
 couponData: any;
 
+constructor(private _router:Router){}
+
 getAllCouponList() {
 
+}
+
+takeAttendance(event:any){
+  event.stopPropagation();
+  this._router.navigate(['/attendance/studenttakeattendance']);
 }
 
 

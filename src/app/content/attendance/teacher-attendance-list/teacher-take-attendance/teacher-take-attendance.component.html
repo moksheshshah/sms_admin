@@ -1,0 +1,164 @@
+<div class="flex">
+    <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/attendance'"></span>
+    <div class="w-full flex items-center flex-wrap xl:flex-nowrap mb-[30px]">
+        <div class="w-full lg:w-auto pb-2 lg:pb-0">
+            <span class=" block text24">Take Attendance</span>
+        </div>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3 justify-end ml-auto">
+        <button class="lg:order-4 btn_primary group anim">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Save Attendance</span>
+        </button>
+    </div>
+</div>
+<div class="w-full py-1 lg:py-2 px-5 xl:px-7 bg-white rounded-md mt-4">
+<div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
+        <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
+            <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Teacher" id="main_search"/>
+        </label>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+        <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
+            <input matInput [matDatepicker]="picker1" (click)="picker1.open()"
+            placeholder="Select Month/Year">
+            <span matSuffix>
+            <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
+            </span>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>
+</div>
+<div class="space-y-2 mt-5 lg:mt-7 xl:mt-8">
+    <div class="flex items-center space-x-4">
+        <span class="text20 text-dark">Month : August 2024</span>
+        <span class="text20 text-t2">Class:10 | Section:A</span>
+    </div>
+</div>
+<div class="w-full overflow-x-auto mt-5 xl:mt-7">
+<table class="w-full text-left bg-white rounded-xl overflow-hidden custome_table z-20">
+    <tr>
+    <th class="text16 p-4 bg-t5 whitespace-nowrap">Teacher Name</th>
+    <th class="text16 p-4 bg-t5">Mobile No.</th>
+    <th class="text16 p-4 bg-t5">
+        <div class="flex items-center space-x-6 xl:space-x-12">
+            <span class="text16 inline-block">Status</span>
+            <div class="flex items-center space-x-3 xl:space-x-6">
+                <button class="lg:order-4 btn_primary group anim">
+                    <span class="icon_show text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+                    <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Mark All Present</span>
+                </button>      
+                <button class="lg:order-4 btn_primary group anim">
+                    <span class="icon_show text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+                    <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Mark All Absent</span>
+                </button>
+            </div>
+        </div>
+    </th>
+    </tr>
+    <tr class="py-4 border-b boredr-t4">
+    <td class="p-4">
+    <span class="text16">John Doe</span>
+    </td>
+    <td class="p-4">
+        <span class="text16">9876543323</span>
+    </td>
+    <td class="p-4">
+        <div class="flex items-center space-x-8">
+            <div class="space-x-3">
+                <input type="radio" name="attendance" id="">
+                <span class="text16">Undefined</span>
+            </div>
+            <div class="space-x-3">
+                <input type="radio" name="attendance" id="">
+                <span class="text16">Present</span>
+            </div>
+            <div class="space-x-3">
+                <input type="radio" name="attendance" id="">
+                <span class="text16">Absent</span>
+            </div>
+
+        </div>
+    </td>
+    </tr>
+    <tr class="py-4 border-b boredr-t4">
+        <td class="p-4">
+        <span class="text16">John Doe</span>
+        </td>
+        <td class="p-4">
+            <span class="text16">9876543323</span>
+        </td>
+        <td class="p-4">
+            <div class="flex items-center space-x-8">
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Undefined</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Present</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Absent</span>
+                </div>
+    
+            </div>
+        </td>
+    </tr>
+    <tr class="py-4 border-b boredr-t4">
+        <td class="p-4">
+        <span class="text16">John Doe</span>
+        </td>
+        <td class="p-4">
+            <span class="text16">9876543323</span>
+        </td>
+        <td class="p-4">
+            <div class="flex items-center space-x-8">
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Undefined</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Present</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Absent</span>
+                </div>
+    
+            </div>
+        </td>
+    </tr>
+    <tr class="py-4">
+        <td class="p-4">
+        <span class="text16">John Doe</span>
+        </td>
+        <td class="p-4">
+            <span class="text16">9876543323</span>
+        </td>
+        <td class="p-4">
+            <div class="flex items-center space-x-8">
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Undefined</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Present</span>
+                </div>
+                <div class="space-x-3">
+                    <input type="radio" name="attendance" id="">
+                    <span class="text16">Absent</span>
+                </div>
+    
+            </div>
+        </td>
+    </tr>
+</table>
+</div>
+
