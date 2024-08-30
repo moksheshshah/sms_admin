@@ -12,6 +12,9 @@ import { CONSTANTS } from '../../common/constants';
 export class AttendanceComponent {
   selectedTab: any;
   isDataLoad: boolean = false;
+selClass: any;
+classList: any;
+sectionList: any;
 
   tabChanged(tabChangeEvent: MatTabChangeEvent) {
     this.selectedTab = tabChangeEvent.index
