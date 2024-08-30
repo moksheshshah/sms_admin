@@ -21,6 +21,8 @@
 .btn_secondry{@apply flex items-center ml-auto text-sm sm:text-16 xl:text-18 sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2 2xl:py-2.5 2xl:px-5 border border-primary rounded-lg bg-transparent hover:bg-primary anim;}
 .search{@apply mt-3 sm:mt-0 order-3 sm:order-2 p-2.5 2xl:p-4 2xl:py-3 rounded-md bg-white flex space-x-2 w-full ml-auto;}
 .error-message{@apply block absolute bottom-0 left-2.5 text-xs font-semibold text-primary-error;}
+.input{@apply outline-none p-2.5 xl:p-3 rounded-md border border-t4;}
+.custome_table tr:not(:first-child,:last-child){@apply border-b border-t4;}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -145,6 +147,15 @@
   box-shadow: none !important;
   background: #E2E8F0;
   border-radius: 16px !important;
+}
+.dropdown.custom_drop span.mat-mdc-select-value-text,
+.dropdown.custom_drop .mat-mdc-select-placeholder {
+  font-size: 14px;
+  font-weight: 700;
+} 
+.dropdown.custom_drop .mdc-text-field{
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 @media (max-width: 1366px){

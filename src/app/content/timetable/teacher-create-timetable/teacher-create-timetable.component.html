@@ -1,0 +1,18 @@
+<div class="w-full rounded-[50px]">
+  <div class="w-full flex items-center">
+    <!-- <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/timetable'"></span> -->
+    <span class="w-full text24"> Create Timetable </span>
+    <button type="button" mat-flat-button [routerLink]="'/timetable'" class="btn_primary ml-auto anim group">
+      <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Back</span>
+    </button>
+    <button type="button" mat-flat-button class="btn_primary ml-3 anim group" (click)="nextStepTimetables($event)">
+      <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Next</span>
+      <span class="block" *ngIf="isBtnLoading">
+        <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+      </span>
+    </button>
+  </div>
+
+
+  
+</div>

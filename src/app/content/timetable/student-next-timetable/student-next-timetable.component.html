@@ -1,0 +1,178 @@
+<div class="w-full overflow-x-auto mt-5 xl:mt-7 bg-white">
+  <table class="w-full text-center bg-white rounded-xl overflow-hidden custome_table z-20">
+    <tr>
+      <th class="text16 p-4 px-1 pl-6 xl:pl-9 bg-t5">Day</th>        
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">I <br> 09:00 - 09:30</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">II <br> 09:30 - 10:00</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">Break <br> 10:00 - 10:15</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">III <br> 10:15 - 10:45</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">IV <br> 10:45 - 11:15</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">Break <br> 11:15 - 12:00</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">V <br> 12:00 - 01:00</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">VI <br> 01:00 - 02:00</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">VII <br> 02:00 - 02:30</th>
+      <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap">VIII <br> 02:30 - 03:00</th>
+    </tr>
+    <tr class="py-4">
+      <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+        <span class="text16 text-t2">Mon</span>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+      
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+      <td class="p-4 px-1">
+        <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto">
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Subject" [(ngModel)]="class" name="one" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="w-full relative">
+            <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+              <mat-select placeholder="Teacher" [(ngModel)]="classes" name="two" multiple>
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </td>
+  
+    </tr>
+  </table>
+  <!-- <div class="flex justify-end py-7 px-12">
+    <button type="button" mat-flat-button class="btn_primary ml-auto anim group">
+      <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Add More</span>
+    </button>
+  </div> -->
+</div>

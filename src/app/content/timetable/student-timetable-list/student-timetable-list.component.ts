@@ -164,4 +164,9 @@ export class StudentTimetableListComponent {
       }
     });
   }
+
+  createTimetable(event:any){
+    event.stopPropagation();
+    this._router.navigate(['/timetable/studentcreatetimetable']);
+  }
 }

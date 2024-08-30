@@ -163,4 +163,8 @@ export class TeacherTimetableListComponent {
     });
   }
 
+  createTimetables(event:any){
+    event.stopPropagation();
+    this._router.navigate(['/timetable/teachercreatetimetable']);
+  }
 }

@@ -11,20 +11,46 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageModule } from 'primeng/image';
 import { PaginatorModule } from 'primeng/paginator';
+import { StudentCreateTimetableComponent } from './student-create-timetable/student-create-timetable.component';
+import { StudentNextTimetableComponent } from './student-next-timetable/student-next-timetable.component';
+import { TeacherCreateTimetableComponent } from './teacher-create-timetable/teacher-create-timetable.component';
+import { TeacherNextTimetableComponent } from './teacher-next-timetable/teacher-next-timetable.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 const routes:Routes = [
   {
     path:'',
     component:TimetableComponent,
-  }
+  },
+  {
+    path:'studentcreatetimetable',
+    component:StudentCreateTimetableComponent,
+  },
+  {
+    path:'studentdata/studentnexttimetable',
+    component:StudentNextTimetableComponent
+  },
+  {
+    path:'teachercreatetimetable',
+    component:TeacherCreateTimetableComponent
+  },
+  {
+    path:'teacherdata/teachernexttimetable',
+    component:TeacherNextTimetableComponent
+  },
 ]
 
 @NgModule({
   declarations: [
     TimetableComponent,
     StudentTimetableListComponent,
-    TeacherTimetableListComponent
+    TeacherTimetableListComponent,
+    StudentCreateTimetableComponent,
+    StudentNextTimetableComponent,
+    TeacherCreateTimetableComponent,
+    TeacherNextTimetableComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +62,9 @@ const routes:Routes = [
     FormsModule,
     ReactiveFormsModule,
     ImageModule,
-    PaginatorModule
+    PaginatorModule,
+    MatOptionModule,
+    MatSelectModule
   ]
 })
 export class TimetableModule { }
