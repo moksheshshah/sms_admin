@@ -215,14 +215,7 @@
           </span>
           <span class="text-18 lg:text-[20px] 2xl:text-24 text-dark font-extrabold block">Brillient Primary School</span>
         </div>
-
-        <!-- <div class="flex items-center space-x-2 relative ml-4 2xl:ml-6">
-          <span class="icon-calendar_fill text24 font-normal text-primary"></span>
-          <span class="text18 font-normal mr-2">2023 - 2024</span>
-          <span class="icon-arrow-down text18 font-normal text-primary"></span>
-        </div> -->
-
-        <div class="space-x-2 relative mx-4 2xl:mx-6 cle_drop">
+        <div class="relative mx-4 2xl:mx-6 cle_drop">
           <mat-form-field appearance="outline" class="w-full dropdown">
             <span class="icon-calendar_fill text24 font-normal text-primary"></span>
             <mat-select [(ngModel)]="filteredProductKey" name="sortReivew">
@@ -232,17 +225,28 @@
             </mat-select>
           </mat-form-field>
         </div>
-
-        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md">
-          <span class="icon_show icon-shuffle-data text-primary text-xl 2xl:text-2xl leading-none"></span>
-        </span>
-        <label for="main_search" class="p-2.5 2xl:p-4 rounded-md bg-t6 md:flex space-x-2 max-w-64 2xl:max-w-[350px] w-full ml-4 2xl:ml-6 hidden">
-          <span>
-            <svg class="w-5 h-5 lg:w-6 lg:h-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M11.5 21.75C5.85 21.75 1.25 17.15 1.25 11.5C1.25 5.85 5.85 1.25 11.5 1.25C17.15 1.25 21.75 5.85 21.75 11.5C21.75 17.15 17.15 21.75 11.5 21.75ZM11.5 2.75C6.67 2.75 2.75 6.68 2.75 11.5C2.75 16.32 6.67 20.25 11.5 20.25C16.33 20.25 20.25 16.32 20.25 11.5C20.25 6.68 16.33 2.75 11.5 2.75Z" fill="#94A3B8"/> <path d="M21.9975 22.7499C21.8075 22.7499 21.6175 22.6799 21.4675 22.5299L19.4675 20.5299C19.1775 20.2399 19.1775 19.7599 19.4675 19.4699C19.7575 19.1799 20.2375 19.1799 20.5275 19.4699L22.5275 21.4699C22.8175 21.7599 22.8175 22.2399 22.5275 22.5299C22.3775 22.6799 22.1875 22.7499 21.9975 22.7499Z" fill="#94A3B8"/> </svg>
+        <div class="relative mr-4 2xl:mr-6 cle_drop">
+          <mat-form-field appearance="outline" class="w-full dropdown">
+            <span class="icon-shuffle-data text24 font-normal text-primary"></span>
+            <mat-select [(ngModel)]="filteredProductKey" name="sortReivew">
+              <mat-option  *ngFor="let item of sortYear; let i = index" [value]="item.value">
+                <span class="text18 font-normal mr-2">{{item?.key}}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="ml-auto">
+          <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md cursor-pointer" onclick="toggleActive('#search','active');">
+            <span class="icon-search text-primary text-xl 2xl:text-2xl leading-none"></span>
           </span>
-          <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search student,teacher etc..." id="main_search"/>
-        </label>
-        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6">
+          <label for="main_search" id="search" class="p-2.5 2xl:p-4 rounded-md bg-white border border-t4 flex space-x-2 max-w-64 2xl:max-w-[350px] w-full ml-4 2xl:ml-6 absolute top-full right-5 -translate-y-3 invisible opacity-0 anim">
+            <span>
+              <svg class="w-5 h-5 lg:w-6 lg:h-6" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M11.5 21.75C5.85 21.75 1.25 17.15 1.25 11.5C1.25 5.85 5.85 1.25 11.5 1.25C17.15 1.25 21.75 5.85 21.75 11.5C21.75 17.15 17.15 21.75 11.5 21.75ZM11.5 2.75C6.67 2.75 2.75 6.68 2.75 11.5C2.75 16.32 6.67 20.25 11.5 20.25C16.33 20.25 20.25 16.32 20.25 11.5C20.25 6.68 16.33 2.75 11.5 2.75Z" fill="#94A3B8"/> <path d="M21.9975 22.7499C21.8075 22.7499 21.6175 22.6799 21.4675 22.5299L19.4675 20.5299C19.1775 20.2399 19.1775 19.7599 19.4675 19.4699C19.7575 19.1799 20.2375 19.1799 20.5275 19.4699L22.5275 21.4699C22.8175 21.7599 22.8175 22.2399 22.5275 22.5299C22.3775 22.6799 22.1875 22.7499 21.9975 22.7499Z" fill="#94A3B8"/> </svg>
+            </span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search student,teacher etc..." id="main_search"/>
+          </label>
+        </div>
+        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6 cursor-pointer">
           <span class="icon_show icon-user text-primary text-xl 2xl:text-2xl leading-none"></span>
         </span>
       </header>
