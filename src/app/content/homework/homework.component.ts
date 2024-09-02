@@ -49,6 +49,12 @@ export class HomeworkComponent {
     { key:'4th', value:'4' }, 
     { key:'5th', value:'5' }, 
   ];
+  subjectList:any = [
+    { key:'Enaglish', value:'english' }, 
+    { key:'Hindi', value:'hindi' }, 
+    { key:'Gujrati', value:'gujrati' }, 
+    { key:'Science', value:'science' }, 
+  ];
   sectionList:any = [
     { key:'A', value:'A' }, 
     { key:'B', value:'B' }, 
@@ -77,6 +83,7 @@ export class HomeworkComponent {
   selClass:any;
   @ViewChild(MatSort,{static:false}) couponSort!:MatSort;
   @ViewChild('paginator', { static: true }) paginator!: Paginator
+
 
   constructor(
     private _globalFunctions:GlobalFunctions,
@@ -141,7 +148,7 @@ export class HomeworkComponent {
     this._router.navigate(['homework/', "homeworkdetail"]);
   }
 
-  deleteSchool(element:any){
+  deleteHomework(element:any){
     this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'410px',
@@ -154,9 +161,9 @@ export class HomeworkComponent {
     });
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
-        let param = {
-          couponid : element?.id,
-        }
+        // let param = {
+        //   couponid : element?.id,
+        // }
       //   this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
       //     if(result && result.IsSuccess){
       //       this._toastr.clear();

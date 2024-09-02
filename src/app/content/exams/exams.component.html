@@ -1,1 +1,125 @@
-<p>exams works!</p>
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-4 border-b border-t4">
+    <div class="w-full lg:w-auto pb-2 lg:pb-0">
+        <span class=" block text24">Exam</span>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3  justify-end ml-auto">
+        <button class="lg:order-4 btn_primary group anim" (click)="addExams()">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Add New Exam</span>
+        </button>
+    </div>
+</div>
+<div class="w-full py-1 lg:py-2 px-5 xl:px-7 bg-white rounded-md mt-4">
+<div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
+        <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
+            <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
+        </label>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+        <mat-form-field appearance="outline" class="w-full dropdown">
+        <mat-select placeholder="Select Class" [(ngModel)]="selClass">
+            <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+        </mat-select>
+        </mat-form-field>          
+    </div>
+    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+        <mat-form-field appearance="outline" class="w-full dropdown">
+            <mat-select placeholder="Select Section" [(ngModel)]="selClass">
+            <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
+            </mat-select>
+        </mat-form-field>          
+    </div>
+</div>
+</div>
+<div class="w-full relative py-6 xl:py-8">
+    <div class="w-full relative">
+        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
+            <table mat-table matSort [dataSource]="couponData" class="h-full">
+                  <!-- Size Name Column -->
+                  <ng-container matColumnDef="exam_title">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Exam Title</th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Sem-1'}} </td>
+                  </ng-container>
+                  <!-- Size Name Column -->
+                  <ng-container matColumnDef="class">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Class </th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'1'}} </td>
+                  </ng-container>
+                  <!-- Description Column -->
+                  <ng-container matColumnDef="exam_center">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Exam Center</th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'Brillient School'}} </td>
+                  </ng-container>
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="start_date">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Start Date</th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'08 Aug, 2024'}} </td>
+                    </ng-container>
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="end_date">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> End Date </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{'20 Aug, 2024'}} </td>
+                    </ng-container>
+                
+                     <!-- Description Column -->
+                     <ng-container matColumnDef="time_table">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Time Table </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                            <p-inputSwitch [(ngModel)]="element.status"
+                                (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="exam_result">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Exam Result </th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                            <p-inputSwitch [(ngModel)]="element.status"
+                                (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Status</th>
+                        <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                            <p-inputSwitch [(ngModel)]="element.status"
+                                (onChange)="changeStatusAction($event,element);"></p-inputSwitch>
+                        </td>
+                    </ng-container>
+                  <!-- Action Column -->
+                  <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                      <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                          <div class="flex space-x-3">
+                              <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editExams($event,element)"></span>
+                              <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteExam(element)"></span>
+                          </div>
+                      </td>
+                  </ng-container>
+      
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div class="w-full"> 
+                <div class="w-full flex justify-center p-5" *ngIf="couponData.filteredData.length == 0">
+                    <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
+                      <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Homework Added </strong>
+                      <span class="block lg:text-18 text-center text-t2"> Please add Homework first </span>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+                <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+            </div> -->
+            <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+                <div class="flex flex-col items-center justify-center">
+                    <div
+                        class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                    </div>
+                    <p class="block text-base font-medium pt-2">Plase wait</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,14 +24,14 @@
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
         <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Select Subject" [(ngModel)]="selClass">
-            <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
+            <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
         </mat-select>
         </mat-form-field>          
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
         <mat-form-field appearance="outline" class="w-full dropdown">
             <mat-select placeholder="Select Class" [(ngModel)]="selClass">
-            <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
+            <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
             </mat-select>
         </mat-form-field>          
     </div>
@@ -92,7 +92,7 @@
                       <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
                           <div class="flex space-x-3">
                               <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim"></span>
-                              <span class="block icon-delete text-xl cursor-pointer text-error anim"></span>
+                              <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteHomework(element)"></span>
                           </div>
                       </td>
                   </ng-container>

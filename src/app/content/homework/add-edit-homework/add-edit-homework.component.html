@@ -89,7 +89,6 @@
                     </div>
                 </div>
                
-                
             </div>
             <div class="w-full lg:w-3/12">
                 <div class="w-full max-w-80 lg:max-w-full pb-6 px-2.5 pt-0">
@@ -110,9 +109,9 @@
                         <div class="w-full">
                             <input type="file" name="expenses_image" id="expenses_image" class="hidden" [multiple]="false" [accept]="'image/avif,image/webp, image/png, image/jpeg, image/gif, image/bmp, image/vnd.microsoft.icon, image/tiff, image/svg+xml'" (change)="uploadItemImage($event)">
                             <label for="expenses_image" class="block cursor-pointer">
-                            <div class="w-full flex items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl p-11">
+                            <div class="w-full flex items-center justify-center bg-white border-2 border-dashed border-t4 rounded-xl absolute top-0.5 xl:p-[60px] lg:p-[50px] p-11">
                                 <span class="icon-upload text-3xl mr-2"></span>
-                                <span class="text-18 font-medium">Upload Logo</span>
+                                <span class="text-18 font-medium text-nowrap">Upload Logo</span>
                             </div>
                             </label>
                         </div>
