@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './marks.component.scss'
 })
 export class MarksComponent {
+classList: any;
+selClass: any;
+sectionList: any;
 
 }

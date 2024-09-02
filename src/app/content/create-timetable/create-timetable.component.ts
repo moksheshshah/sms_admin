@@ -8,6 +8,7 @@ import { ClassService } from '../class/class.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CommonModalComponent } from '../../common-modal/common-modal.component';
+import { ViewExamTimetableComponent } from './view-exam-timetable/view-exam-timetable.component';
 
 export interface CreateTimetableComponent{
   date:any;
@@ -118,11 +119,11 @@ sectionList:any = [
 
   editStudent(event:any,resData:any){
     event.stopPropagation();
-    this._router.navigate(['student/', resData?.id]);
+    this._router.navigate(['create-timetable/', resData?.id]);
   }
 
-  addStudent(){
-    this._router.navigate(['student/', "studentdetail"]);
+  createExamTimetable(){
+    this._router.navigate(['create-timetable/', "createtimetabledetail"]);
   }
 
   deleteSchool(element:any){
@@ -161,6 +162,19 @@ sectionList:any = [
       //   this.getAllCouponList();
       //   this.isTableLoading = false;
       }
+    });
+  }
+
+  viewExamTimetable(){
+    const dialogRef = this._dialog.open(ViewExamTimetableComponent, {
+      width: '100%',
+      height: 'fit-content',
+      data: [{ result: null }
+      ],
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getAllCouponList();
     });
   }
 

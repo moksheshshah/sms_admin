@@ -12,17 +12,25 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AddEditExamTimetableComponent } from './add-edit-exam-timetable/add-edit-exam-timetable.component';
+import { ViewExamTimetableComponent } from './view-exam-timetable/view-exam-timetable.component';
 
 const routes:Routes = [
   {
     path:'',
     component:CreateTimetableComponent,
+  },
+  {
+    path:':id',
+    component:AddEditExamTimetableComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    CreateTimetableComponent
+    CreateTimetableComponent,
+    AddEditExamTimetableComponent,
+    ViewExamTimetableComponent
   ],
   imports: [
     CommonModule,
