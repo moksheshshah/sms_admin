@@ -13,6 +13,75 @@
     </button>
   </div>
 
-
+  
+  <form [formGroup]="createTimetable">
+    <div class="w-full overflow-x-auto mt-5 xl:mt-7 bg-white">
+      <table class="w-full text-left bg-white rounded-xl overflow-hidden custome_table z-20" formArrayName="teacherTimetable">
+        <tr>
+          <th class="text16 p-4 pl-6 xl:pl-9 bg-t5">Period</th>        
+          <th class="text16 p-4 bg-t5">Time</th>
+          <th class="text16 p-4 bg-t5">Class</th>
+          <th class="text16 p-4 bg-t5">
+              <div class="cursor-pointer"  (click)="addTimetable()">
+                <span class="icon-add font-semibold pr-1"></span>
+                <span class="text-lg leading-[22px] text-primary font-semibold anim ">Add More</span>
+              </div>
+          </th>
+        </tr>
+        <tr class="py-4" *ngFor="let list of teacherTTDetails.controls;let i = index" [formGroupName]="i">
+          <td class="p-4 pl-6 xl:pl-9">
+            <span class="text16">{{ i+1 }}</span>
+          </td>
+          <td class="p-4">
+            <div class="flex items-center justify-start space-x-2">
+              <div class="relative w-56">
+                <input class="w-full input text18 text-dark font-medium" type="time" name="starttime" [formControlName]="'starttime'" />
+                <span class="error-message translate-y-4"
+                  *ngIf="createTimetable.get('teacherTimetable').controls[i].get('starttime').hasError('required') && (createTimetable.get('teacherTimetable').controls[i].get('starttime').dirty || createTimetable.get('teacherTimetable').controls[i].get('starttime').touched)">Enter Start time is required.</span>
+              </div>
+              <div class="relative w-56">
+                <input class="w-full input text18 text-dark font-medium" type="time" name="starttime" id="" [formControlName]="'endtime'" />
+                <span class="error-message translate-y-4"
+                *ngIf="createTimetable.get('teacherTimetable').controls[i].get('endtime').hasError('required') && (createTimetable.get('teacherTimetable').controls[i].get('endtime').dirty || createTimetable.get('teacherTimetable').controls[i].get('endtime').touched)">Enter End time is required.</span>
+              </div>
+            </div>
+          </td>
+          <td class="p-4">
+            <div class="flex items-center space-x-7 xl:space-x-10">
+              <div class="flex space-x-5">
+                <!-- <div class="flex items-center space-x-2.5">
+                  <input type="checkbox" name="" id="1"/>
+                  <label for="1" class="text16 text-t2 whitespace-nowrap" formControlName="selectAll">Select All</label>
+                </div> -->
+                <div class="flex items-center space-x-2.5">
+                  <input type="checkbox" name="" id="2" [formControlName]="'selectBreak'" class="cursor-pointer"/>
+                  <label for="2" class="text16 text-t2 whitespace-nowrap cursor-pointer" >Break</label>
+                </div>
+              </div>  
+              <div class="w-full relative pt-0">
+                <mat-form-field appearance="outline" class="w-full dropdown">
+                  <mat-select placeholder="Select Class" [formControlName]="'class'" multiple>
+                    <!-- <mat-option #allSelected{{i}} (click)="toggleAllSelection(i)" [value]="0">All</mat-option> -->
+                    <mat-option *ngFor="let item of classList" [value]="item.value"
+                      (click)="tosslePerOne(allSelected.viewValue, i)">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <span class="error-message translate-y-4"
+                *ngIf="createTimetable.get('teacherTimetable').controls[i].get('class').hasError('required') && (createTimetable.get('teacherTimetable').controls[i].get('class').dirty || createTimetable.get('teacherTimetable').controls[i].get('class').touched)">Select class is required.</span>
+              </div>
+              <div class="">
+                <span class="icon-delete font-semibold text-2xl text-error cursor-pointer" (click)="removeTimetable(i)"></span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- <div class="flex justify-end py-7 px-12">
+        <button type="button" mat-flat-button class="btn_primary ml-auto anim group">
+          <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Add More</span>
+        </button>
+      </div> -->
+    </div>
+  </form>
   
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatOption } from '@angular/material/core';
 import { Router } from '@angular/router';
@@ -57,7 +57,19 @@ export class StudentCreateTimetableComponent implements OnInit{
   }
 
   addTimetable(){
-    this.student_timetable.push(this.addMoreRows());
+    this.createTimetable.get('studentTimetable').controls.forEach((element: any, index: any) => {
+      if (this.createTimetable.get('studentTimetable').invalid) {
+        Object.keys(element.controls).forEach((key) => {
+          this.createTimetable.get('studentTimetable').controls[index].controls[key].touched = true;
+          this.createTimetable.get('studentTimetable').controls[index].controls[key].markAsDirty();
+        });
+        return;
+      }
+    });
+    if (this.student_timetable.value.length && this.createTimetable.get('studentTimetable').valid) {
+      this.student_timetable.push(this.addMoreRows());
+      // this.qualification_details.push(this.addMoreRows());
+    }
   }
 
   tosslePerOne(all: any,i:any): any {
@@ -69,7 +81,6 @@ export class StudentCreateTimetableComponent implements OnInit{
       this.allSelected.select();
   }
   toggleAllSelection(i:any) {
-    debugger
     if (this.allSelected.selected) {
       this.createTimetable.get('studentTimetable').controls[i].get('class').patchValue([...this.classList.map((item: any) => item.value), 0]);
     } else {

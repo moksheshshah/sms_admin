@@ -33,11 +33,15 @@
           </td>
           <td class="p-4">
             <div class="flex items-center justify-start space-x-2">
-              <div class="w-56">
-                <input class="w-full input text18 text-dark font-medium" type="time" name="starttime" id="" [formControlName]="'starttime'" />
+              <div class="relative w-56">
+                <input class="w-full input text18 text-dark font-medium" type="time" name="starttime" [formControlName]="'starttime'" />
+                <span class="error-message translate-y-4"
+                  *ngIf="createTimetable.get('studentTimetable').controls[i].get('starttime').hasError('required') && (createTimetable.get('studentTimetable').controls[i].get('starttime').dirty || createTimetable.get('studentTimetable').controls[i].get('starttime').touched)">Enter Start time is required.</span>
               </div>
-              <div class="w-56">
+              <div class="relative w-56">
                 <input class="w-full input text18 text-dark font-medium" type="time" name="starttime" id="" [formControlName]="'endtime'" />
+                <span class="error-message translate-y-4"
+                *ngIf="createTimetable.get('studentTimetable').controls[i].get('endtime').hasError('required') && (createTimetable.get('studentTimetable').controls[i].get('endtime').dirty || createTimetable.get('studentTimetable').controls[i].get('endtime').touched)">Enter End time is required.</span>
               </div>
             </div>
           </td>
@@ -49,8 +53,8 @@
                   <label for="1" class="text16 text-t2 whitespace-nowrap" formControlName="selectAll">Select All</label>
                 </div> -->
                 <div class="flex items-center space-x-2.5">
-                  <input type="checkbox" name="" id="2" formControlName="selectBreak" />
-                  <label for="2" class="text16 text-t2 whitespace-nowrap" >Break</label>
+                  <input type="checkbox" name="" id="2" [formControlName]="'selectBreak'" class="cursor-pointer"/>
+                  <label for="2" class="text16 text-t2 whitespace-nowrap cursor-pointer" >Break</label>
                 </div>
               </div>  
               <div class="w-full relative pt-0">
@@ -61,6 +65,8 @@
                       (click)="tosslePerOne(allSelected.viewValue, i)">{{item?.key}}</mat-option>
                   </mat-select>
                 </mat-form-field>
+                <span class="error-message translate-y-4"
+                *ngIf="createTimetable.get('studentTimetable').controls[i].get('class').hasError('required') && (createTimetable.get('studentTimetable').controls[i].get('class').dirty || createTimetable.get('studentTimetable').controls[i].get('class').touched)">Select class is required.</span>
               </div>
               <div class="">
                 <span class="icon-delete font-semibold text-2xl text-error cursor-pointer" (click)="removeTimetable(i)"></span>

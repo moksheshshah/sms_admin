@@ -1,1 +1,182 @@
-<p>teacher-next-timetable works!</p>
+<div class="w-full rounded-[50px]">
+  <div class="w-full flex items-center">
+    <!-- <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/timetable'"></span> -->
+    <span class="w-full text24"> Create Timetable </span>
+    <button type="button" mat-flat-button [routerLink]="'/timetable/teachercreatetimetable'" class="btn_primary ml-auto anim group">
+      <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Back</span>
+    </button>
+    <button type="button" mat-flat-button class="btn_primary ml-3 anim group" (click)="saveTimetable()">
+      <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Save</span>
+      <span class="block" *ngIf="isBtnLoading">
+        <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+      </span>
+    </button>
+  </div>
+  <div class="w-full overflow-x-auto mt-5 xl:mt-7 bg-white" [formGroup]="daysNameForm">
+    <table class="w-full text-center bg-white rounded-xl overflow-hidden custome_table z-20">
+      <tr>
+        <th class="text16 p-4 px-1 pl-6 xl:pl-9 bg-t5">Day</th>        
+        <th class="text16 p-4 px-1 bg-t5 whitespace-nowrap" *ngFor="let item of getTimetableData.teacherTimetable; let i = index;">
+          {{ item?.selectBreak == true ? 'Break' : item?.numberToRoman }} <br> {{item?.starttime}} TO {{item?.endtime}}
+        </th>
+
+      </tr>
+      <tr class="py-4" formArrayName="mondayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Mon</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of mondayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('mondayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('mondayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="py-4" formArrayName="tuesdayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Tue</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of tuesdayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('tuesdayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('tuesdayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="py-4" formArrayName="wednesdayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Wen</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of wednesdayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('wednesdayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('wednesdayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="py-4" formArrayName="thursdayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Thu</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of thursdayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('thursdayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('thursdayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="py-4" formArrayName="fridayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Fri</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of fridayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('fridayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('fridayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+      <tr class="py-4" formArrayName="saturdayForm">
+        <td class="p-4 px-1 pl-6 xl:pl-9 align-top">
+          <span class="text16 text-t2">Sat</span>
+        </td>
+        <td class="p-4 px-1" *ngFor="let list of saturdayGroup.controls;let i = index">
+          <div class="space-y-2 w-full max-w-32 min-w-32 mx-auto" [formGroupName]="i">
+            <div *ngIf="daysNameForm.get('saturdayForm').controls[i].get('subject').value != 'break' && daysNameForm.get('saturdayForm').controls[i].get('teacher').value != 'break'">
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Subject" [formControlName]="'subject'" name="one">
+                    <mat-option *ngFor="let item of subjectList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="w-full relative">
+                <mat-form-field appearance="outline" class="w-full dropdown custom_drop">
+                  <mat-select placeholder="Teacher" [formControlName]="'teacher'" name="two">
+                    <mat-option *ngFor="let item of teacherList" [value]="item.value">{{item?.key}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</div>
