@@ -10,27 +10,200 @@
     </div>
 </div>
 <div class="w-full py-1 lg:py-2 px-5 xl:px-7 bg-white rounded-md mt-4">
-<div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
-    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
-        <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
-            <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
-            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
-        </label>
-    </div>
-    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
-        <mat-form-field appearance="outline" class="w-full dropdown">
-        <mat-select placeholder="Select Class" [(ngModel)]="selClass">
-            <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
-        </mat-select>
-        </mat-form-field>          
-    </div>
-    <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
-        <mat-form-field appearance="outline" class="w-full dropdown">
-            <mat-select placeholder="Select Section" [(ngModel)]="selClass">
-            <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
+    <div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
+            <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
+                <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+                <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
+            </label>
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+            <mat-form-field appearance="outline" class="w-full dropdown">
+            <mat-select placeholder="Select Class" [(ngModel)]="selClass">
+                <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
             </mat-select>
-        </mat-form-field>          
+            </mat-form-field>          
+        </div>
+        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
+            <mat-form-field appearance="outline" class="w-full dropdown">
+                <mat-select placeholder="Select Section" [(ngModel)]="selClass">
+                <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
+                </mat-select>
+            </mat-form-field>          
+        </div>
     </div>
-</div>
 </div>
 
+
+<div class="mt-5 xl:mt-7">
+    <mat-accordion class="space-y-5 drop_table">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="space-x-6">
+                <span class="text16 inline-block">Exam : Sem - 1</span>
+                <span class="text16 inline-block">Class :  1</span>
+            </div>
+        </mat-panel-title>
+          <mat-panel-description class="justify-end">
+            <div class="flex items-center justify-end space-x-5">
+             <div class="space-x-2">
+                <span class="text16 inline-block">08 Aug, 2024 </span>
+                <span class="text16 inline-block">-</span>
+                <span class="text16 inline-block">20 Aug, 2024</span>
+              </div>
+              <span class="block icon-arrow-down text-xl cursor-pointer text-primary anim"></span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="relative px-4 xl:px-6 bg-t7 -mx-6 -mb-4">
+          <ul>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  A</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer" (click)="editExamMark()">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  B</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  C</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  D</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li> 
+          </ul>
+        </div>      
+      </mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="space-x-6">
+                <span class="text16 inline-block">Exam : Sem - 1</span>
+                <span class="text16 inline-block">Class :  1</span>
+            </div>
+        </mat-panel-title>
+          <mat-panel-description class="justify-end">
+            <div class="flex items-center justify-end space-x-5">
+             <div class="space-x-2">
+                <span class="text16 inline-block">08 Aug, 2024 </span>
+                <span class="text16 inline-block">-</span>
+                <span class="text16 inline-block">20 Aug, 2024</span>
+              </div>
+              <span class="block icon-arrow-down text-xl cursor-pointer text-primary anim"></span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="relative px-4 xl:px-6 bg-t7 -mx-6 -mb-4">
+          <ul>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  A</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  B</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  C</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  D</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li> 
+          </ul>
+        </div>      
+      </mat-expansion-panel>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="space-x-6">
+                <span class="text16 inline-block">Exam : Sem - 1</span>
+                <span class="text16 inline-block">Class :  1</span>
+            </div>
+        </mat-panel-title>
+          <mat-panel-description class="justify-end">
+            <div class="flex items-center justify-end space-x-5">
+             <div class="space-x-2">
+                <span class="text16 inline-block">08 Aug, 2024 </span>
+                <span class="text16 inline-block">-</span>
+                <span class="text16 inline-block">20 Aug, 2024</span>
+              </div>
+              <span class="block icon-arrow-down text-xl cursor-pointer text-primary anim"></span>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="relative px-4 xl:px-6 bg-t7 -mx-6 -mb-4">
+          <ul>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  A</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  B</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  C</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li>
+            <li class="py-4 flex items-center border-b border-t4">
+                <span class="inline-block text16 text-t2 font-normal">Section :  D</span>
+                <div class="flex items-center ml-auto space-x-3">
+                    <span class="text16 text-success font-medium">Marks Added</span>
+                    <span class="text-20 icon-eye text-primary font-medium cursor-pointer"></span>
+                    <span class="btn_primary p-2 px-3.5 text-14 text-white font-semibold cursor-pointer">Edit Marks</span>
+                </div>
+            </li> 
+          </ul>
+        </div>      
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>

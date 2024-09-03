@@ -9,35 +9,43 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { EditMarkComponent } from './edit-mark/edit-mark.component';
+import { MatTableModule } from '@angular/material/table';
 
 const routes:Routes = [
   {
     path:'',
     component:MarksComponent,
+  },
+  {
+    path:'markdetails',
+    component:EditMarkComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    MarksComponent
+    MarksComponent,
+    EditMarkComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    DropdownModule,
-    MatInputModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    InputTextModule,
+    DropdownModule,
+    MatInputModule,
     MatSelectModule,
+    InputTextModule,
     MatDatepickerModule,
-    MatTabsModule,
-    MatTableModule,
-    MatFormFieldModule,
-    InputSwitchModule
+    InputSwitchModule,
+    MatTableModule
   ]
 })
 export class MarksModule { }

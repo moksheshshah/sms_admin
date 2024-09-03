@@ -1,0 +1,192 @@
+<div class="space-y-5 lg:space-y-7">
+  <div class="w-full flex items-center flex-nowrap">
+    <div class="w-full max-w-60 pb-2 lg:pb-0">
+        <span class=" block text24">Exam Marks</span>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-nowrap space-x-3  justify-end ml-auto">
+        <div class="w-full sm:max-w-64 2xl:max-w-[350px] p-2">
+          <label for="main_search" class="search py-2.5 w-full border border-[#CBD4E1]">
+              <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
+              <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
+          </label>
+        </div>
+        <button class="lg:order-4 btn_primary py-3 xl:py-3.5 group anim">
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Save Marks</span>
+        </button>
+    </div>
+  </div>
+  <div class="flex flex-wrap sm:space-x-8 lg:space-x-14 xl:space-x-24 p-6 bg-white rounded-lg">
+    <div class="space-y-1 p-3 py-1.5 w-full sm:w-auto">
+      <span class="block text18 text-dark">Exam Title</span>
+      <span class="block text16 text-primary font-medium">Sem-1</span>
+    </div>
+    <div class="space-y-1 p-3 py-1.5 w-full sm:w-auto">
+      <span class="block text18 text-dark">Class</span>
+      <span class="block text16 text-primary font-medium">1 - A</span>
+    </div>
+    <div class="space-y-1 p-3 py-1.5 w-full sm:w-auto">
+      <span class="block text18 text-dark">Exam Title</span>
+      <span class="block text16 text-primary font-medium">08  Aug, 2024 - 20 Aug, 2024</span>
+    </div>
+    <div class="space-y-1 p-3 py-1.5 w-full sm:w-auto">
+      <span class="block text18 text-dark">Exam Title</span>
+      <span class="block text16 text-primary font-medium">Sem-1</span>
+    </div>
+  </div>
+  <div class="w-full relative">
+    <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
+      <table mat-table matSort [dataSource]="studentTakeAttendanceData" class="h-full">
+        <!-- Size Name Column -->
+        <ng-container matColumnDef="studentName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Student Name</th>
+          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+            <div class="flex items-center space-x-2">
+              <span class="w-8 h-8 rounded-full block bg-t5"></span>
+              <span>{{element?.studentName}}</span>
+            </div>
+          </td>
+        </ng-container>
+        <!-- Size Name Column -->
+        <ng-container matColumnDef="rollNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Roll No </th>
+          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.rollNo}} </td>
+        </ng-container>
+        <!-- Description Column -->
+        <ng-container matColumnDef="mobileNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Mobile No</th>
+          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.mobileNo}} </td>
+        </ng-container>
+        <!-- Description Column -->
+        <ng-container matColumnDef="class">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Class</th>
+          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.class}} </td>
+        </ng-container>
+        <!-- Description Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Action</th>
+          <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+            <span class="icon-edit text-primary text-24 cursor-pointer"></span>
+            {{element?.action}}
+          </td>
+        </ng-container>
+        <!-- Description Column -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- exam result popup start -->
+<div class="fixed inset-0 z-50 w-full min-h-screen bg-primary/50 hidden">
+  <div class="w-full h-full flex items-center p-10 px-6">
+    <div class="w-full max-w-3xl p-10 bg-white rounded-2xl mx-auto">
+      <div class="flex items-center mb-8">
+        <span class="text24">Exam Marks</span>
+        <span class="ml-auto icon-close text-error text20 cursor-pointer"></span>
+      </div>
+      <ul class="flex items-center space-x-6 mb-5">
+        <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Subject</li>
+        <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Total Marks</li>
+        <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Obtained Marks</li>
+        <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Grade</li>
+      </ul>
+      <div class="space-y-2">
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="font-medium text-primary">English</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="100" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="font-medium text-primary">Gujarati</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="100" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="font-medium text-primary">Hindi</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="100" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="font-medium text-primary">Maths</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="100" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="font-medium text-primary">Science</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="100" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2 border-t border-t4 pt-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="text-primary">Total</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="000" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="000" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Grade" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="text-primary">Percentage</span>
+          </li>
+          <li class="text16 w-3/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="%" type="text" name="" id=""/>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- exam result popup end -->
