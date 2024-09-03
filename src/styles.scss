@@ -181,6 +181,17 @@
   padding-bottom: 8px;
 }
 
+// mat tab
+.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab{
+  flex-grow: 0 !important;
+}
+
+// popup css
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background: transparent !important;
+  border: 0px solid transparent !important;
+}
+
 @media (max-width: 1366px){
   .cle_drop .mat-mdc-form-field-infix span.mat-mdc-select-min-line{
     font-size: 12px;
@@ -190,10 +201,6 @@
   }
 }
 
-// mat tab
-.mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs>.mat-mdc-tab-header .mat-mdc-tab{
-  flex-grow: 0 !important;
-}
 
 /* paginator */
 // p-dropdown.p-element.p-inputwrapper.ng-star-inserted.p-inputwrapper-filled {
