@@ -59,6 +59,9 @@ selClass: any;
   constructor(private _router:Router){}
 
 addFeesDetails(){
-  this._router.navigate(['/fee-invoice', 'fee-invoice/feesdetails']);
+  this._router.navigate(['/fee-invoice', '/feesdetails']);
+}
+collectFees(){
+  this._router.navigate(['/fee-invoice/collectfeepage/collectfeesdetails']);
 }
 }

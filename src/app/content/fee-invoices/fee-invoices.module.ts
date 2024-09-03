@@ -12,6 +12,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AddEditFeeInvoiceComponent } from './add-edit-fee-invoice/add-edit-fee-invoice.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { CollectFeesComponent } from './collect-fees/collect-fees.component';
 
 const routes:Routes = [
   {
@@ -21,26 +24,33 @@ const routes:Routes = [
   {
     path:':id',
     component:AddEditFeeInvoiceComponent,
+  },
+  {
+    path:'collectfeepage/collectfeesdetails',
+    component:CollectFeesComponent,
   }
 ]
 
 @NgModule({
   declarations: [
     FeeInvoicesComponent,
-    AddEditFeeInvoiceComponent
+    AddEditFeeInvoiceComponent,
+    CollectFeesComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     DropdownModule,
     InputTextModule,
-    MatTableModule,
-    MatSelectModule,
     FormsModule,
     PaginatorModule,
-    MatNativeDateModule,
     InputSwitchModule,
-    InputTextareaModule
+    InputTextareaModule,
+    MatTableModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatInputModule
   ]
 })
 export class FeeInvoicesModule { }

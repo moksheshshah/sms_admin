@@ -1,0 +1,165 @@
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-4">
+  <div class="w-max lg:w-auto pb-2 lg:pb-0">
+    <div class="flex items-center">
+      <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/fee-invoice'"></span>
+      <span class=" block text24">Collect Fees</span>
+    </div>
+  </div>
+  <div class="w-max xl:w-auto ml-auto">
+      <button class="lg:order-4 btn_primary group anim py-3.5 xl:py-4">
+          <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Collect Fees</span>
+      </button>
+  </div>
+</div>
+<div class="space-y-5 md:space-y-7">
+  <div class="w-full">
+    <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">01 Invoice Details</span>
+    <div class="p-5 xl:p-7 py-3 xl:py-5 rounded-lg bg-white">
+      <div class="max-w-4xl">
+        <div class="flex flex-wrap -mx-2">
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Invoice Title</span>
+            <span class="block text16 text-t2">Semester - 1</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Amount</span>
+            <span class="block text16 text-t2">5000</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Issued Date</span>
+            <span class="block text16 text-t2">10 Aug, 2024</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Description</span>
+            <span class="block text16 text-t2 whitespace-nowrap text-ellipsis overflow-hidden">This is the semester fees</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Invoice No.</span>
+            <span class="block text16 text-t2">01</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Discount %</span>
+            <span class="block text16 text-t2">2</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 md:w-1/4 p-2">
+            <span class="block text18 text-dark">Due Date</span>
+            <span class="block text16 text-t2">20 Aug, 2024</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full">
+    <span class="block text-20 text-primary font-bold border-b border-t3 pb-2 mb-6">02 Student Details</span>
+    <div class="p-5 xl:p-7 py-3 xl:py-5 rounded-lg bg-white">
+      <div class="max-w-2xl">
+        <div class="flex flex-wrap -mx-2">
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 p-2">
+            <span class="block text18 text-dark">Student Name</span>
+            <span class="block text16 text-t2">John Doe</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 p-2">
+            <span class="block text18 text-dark">Class</span>
+            <span class="block text16 text-t2">01</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 p-2">
+            <span class="block text18 text-dark">Mobile No.</span>
+            <span class="block text16 text-t2">9876543234</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 p-2">
+            <span class="block text18 text-dark">Adm No.</span>
+            <span class="block text16 text-t2">01</span>
+          </div>
+          <div class="space-y-0.5 w-1/2 sm:w-1/3 p-2">
+            <span class="block text18 text-dark">Section</span>
+            <span class="block text16 text-t2">A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Fees Management  View Invoice popup -->
+<div class="w-full h-screen flex items-center fixed bg-t7/20 backdrop-blur z-50 inset-0 hidden">
+  <div class="w-full max-w-5xl mx-auto p-5">
+    <div class="p-6 lg:p-8 bg-white rounded-md">
+      <div class="text-right">
+        <span class="icon-close text-error inline-block ml-auto text-20 cursor-pointer"></span>
+      </div>
+      <span class="text-center text-18 lg:text-20 xl:text-24 block font-bold text-dark">Fee Invoice: Semester -1</span>
+      <div class="flex justify-between flex-wrap -mx-4 mt-8 xl:mt-12 space-y-1 sm:space-y-0">
+        <div class="px-4 w-full sm:w-max">
+          <ul class="space-y-1">
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Student Name</span>
+              <span class="block whitespace-nowrap text16 text-t2">Semester - 1</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Admission No.</span>
+              <span class="block whitespace-nowrap text16 text-t2">01</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Mobile No.</span>
+              <span class="block whitespace-nowrap text16 text-t2">9876543234</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Class</span>
+              <span class="block whitespace-nowrap text16 text-t2">01</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Section</span>
+              <span class="block whitespace-nowrap text16 text-t2">A</span>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 w-full sm:w-max">
+          <ul class="space-y-1">
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Invoice No.</span>
+              <span class="block whitespace-nowrap text16 text-t2">01</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Invoice Title</span>
+              <span class="block whitespace-nowrap text16 text-t2">Semester - 1</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Issued Date</span>
+              <span class="block whitespace-nowrap text16 text-t2">10 Aug, 2024</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Student Name</span>
+              <span class="block whitespace-nowrap text16 text-t2">20 Aug,2024</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full overflow-x-auto overflow-hidden mt-8 xl:mt-12">
+        <table class="w-full text-left bg-white rounded-xl custome_table z-20 border-collapse border border-t5">
+          <tr>
+            <th class="text16 p-4 pl-6 xl:pl-9 bg-t5 whitespace-nowrap">Roll No.</th>        
+            <th class="text16 p-4 bg-t5 whitespace-nowrap">Student Name</th>
+            <th class="text16 p-4 bg-t5">Class</th>
+            <th class="text16 p-4 bg-t5">Section</th>
+          </tr>
+          <tr class="py-4 border-b boredr-t4">
+            <td class="p-4 pl-6 xl:pl-9">
+                <span class="text16">01</span>
+            </td>
+            <td class="p-4">
+            <span class="text16">John Doe</span>
+            </td>
+            <td class="p-4">
+                <span class="text16">1</span>
+            </td>
+            <td class="p-4">
+                <span class="text16">A</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fees Management  View Invoice end popup -->
