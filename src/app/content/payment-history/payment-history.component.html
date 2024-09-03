@@ -15,33 +15,33 @@
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
             <label for="main_search" class="search py-2 xl:py-2.5 w-full border border-[#CBD4E1]">
                 <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
-                <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Student" id="main_search"/>
+                <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Student" id="main_search" (keyup)="onKeySearch($event)" />
             </label>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
             <mat-form-field appearance="outline" class="w-full dropdown">
-              <mat-select placeholder="Select Class" [(ngModel)]="selClass">
+              <mat-select placeholder="Select Class" [(ngModel)]="selectedClass">
                   <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
               </mat-select>
             </mat-form-field>          
         </div>
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
             <mat-form-field appearance="outline" class="w-full dropdown">
-                <mat-select placeholder="Select Section" [(ngModel)]="selClass">
+                <mat-select placeholder="Select Section" [(ngModel)]="selectdedSection">
                 <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>
                 </mat-select>
             </mat-form-field>          
         </div>
-        <div class="w-max xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3 justify-end xl:ml-auto p-2">
+        <!-- <div class="w-max xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3 justify-end xl:ml-auto p-2">
             <button class="lg:order-4 btn_primary group anim">
                 <span class="icon-search text-xl xl:text-2xl text-white group-hover:text-primary"></span>
             </button>
-        </div>
+        </div> -->
     </div>
   </div>
   <div class="w-full relative overflow-hidden">
       <div class="rounded-xl overflow-x-auto relative">
-          <table mat-table matSort [dataSource]="sizeData" class="mat-elevation-z8 h-full">
+          <table mat-table matSort [dataSource]="paymentHistroyData" class="mat-elevation-z8 h-full">
 
               <!-- studentName Column -->
               <ng-container matColumnDef="studentName">
@@ -74,33 +74,33 @@
               </ng-container>
 
                <!-- Total Amount Column  -->
-               <ng-container matColumnDef="totalAmount">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Total <br> Amount </th>
-                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.totalAmount}} </td>
+               <ng-container matColumnDef="invoiceTitle">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Invoice <br> Title. </th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.invoiceTitle}} </td>
               </ng-container>
 
                <!-- Paid Column  -->
                <ng-container matColumnDef="paid">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Paid </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Paid <br> Amount </th>
                 <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.paid}} </td>
               </ng-container>
 
               <!-- Due Column  -->
-              <ng-container matColumnDef="due">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Due </th>
-                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.due}} </td>
+              <ng-container matColumnDef="paymentMethod">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Payment <br> Method </th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.paymentMethod}} </td>
               </ng-container>
 
               <!-- Issued Date Column  -->
-              <ng-container matColumnDef="issuedDate">
+              <!-- <ng-container matColumnDef="issuedDate">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Issued Date </th>
                 <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.issuedDate}} </td>
-              </ng-container>
+              </ng-container> -->
               
               <!-- paymentDate  Column-->
-              <ng-container matColumnDef="paymentDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Payment Date </th>
-                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.paymentDate}} </td>
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Date </th>
+                <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.date}} </td>
               </ng-container>
 
               <!-- mobileNo  Column-->
@@ -110,18 +110,18 @@
               </ng-container>
 
                <!-- Status  Column-->
-               <ng-container matColumnDef="status">
+               <!-- <ng-container matColumnDef="status">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Status </th>
                 <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element.status}} </td>
-              </ng-container>
+              </ng-container> -->
   
               <!-- Action Column -->
               <ng-container matColumnDef="action">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
                   <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
                       <div class="flex space-x-3">
-                          <span class="block icon-eye text-xl cursor-pointer text-primary anim"></span>
-                          <span class="block icon-delete text-xl cursor-pointer text-error anim"></span>
+                          <span class="block icon-eye text-xl cursor-pointer text-primary anim" (click)="viewHistory(element)"></span>
+                          <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteHistory(element)"></span>
                       </div>
                   </td>
               </ng-container>
@@ -130,14 +130,17 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
           <div class="w-full"> 
-              <div class="w-full flex justify-center p-5" *ngIf="sizeData.length == 0">
+              <div class="w-full flex justify-center p-5" *ngIf="paymentHistroyData.length == 0">
                   <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
                       <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Year Create </strong>
                       <span class="block lg:text-18 text-center text-t2"> Please create academic year first </span>
                   </div>
               </div>
           </div>
-      </div>     
+        </div>     
+        <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="paymentHistroyData.length > 0">
+          <p-paginator [first]="1" [rows]="limit" (onPageChange)="getPaymentHistory($event)"  [totalRecords]="totalPayment" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+      </div>
       <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
           <div class="flex flex-col items-center justify-center">
               <div

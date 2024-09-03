@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
+import { ViewPaymentHistoryComponent } from './view-payment-history/view-payment-history.component';
 
 const routes:Routes = [
   {
@@ -23,7 +24,8 @@ const routes:Routes = [
 
 @NgModule({
   declarations: [
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    ViewPaymentHistoryComponent
   ],
   imports: [
     CommonModule,
