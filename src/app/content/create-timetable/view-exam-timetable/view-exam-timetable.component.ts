@@ -21,4 +21,8 @@ export class ViewExamTimetableComponent {
     private _globalFunctions: GlobalFunctions
 
   ){}
+
+  closeDailog(){
+    this.matDialogRef.close();
+  }
 }
