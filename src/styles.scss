@@ -191,16 +191,10 @@
   background: transparent !important;
   border: 0px solid transparent !important;
 }
-
-@media (max-width: 1366px){
-  .cle_drop .mat-mdc-form-field-infix span.mat-mdc-select-min-line{
-    font-size: 12px;
-  }
-  .cle_drop .mat-mdc-form-field-flex .mat-mdc-form-field-infix{
-    width: 135px !important;
-  }
+.cdk-overlay-container .cdk-overlay-pane {
+  max-width: 100% !important;
+  padding: 30px 20px !important;
 }
-
 
 /* paginator */
 // p-dropdown.p-element.p-inputwrapper.ng-star-inserted.p-inputwrapper-filled {
@@ -249,3 +243,11 @@ span.p-paginator-pages{
   font-weight: 600 !important;
 }
 
+@media (max-width: 1366px){
+  .cle_drop .mat-mdc-form-field-infix span.mat-mdc-select-min-line{
+    font-size: 12px;
+  }
+  .cle_drop .mat-mdc-form-field-flex .mat-mdc-form-field-infix{
+    width: 135px !important;
+  }
+}
