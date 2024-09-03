@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-fee-invoice',
   templateUrl: './add-edit-fee-invoice.component.html',
   styleUrl: './add-edit-fee-invoice.component.scss'
 })
-export class AddEditFeeInvoiceComponent {
+export class AddEditFeeInvoiceComponent implements OnInit{
   sectionList:any = [
+    { key:'Select All', value:'SA' },
     { key:'A', value:'A' }, 
     { key:'B', value:'B' }, 
     { key:'C', value:'C' }, 
@@ -20,32 +22,40 @@ export class AddEditFeeInvoiceComponent {
     { key:'4th', value:'4' }, 
     { key:'5th', value:'5' }, 
   ];
-  yearList:any = [
-    { key:'2023 - 2024', value:'2023 - 2024' },
-    { key:'2022 - 2023', value:'2022 - 2023' },
-    { key:'2021 - 2022', value:'2021 - 2022' },
-    { key:'2020 - 2021', value:'2020 - 2021' },
-  ]; 
-  genderList:any = [
-    { key:'Male', value:'male' },
-    { key:'Female', value:'female' },
-    { key:'Other', value:'other' },
-  ];
-  bloodGroupList:any = [
-    { key:'A+', value:'1' }, 
-    { key:'B+', value:'2' }, 
-    { key:'O+', value:'3' },  
-    { key:'A-', value:'4' }, 
-    { key:'B-', value:'5' }, 
-    { key:'O-', value:'6' },  
-  ];
-  religionList:any = [
-    { key:'Hindu', value:'hindu' },
-    { key:'Muslim', value:'muslim' },
-    { key:'Christian', value:'christian' },
-    { key:'Jain', value:'jain' },
-    { key:'Sikh', value:'sikh' },
-    { key:'Buddhist ', value:'buddhist ' },
-  ];
+  studentList:any = [
+    { key:'Select All', value:'SA' },
+    { key:'Deselect All', value:'DSA' },
+    { key:'John - 01', value:'01' },
+    { key:'Abc - 02', value:'02' },
+    { key:'Xyz - 03', value:'03' },
+    { key:'Pqr - 04', value:'04' },
+  ]
+  feesInvoiceForm:any = FormGroup;
 
+  constructor(private _formBuilder:FormBuilder){}
+
+  ngOnInit(): void {
+    this.initForm()
+  }
+
+  initForm() {
+    this.feesInvoiceForm = this._formBuilder.group({
+      class: ['', [Validators.required]],
+      section: ['', [Validators.required]],
+      student: ['', [Validators.required]],
+      invoice_title: ['', Validators.required],
+      description: ['',Validators.required],
+      invoice_no: ['', [Validators.required]],
+      amount: ['', [Validators.required]],
+      discount: ['', [Validators.required]],
+      issue_date: ['', [Validators.required]],
+      due_date: ['', [Validators.required]],
+
+    });
+  }
+
+  onSubmitted(){
+    console.log(this.feesInvoiceForm.value);
+    
+  }
 }

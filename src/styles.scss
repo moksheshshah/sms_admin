@@ -195,3 +195,50 @@
   flex-grow: 0 !important;
 }
 
+/* paginator */
+// p-dropdown.p-element.p-inputwrapper.ng-star-inserted.p-inputwrapper-filled {
+//   display: none !important;
+// }
+.p-paginator{
+  padding: 0 !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #3B418B !important;
+  border-color: #EFF6FF !important;
+  color: #fff !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page,
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last {
+  background-color: transparent !important;
+  border: 0 none !important;
+  color: #3B418B;
+  min-width: 3rem !important;
+  height: 3rem !important;
+  margin: 0.143rem !important;
+  transition: box-shadow 0.2s !important;
+  border-radius: 14px !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page,
+.p-paginator .p-paginator-first, .p-paginator .p-paginator-prev, .p-paginator .p-paginator-next, .p-paginator .p-paginator-last:hover{
+  color: #3B418B !important;
+}
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover,
+.p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover, .p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover{
+  background: #3B418B1a !important;
+  border-color: transparent !important;
+}
+span.p-paginator-pages{
+  border: 0px solid #3B418B !important;
+  border-radius: 15px !important;
+}
+.w-full.paginator .p-paginator{
+  justify-content: end !important;
+}
+.data_paginator p-paginator .p-overlay.p-component{
+  top: -140px !important;
+  transform-origin: center !important
+}
+.p-ripple.p-element.p-dropdown-item span,.p-paginator-rpp-options.p-dropdown.p-component.p-inputwrapper.p-inputwrapper-filled span{
+  font-weight: 600 !important;
+}
+

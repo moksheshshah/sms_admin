@@ -6,7 +6,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './teacher-next-timetable.component.html',
   styleUrl: './teacher-next-timetable.component.scss'
 })
-export class TeacherNextTimetableComponent implements OnDestroy{
+export class TeacherNextTimetableComponent{
   getTimetableData: any;
   daysNameForm: any = FormGroup;
   monday_details: any;
@@ -143,7 +143,7 @@ export class TeacherNextTimetableComponent implements OnDestroy{
     
   }
 
-  ngOnDestroy(): void {
-    localStorage.removeItem('teacherTimetable');
-  }
+  // ngOnDestroy(): void {
+  //   localStorage.removeItem('teacherTimetable');
+  // }
 }

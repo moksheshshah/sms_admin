@@ -6,7 +6,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { MatNativeDateModule } from '@angular/material/core';
 import { InputSwitchModule } from 'primeng/inputswitch';
@@ -15,6 +15,7 @@ import { AddEditFeeInvoiceComponent } from './add-edit-fee-invoice/add-edit-fee-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { CollectFeesComponent } from './collect-fees/collect-fees.component';
+import { ViewFeeInvoiceComponent } from './view-fee-invoice/view-fee-invoice.component';
 
 const routes:Routes = [
   {
@@ -35,7 +36,8 @@ const routes:Routes = [
   declarations: [
     FeeInvoicesComponent,
     AddEditFeeInvoiceComponent,
-    CollectFeesComponent
+    CollectFeesComponent,
+    ViewFeeInvoiceComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ const routes:Routes = [
     DropdownModule,
     InputTextModule,
     FormsModule,
+    ReactiveFormsModule,
     PaginatorModule,
     InputSwitchModule,
     InputTextareaModule,

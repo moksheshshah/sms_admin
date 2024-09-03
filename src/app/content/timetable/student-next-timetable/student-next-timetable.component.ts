@@ -6,7 +6,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './student-next-timetable.component.html',
   styleUrl: './student-next-timetable.component.scss'
 })
-export class StudentNextTimetableComponent implements OnInit, OnDestroy {
+export class StudentNextTimetableComponent implements OnInit {
   getTimetableData: any;
   daysNameForm: any = FormGroup;
   monday_details: any;
@@ -142,7 +142,7 @@ isBtnLoading: any;
     console.log("timetable-->",this.daysNameForm.value);
     
   }
-   ngOnDestroy(): void {
-     localStorage.removeItem('studentTimeTable');
-   }
+  //  ngOnDestroy(): void {
+  //    localStorage.removeItem('studentTimeTable');
+  //  }
 }

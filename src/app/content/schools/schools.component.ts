@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SchoolsService } from './schools.service';
+import { ClassService } from '../class/class.service';
 
 export interface CouponComponent{
   banner:any;
@@ -48,7 +49,7 @@ export class SchoolsComponent {
   constructor(
     private _globalFunctions:GlobalFunctions,
     private _toastr:ToastrService,
-    private _couponService:SchoolsService,
+    private _couponService:ClassService,
     private _dialog:MatDialog,
     private _router: Router,
   ){}
@@ -83,7 +84,7 @@ export class SchoolsComponent {
       search:this.searchCoupon || '',
     }
 
-    this._couponService.getProductCouponList(filter).subscribe((result:any)=>{
+    this._couponService.getSize(filter).subscribe((result:any)=>{
       if(result && result.IsSuccess){
         this.totalCoupon = result?.Data?.totalDocs;
         this.COUPON_DATA = result.Data.docs;
@@ -121,28 +122,28 @@ export class SchoolsComponent {
     });
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
-        let param = {
-          couponid : resData?.id,
-        }
-        this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
-          if(result && result.IsSuccess){
-            this._toastr.clear();
-            this._toastr.success(result?.Message || "Status updated successfully." , "Success");
-            this.getAllCouponList();
-            this.isTableLoading = false;
-          } else {
-            this.getAllCouponList();
-            this.isTableLoading = false;
-            this._globalFunctions.successErrorHandling(result,this,true);
-          }
-        },(error:any)=>{
-          this.getAllCouponList();
-          this.isTableLoading = false;
-          this._globalFunctions.errorHanding(error,this,true)
-        })
-      } else {
-        this.getAllCouponList();
-        this.isTableLoading = false;
+    //     let param = {
+    //       couponid : resData?.id,
+    //     }
+    //     this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
+    //       if(result && result.IsSuccess){
+    //         this._toastr.clear();
+    //         this._toastr.success(result?.Message || "Status updated successfully." , "Success");
+    //         this.getAllCouponList();
+    //         this.isTableLoading = false;
+    //       } else {
+    //         this.getAllCouponList();
+    //         this.isTableLoading = false;
+    //         this._globalFunctions.successErrorHandling(result,this,true);
+    //       }
+    //     },(error:any)=>{
+    //       this.getAllCouponList();
+    //       this.isTableLoading = false;
+    //       this._globalFunctions.errorHanding(error,this,true)
+    //     })
+    //   } else {
+    //     this.getAllCouponList();
+    //     this.isTableLoading = false;
       }
     });
   }
@@ -164,28 +165,28 @@ export class SchoolsComponent {
     });
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
-        let param = {
-          couponid : element?.id,
-        }
-        this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
-          if(result && result.IsSuccess){
-            this._toastr.clear();
-            this._toastr.success(result?.Message || "Status updated successfully." , "Success");
-            this.getAllCouponList();
-            this.isTableLoading = false;
-          } else {
-            this.getAllCouponList();
-            this.isTableLoading = false;
-            this._globalFunctions.successErrorHandling(result,this,true);
-          }
-        },(error:any)=>{
-          this.getAllCouponList();
-          this.isTableLoading = false;
-          this._globalFunctions.errorHanding(error,this,true)
-        })
-      } else {
-        this.getAllCouponList();
-        this.isTableLoading = false;
+      //   let param = {
+      //     couponid : element?.id,
+      //   }
+      //   this._couponService.changeCouponStatus(param).subscribe((result:any)=>{
+      //     if(result && result.IsSuccess){
+      //       this._toastr.clear();
+      //       this._toastr.success(result?.Message || "Status updated successfully." , "Success");
+      //       this.getAllCouponList();
+      //       this.isTableLoading = false;
+      //     } else {
+      //       this.getAllCouponList();
+      //       this.isTableLoading = false;
+      //       this._globalFunctions.successErrorHandling(result,this,true);
+      //     }
+      //   },(error:any)=>{
+      //     this.getAllCouponList();
+      //     this.isTableLoading = false;
+      //     this._globalFunctions.errorHanding(error,this,true)
+      //   })
+      // } else {
+      //   this.getAllCouponList();
+      //   this.isTableLoading = false;
       }
     });
   }
