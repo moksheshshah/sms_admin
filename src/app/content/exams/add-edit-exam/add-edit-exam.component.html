@@ -38,7 +38,7 @@
                  is required.</span>
             </div> -->
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
                 <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
                   <input matInput
                   [matDatepicker]="picker" [formControlName]="'starttime'" (click)="picker.open()"
@@ -51,7 +51,7 @@
                 <span class="error-message" *ngIf="productCouponForm.get('starttime').hasError('required') && (productCouponForm.get('starttime').dirty || productCouponForm.get('starttime').touched)">Start Date is required.</span>
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-                  <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                  <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
                   <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
                     <input matInput
                     [matDatepicker]="picker1" [formControlName]="'endtime'" (click)="picker1.open()"
@@ -64,7 +64,7 @@
                   <span class="error-message" *ngIf="productCouponForm.get('endtime').hasError('required') && (productCouponForm.get('endtime').dirty || productCouponForm.get('endtime').touched)">End Date is required.</span>
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Class<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Class<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
                 <mat-form-field appearance="outline" class="w-full dropdown">
                     <mat-select placeholder="Select Class" [formControlName]="'class'">
                     <mat-option *ngFor="let item of classList" [value]="item.value">{{item?.key}}</mat-option>
@@ -72,7 +72,7 @@
                 </mat-form-field>          
             </div>
             <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-                <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Sectio<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sectio<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
                 <mat-form-field appearance="outline" class="w-full dropdown">
                     <mat-select placeholder="Select Section" [formControlName]="'section'">
                     <mat-option *ngFor="let item of sectionList" [value]="item.value">{{item?.key}}</mat-option>

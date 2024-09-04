@@ -14,28 +14,28 @@
   </div>
   <form class="flex flex-wrap coupon-form -mx-2.5 mt-6 xl:mt-8" #couponNgForm="ngForm" [formGroup]="productCouponForm" (ngSubmit)="onSubmitAction()">
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">School Name<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">School Name<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'school_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter school name">
       <span class="error-message" *ngIf="productCouponForm.get('school_name').hasError('required') && (productCouponForm.get('school_name').dirty || productCouponForm.get('school_name').touched)">School Name is required.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Phone No.<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Phone No.<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'phone'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter phone no" >
       <span class="error-message" *ngIf="productCouponForm.get('phone').hasError('required') && (productCouponForm.get('phone').dirty || productCouponForm.get('phone').touched)">Phone is required.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Email:<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email:<span class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'email'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter email" >
       <span class="error-message" *ngIf="productCouponForm.get('email').hasError('required') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Email is required.</span>
       <span class="error-message" *ngIf="productCouponForm.get('email').hasError('pattern') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Please enter valid Email.</span>
     </div>
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Address</label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Address</label>
       <input type="text" pInputText [formControlName]="'address'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Enter address">
       <span class="error-message" *ngIf="productCouponForm.get('address').hasError('required') && (productCouponForm.get('address').dirty || productCouponForm.get('address').touched)">Address is required.</span>
     </div>
     <!-- <div class="w-full lg:w-1/2 xl:w-1/3 2xl:w-1/4 relative pb-5 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">School Logo  <span class="text-[#EFB008]">(Jpg,png - Max size 2gb)</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">School Logo  <span class="text-[#EFB008]">(Jpg,png - Max size 2gb)</span></label>
       <div class="w-full relative group">
         <div class="w-full absolute inset-x-0 z-30 bg-black/40 hidden rounded-3xl" [ngClass]="selectedItemImg ? 'group-hover:block' : 'hidden'">
           <div class="flex items-center space-x-3 absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-10" *ngIf="selectedItemImg">
@@ -97,7 +97,7 @@
     </div>
 
     <!-- <div class="w-full lg:w-1/4 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Currency Type<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Currency Type<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Currency Type" [formControlName]="'currency'">
           <mat-option [value]="'USD'">USD (&#x24;)</mat-option>
@@ -107,7 +107,7 @@
       <span class="error-message" *ngIf="productCouponForm.get('currency').hasError('required') && (productCouponForm.get('currency').dirty || productCouponForm.get('currency').touched)">Currency type is required.</span>
     </div>
     <div class="w-full lg:w-1/4 relative pb-b px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Varients</label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Varients</label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Select Varients" [formControlName]="'variant'">
           <mat-option *ngFor="let item of varientsList" [value]="item._id"
@@ -118,13 +118,13 @@
       <span class="error-message" *ngIf="productCouponForm.get('variant').hasError('required') && (productCouponForm.get('variant').dirty || productCouponForm.get('variant').touched)">Select variant is required.</span>
     </div>
     <div class="w-full lg:w-1/4 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Maximum Limit<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Maximum Limit<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'maxlimit'" class="w-full text-16 xl:text-lg border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Maximum Amount">
       <span class="error-message" *ngIf="productCouponForm.get('maxlimit').hasError('required') && (productCouponForm.get('maxlimit').dirty || productCouponForm.get('maxlimit').touched)">Maximum amount is required.</span>
       <span class="error-message block absolute top-full -translate-y-2 left-2.5 text-xs lg:text-sm font-semibold text-primary-error" *ngIf="productCouponForm.get('maxlimit').hasError('pattern')">Please enter maximum amount in digit.</span>
     </div>
     <div class="w-full lg:w-1/4 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">User Limit<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">User Limit<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="User Limit" [formControlName]="'userlimit'">
           <mat-option [value]="'single'">Single</mat-option>
@@ -134,13 +134,13 @@
       <span class="error-message" *ngIf="productCouponForm.get('userlimit').hasError('required') && (productCouponForm.get('userlimit').dirty || productCouponForm.get('userlimit').touched)">User Limit is required.</span>
     </div>
     <div class="w-full lg:w-1/2 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Discount<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Discount<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <input type="text" pInputText [formControlName]="'discount'" class="w-full text-16 xl:text-lg border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-3 px-4" placeholder="Discount">
       <span class="error-message block absolute top-[80%] bottom-0 left-2.5 text-sm font-semibold text-primary-error" *ngIf="productCouponForm.get('discount').hasError('required') && (productCouponForm.get('discount').dirty || productCouponForm.get('discount').touched)">Discount is required.</span>
       <span class="error-message block absolute top-[80%] -translate-y-2 left-2.5 text-xs lg:text-sm font-semibold text-primary-error" *ngIf="productCouponForm.get('discount').hasError('pattern')">Please enter discount in digit.</span>
     </div>
     <div class="w-full lg:w-1/4 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Start Date<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
         <input matInput
         [matDatepicker]="picker" [formControlName]="'starttime'" (click)="picker.open()"
@@ -153,7 +153,7 @@
       <span class="error-message block absolute top-[80%] bottom-0 left-2.5 text-sm font-semibold text-primary-error" *ngIf="productCouponForm.get('starttime').hasError('required') && (productCouponForm.get('starttime').dirty || productCouponForm.get('starttime').touched)">Start Date is required.</span>
     </div>
     <div class="w-full lg:w-1/4 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">End Date<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
         <input matInput
         [matDatepicker]="picker1" [formControlName]="'endtime'" (click)="picker1.open()"
@@ -184,7 +184,7 @@
       </div>
     </div>
     <div class="w-full lg:w-1/2 relative pb-6 px-2.5 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Coupon Brief<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Coupon Brief<span class="absolute top-0 text-red_1 text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field class="w-full terms-condition mt-0" appearance="outline" color="primary">
         <textarea [formControlName]="'brief'" matInput name="questionText"
           placeholder="Type Here Brief..." class="w-full text-16 xl:text-lg border border-light_blue text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-4 px-4"></textarea>

@@ -5,7 +5,7 @@
   <span class="block text-24 font-bold text-center">{{data[1].btnName}} Class</span>
   <form class="flex flex-wrap mt-6 xl:mt-8" #sizeNgForm="ngForm" [formGroup]="sizeForm" (ngSubmit)="onSubmitAction()">
     <div class="w-full relative pb-6 mb-1">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Class Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Class Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <input type="text" pInputText [formControlName]="'class_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of class">
         <span class="error-message"
         *ngIf="sizeForm.get('class_name').hasError('required') && (sizeForm.get('class_name').dirty || sizeForm.get('class_name').touched)">
@@ -13,7 +13,7 @@
     </div>
    
     <div class="w-full relative pb-6 pt-0">
-      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Sections<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
       <mat-form-field appearance="outline" class="w-full dropdown">
         <mat-select placeholder="Select sections" [formControlName]="'section'" multiple>
           <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
