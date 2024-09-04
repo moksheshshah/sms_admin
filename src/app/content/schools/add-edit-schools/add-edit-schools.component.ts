@@ -19,16 +19,12 @@ export class AddEditSchoolsComponent {
   isUpload: boolean = false;
   isBtnLoading: boolean = false;
   productCouponForm: any = FormGroup;
-  @ViewChild('couponNgForm') couponNgForm: any;
   constants: any = CONSTANTS;
   selectedItemImg: any;
   couponId: any;
-  editor!: Editor;
-  toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
-  tremCondition_length: any = 0;
-  varientsList: any = [];
-  @ViewChild('allSelected') allSelected: MatOption | any;
   maultivariants: any = [];
+  @ViewChild('couponNgForm') couponNgForm: any;
+  @ViewChild('allSelected') allSelected: MatOption | any;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -42,8 +38,6 @@ export class AddEditSchoolsComponent {
   ) { }
 
   ngOnInit() {
-    this.getVarients();
-    this.editor = new Editor();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
     if (this.couponId != "productcoupondetail") {
@@ -60,36 +54,6 @@ export class AddEditSchoolsComponent {
       // }, (error: any) => {
       //   this._globalFunctions.errorHanding(error, this, true);
       // });
-    }
-  }
-
-  getVarients() {
-    this._bannerService.getAllVarientList().subscribe((result: any) => {
-      if (result && result.IsSuccess) {
-        this.varientsList = result.Data;
-      } else {
-        this.isBtnLoading = false;
-        this._globalFunctions.successErrorHandling(result, this, true)
-      }
-    }, (error: any) => {
-      this.isBtnLoading = false;
-      this._globalFunctions.errorHanding(error, this, true);
-    })
-  }
-
-  tosslePerOne(all: any): any {
-    if (this.allSelected.selected) {
-      this.allSelected.deselect();
-      return false;
-    }
-    if (this.productCouponForm.controls.variant.value.length == this.varientsList.length)
-      this.allSelected.select();
-  }
-  toggleAllSelection() {
-    if (this.allSelected.selected) {
-      this.productCouponForm.controls.variant.patchValue([...this.varientsList.map((item: any) => item._id), 0]);
-    } else {
-      this.productCouponForm.controls.variant.patchValue([]);
     }
   }
 
@@ -231,11 +195,4 @@ export class AddEditSchoolsComponent {
     event.target.src = this.constants.defaultImage;
   }
 
-  ingredientLength(event: any = '') {
-    this.tremCondition_length = event.length
-    if (event.length > 10000) {
-      this._toastr.clear();
-      this._toastr.error("You can not write more product description", 'Oops!');
-    }
-  }
 }

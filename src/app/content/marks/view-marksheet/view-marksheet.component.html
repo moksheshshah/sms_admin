@@ -1,0 +1,123 @@
+<div class="w-full h-screen flex items-center fixed bg-t7/20 backdrop-blur z-50 inset-0">
+  <div class="w-full max-w-5xl mx-auto p-5">
+    <div class="p-6 lg:p-8 bg-white rounded-3xl">
+      <div class="text-right">
+        <span class="icon-close text-error inline-block ml-auto text-20 cursor-pointer" (click)="closeDailog()"></span>
+      </div>
+      <div class="flex justify-center">
+        <span class="text-center text-18 lg:text-20 xl:text-24 block font-bold text-dark pr-20">Semester -1 Examination - 2024 Rusult</span>
+        <span class="icon-print text-24"></span>
+      </div>
+      <div class="flex justify-between flex-wrap -mx-4 mt-8 xl:mt-12 space-y-1 sm:space-y-0">
+        <div class="px-4 w-full sm:w-max">
+          <ul class="space-y-1">
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Admission No.</span>
+              <span class="block whitespace-nowrap text16 text-t2">01</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Student Name</span>
+              <span class="block whitespace-nowrap text16 text-t2">John Doe</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Father Name</span>
+              <span class="block whitespace-nowrap text16 text-t2">John</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Class (Section)</span>
+              <span class="block whitespace-nowrap text16 text-t2">01 - A</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Center</span>
+              <span class="block whitespace-nowrap text16 text-t2">Brillient School</span>
+            </li>
+          </ul>
+        </div>
+        <div class="px-4 w-full sm:w-max">
+          <ul class="space-y-1">
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Invoice No.</span>
+              <span class="block whitespace-nowrap text16 text-t2">01</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">DOB</span>
+              <span class="block whitespace-nowrap text16 text-t2">08  Aug, 2024</span>
+            </li>
+            <li class="flex items-center space-x-6">
+              <span class="block whitespace-nowrap text18 text-dark min-w-36">Result Date</span>
+              <span class="block whitespace-nowrap text16 text-t2">10 Aug, 2024</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full overflow-x-auto overflow-hidden mt-8 xl:mt-12">
+        <table class="w-full text-left bg-white custome_table z-20 border-collapse border border-t5">
+          <tr>
+            <th class="text16 p-4 text-primary font-semibold pl-6 xl:pl-9 bg-t5 whitespace-nowrap">Subject</th>        
+            <th class="text16 p-4 text-primary font-semibold bg-t5 whitespace-nowrap">Subject code</th>
+            <th class="text16 p-4 text-primary font-semibold bg-t5">Total Marks</th>
+            <th class="text16 p-4 text-primary font-semibold bg-t5">Obtained Marks</th>
+            <th class="text16 p-4 text-primary font-semibold bg-t5">Grade</th>
+          </tr>
+          <tr class="py-4 border-b boredr-t4">
+            <td class="p-4 pl-6 xl:pl-9">
+                <span class="text16 text-t2 font-medium">English</span>
+            </td>
+            <td class="p-4">
+            <span class="text16 text-t2 font-medium">01</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">100</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">78</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">A</span>
+            </td>
+          </tr>
+          <tr class="py-4 border-b boredr-t4">
+            <td class="p-4 pl-6 xl:pl-9">
+                <span class="text16 text-t2 font-medium">Gujarati</span>
+            </td>
+            <td class="p-4">
+            <span class="text16 text-t2 font-medium">02</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">100</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">78</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">A</span>
+            </td>
+          </tr>
+          <tr class="py-4 border-b boredr-t4">
+            <td class="p-4 pl-6 xl:pl-9">
+                <span class="text16 text-t2 font-medium">Maths</span>
+            </td>
+            <td class="p-4">
+            <span class="text16 text-t2 font-medium">03</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">100</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">78</span>
+            </td>
+            <td class="p-4">
+                <span class="text16 text-t2 font-medium">A</span>
+            </td>
+          </tr>
+        </table>
+        <div class="w-full h-[52px] border border-t5 mt-3.5 flex items-center justify-around">
+            <span class="text-16 font-semibold">Total Overall : 500/450</span>
+            <span class="text-16 font-semibold">Percentage : 90.67</span>
+            <span class="text-16 font-semibold">Grade : A</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

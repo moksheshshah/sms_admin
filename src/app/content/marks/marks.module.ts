@@ -14,6 +14,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EditMarkComponent } from './edit-mark/edit-mark.component';
 import { MatTableModule } from '@angular/material/table';
+import { AddMarksComponent } from './add-marks/add-marks.component';
+import { ImageModule } from 'primeng/image';
+import { PrintMarksheetComponent } from './print-marksheet/print-marksheet.component';
+import { ViewMarksheetComponent } from './view-marksheet/view-marksheet.component';
 
 const routes:Routes = [
   {
@@ -23,13 +27,24 @@ const routes:Routes = [
   {
     path:'markdetails',
     component:EditMarkComponent,
+  },
+  {
+    path:'printmarksheet',
+    component:PrintMarksheetComponent,
+  },
+  {
+    path:'viewmarksheet',
+    component:ViewMarksheetComponent,
   }
 ]
 
 @NgModule({
   declarations: [
     MarksComponent,
-    EditMarkComponent
+    EditMarkComponent,
+    AddMarksComponent,
+    PrintMarksheetComponent,
+    ViewMarksheetComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +60,8 @@ const routes:Routes = [
     InputTextModule,
     MatDatepickerModule,
     InputSwitchModule,
-    MatTableModule
+    MatTableModule,
+    ImageModule
   ]
 })
 export class MarksModule { }

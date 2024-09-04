@@ -1,0 +1,65 @@
+<form action="" [formGroup]="marksForm">
+  <div class="fixed inset-0 z-50 w-full min-h-screen bg-t7/20 backdrop-blur">
+    <div class="w-full h-full flex items-center p-10 px-6">
+      <div class="w-full max-w-3xl p-10 bg-white rounded-2xl mx-auto">
+        <div class="flex items-center mb-8">
+          <span class="text24">Exam Marks</span>
+          <span class="ml-auto icon-close text-error text20 cursor-pointer" (click)="closeDailog()"></span>
+        </div>
+        <ul class="flex items-center space-x-6 mb-5">
+          <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Subject</li>
+          <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Total Marks</li>
+          <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Obtained Marks</li>
+          <li class="text16 w-1/4 text-primary font-bold whitespace-nowrap">Grade</li>
+        </ul>
+        <div class="space-y-2 mb-2" formArrayName="subjectMarkForm">
+          <ul class="flex items-center -mx-2" *ngFor="let list of subjectMarkGroup.controls;let i = index" [formGroupName]="i">
+            <li class="text16 w-1/4 px-2">
+              <input type="text" class="outline-none" readonly [formControlName]="'subject_name'"/>
+              <!-- {{subjectList[i]?.key}} -->
+            </li>
+            <li class="text16 w-1/4 px-2">
+              <input class="input py-2 text-14 w-full text-t3 bg-t5" placeholder="100" type="text" name="" id="" readonly [formControlName]="'total_mark'" />
+            </li>
+            <li class="text16 w-1/4 px-2">
+              <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id="" [formControlName]="'obtained_mark'"/>
+            </li>
+            <li class="text16 w-1/4 px-2">
+              <input class="input py-2 text-14 w-full" placeholder="Enter" type="text" name="" id="" [formControlName]="'grade'"/>
+            </li>
+          </ul>
+        </div>
+        <ul class="flex items-center -mx-2 border-t border-t4 pt-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="text-primary">Total</span>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full bg-t5 text-black" placeholder="500" type="text" name="" id="" readonly  [formControlName]="'total'"/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full text-black" placeholder="00" type="text" name="" id=""/>
+          </li>
+          <li class="text16 w-1/4 px-2">
+            <input class="input py-2 text-14 w-full" placeholder="Grade" type="text" name="" id=""/>
+          </li>
+        </ul>
+        <ul class="flex items-center -mx-2 pt-2">
+          <li class="text16 w-1/4 px-2">
+            <span class="text-primary">Percentage</span>
+          </li>
+          <li class="text16 w-3/4 px-2">
+            <input class="input py-2 text-14 w-full bg-t5 text-black" placeholder="%" type="text" name="" id="" readonly  [formControlName]="'percentage'"/>
+          </li>
+        </ul>
+        <div class="w-full flex items-center justify-center mt-5">
+          <button type="button" mat-flat-button (click)="onSubmitAction()" class="flex items-center btn_primary anim group">
+            <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Save</span>
+            <span class="block" *ngIf="isBtnLoading">
+              <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

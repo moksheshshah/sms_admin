@@ -25,11 +25,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-print:before {
+  content: "\e904";
+  color: #00632b;
+}
 .icon-administrative_fill:before {
   content: "\e924";
-}
-.icon-hend_fill:before {
-  content: "\e904";
 }
 .icon-help-circle:before {
   content: "\e923";

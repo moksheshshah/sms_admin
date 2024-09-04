@@ -33,9 +33,6 @@ const STDTIMETABLE_DATA:sutdentTimetableComponent[]=[
   styleUrl: './marks.component.scss'
 })
 export class MarksComponent {
-  classList: any;
-  selClass: any;
-  sectionList: any;
   totalCoupon:any;
   searchCoupon:any;
   displayedColumns:string[]=['day','lec_one','lec_two','lec_three','lec_four','breck','lec_five','lec_six','lec_seven','lec_eight'];
@@ -43,10 +40,31 @@ export class MarksComponent {
   stdTimetableData = STDTIMETABLE_DATA; 
   selection = new SelectionModel<sutdentTimetableComponent>(true , []);
   isTableLoading: any;
+  classList:any = [
+    { key:'1st', value:'1' }, 
+    { key:'2nd', value:'2' }, 
+    { key:'3rd', value:'3' }, 
+    { key:'4th', value:'4' }, 
+    { key:'5th', value:'5' }, 
+  ];
+  sectionList:any = [
+    { key:'A', value:'A' }, 
+    { key:'B', value:'B' }, 
+    { key:'C', value:'C' }, 
+    { key:'D', value:'D' }, 
+    { key:'E', value:'E' }, 
+  ];
+  selectedClass: any;
+  selectedSection: any;
 
   constructor(private _router:Router){}
 
   editExamMark(){
-    this._router.navigate(['/marks', 'markdetails'])
+    this._router.navigate(['/marks', 'markdetails']);
   }
+
+  printMarksheet(){
+    this._router.navigate(['/marks', 'printmarksheet']);
+  }
+
 }
