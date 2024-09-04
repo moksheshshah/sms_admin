@@ -5,7 +5,7 @@
   <span class="block text-24 font-bold text-center">{{data[1].btnName}} Class</span>
   <form class="flex flex-wrap mt-6 xl:mt-8" (ngSubmit)="onSubmitAction()">
     <div class="w-full relative pb-6 mb-1">
-      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Section Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+      <label for="item_name" class="block text16 text-gray_1 font-semibold pb-2">Section Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
         <input type="text" pInputText [(ngModel)]="sectionName" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of section" name="something" required #sectionNameInput="ngModel">
         <div *ngIf="sectionNameInput.touched && (sectionName === '' || sectionName === null)" class="error-message">Username is required</div>
     </div>

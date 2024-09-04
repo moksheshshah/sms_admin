@@ -13,7 +13,7 @@
 .h3{@apply text-18 lg:text-20 2xl:text-24 font-bold text-primary block;}
 .text24{@apply text-20 lg:text-22 2xl:text-24 font-bold text-dark;}
 .text20{@apply text-16 lg:text-18 2xl:text-20 font-bold text-dark;}
-.text18{@apply text-14 lg:text-16 2xl:text-18 font-bold text-primary;}
+.text18{@apply text-16 2xl:text-18 font-bold text-primary;}
 .text16{@apply text-14 xl:text-16 font-semibold text-primary}
 .text_titel{@apply text-16 xl:text-16 font-semibold text-primary;}
 .btn_primary{@apply flex items-center ml-auto text-sm sm:text-16 xl:text-18 sm:ml-3 2xl:ml-6 space-x-2 px-2.5 py-2 sm:px-3.5 sm:py-2 2xl:py-2.5 2xl:px-5 border border-primary rounded-lg text-white hover:text-primary bg-primary hover:bg-transparent anim;}
