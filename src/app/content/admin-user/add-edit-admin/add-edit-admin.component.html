@@ -1,0 +1,80 @@
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-4">
+    <div class="w-max lg:w-auto pb-2 lg:pb-0">
+        <div class="flex items-center">
+        <span class="icon-arrow-left text24 mr-3 cursor-pointer" [routerLink]="'/admin-user'"></span>
+        <span class=" block text24">Add Admin</span>
+        </div>
+    </div>
+    <div class="w-max xl:w-auto ml-auto">
+        <button class="lg:order-4 btn_primary group anim py-3.5 xl:py-4" (click)="onSubmitted()">
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Save</span>
+        </button>
+    </div>
+</div>
+<form action="" [formGroup]="productCouponForm">
+    <div class="w-full">
+        <div class="flex flex-wrap lg:flex-nowrap -mx-2.5">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Admin Name<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                    <input type="text" pInputText [formControlName]="'admin_name'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Admin Name">
+                    <span class="error-message"
+                        *ngIf="productCouponForm.get('admin_name').hasError('required') && (productCouponForm.get('admin_name').dirty || productCouponForm.get('admin_name').touched)">Enter Admin Name
+                    is required.</span>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Mobile No.<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                    <input type="text" pInputText [formControlName]="'mobile_no'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Mobile No.">
+                    <span class="error-message"
+                        *ngIf="productCouponForm.get('mobile_no').hasError('required') && (productCouponForm.get('mobile_no').dirty || productCouponForm.get('mobile_no').touched)">Enter Mobile No.
+                    is required.</span>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Email<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                    <input type="email" pInputText [formControlName]="'email'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4"
+                        placeholder="Enter Email">
+                    <span class="error-message"
+                        *ngIf="productCouponForm.get('email').hasError('required') && (productCouponForm.get('email').dirty || productCouponForm.get('email').touched)">Enter Email
+                    is required.</span>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Role<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+                    <mat-form-field appearance="outline" class="w-full dropdown">
+                        <mat-select placeholder="Select Role" [formControlName]="'role'">
+                        <mat-option *ngFor="let item of roleList" [value]="item.value">{{item?.key}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>          
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Login Username<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                    <input type="text" pInputText [formControlName]="'login_username'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-t3 placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4 bg-t5"
+                        placeholder="Enter Login Username">
+                    <span class="error-message"
+                        *ngIf="productCouponForm.get('login_username').hasError('required') && (productCouponForm.get('login_username').dirty || productCouponForm.get('login_username').touched)">Enter Login Username
+                    is required.</span>
+                </div>
+                <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/2 xl:w-1/3 2xl:w-full 2xl:max-w-[365px] relative pb-5 px-2.5 pt-0">
+                    <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Login Password<span
+                        class="absolute top-0 text-red-600 text-[18] font-bold">&nbsp;*</span></label>
+                    <input type="password" pInputText [formControlName]="'password'"
+                        class="w-full text-16 xl:text-lg border border-t4 text-t3 placeholder:text-t3 rounded-lg outline-none py-2 xl:py-3 px-4 bg-t5"
+                        placeholder="******">
+                    <span class="error-message"
+                        *ngIf="productCouponForm.get('password').hasError('required') && (productCouponForm.get('password').dirty || productCouponForm.get('password').touched)">Enter Login Password
+                    is required.</span>
+                </div>
+            </div> 
+    
+        </div>
+    </div>
+</form>
