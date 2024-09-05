@@ -21,12 +21,17 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgImageSliderService } from 'ng-image-slider';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatIconModule } from '@angular/material/icon';
+import { LogInComponent } from '../auth/log-in/log-in.component';
 
 const routes: Routes = [
   {
     path:'',
     pathMatch:'full',
-    redirectTo:'sm-dashboard'
+    redirectTo:'login'
+  },
+  {
+    path:'login',
+    component:LogInComponent
   },
   {
     path:'sm-dashboard',

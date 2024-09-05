@@ -1,48 +1,51 @@
-<div class="w-full h-screen p-5">
-  <div class="w-full h-full flex">
-    <div class="max-w-[800px] w-full flex items-center justify-center bg-primary rounded-[50px]">
-      <div class="logo">
-    
+<div class="w-full min-h-screen sm:min-h-full bg-primary sm:bg-white sm:h-screen flex items-center p-5 sm:py-16 sm:px-8 xl:py-24 xl:px-16 2xl:px-24 2xl:py-28">
+  <div class="sm:h-full w-full">
+    <div class="w-full sm:h-full flex flex-wrap border-2 border-primary rounded-2xl overflow-hidden max-w-[1720px] mx-auto">
+      <div class="w-full sm:w-1/2 hidden sm:flex items-center justify-center bg-primary">
+        <div class="logo">
+          <img class="mx-auto" src="assets/images/login_banner.png" alt="login_banner.png">
+        </div>
       </div>
-    </div>
-    <div class="w-full flex items-center justify-center">
-      <div class="">
-        <h2 class="text-3xl font-extrabold text-dark">Sign In</h2>
-        <p class="text-sm text-zinc-900 mt-1">Welcome back! Sign in to your account below.</p>
-        <form #logInNgForm="ngForm" [formGroup]="logInForm" class="w-full space-y-5 mt-6">
-          <div class="w-full">
-            <label for="email" class="text-sm font-bold">E-Mail</label>
-            <input type="email" [formControlName]="'email'" name="email" id="email"
-              class="w-full text-sm border border-light_blue text-light_blue placeholder:text-light_blue rounded-lg outline-none py-2 px-4"
-              placeholder="Enter your E-Mail">
+      <div class="w-full sm:w-1/2 flex items-center justify-center p-6 bg-white">
+        <div class="w-full max-w-md mx-auto">
+          <div class="mb-8 xl:mb-10">
+            <img src="assets/images/logo_main.png" class="mx-auto" alt="logo_main.png">
           </div>
-          <div class="w-full relative">
-            <label for="password" class="text-sm font-bold">Password</label>
-            <input [type]="hidePassword ? 'password' : 'text'" [formControlName]="'password'" name="password"
-              id="password"
-              class="w-full text-sm border border-light_blue text-light_blue placeholder:text-light_blue rounded-lg outline-none py-2 px-4"
-              placeholder="Enter your Password">
-            <mat-icon class="absolute right-4 bottom-2 text-light_blue" (click)="showPassword()">{{hidePassword ?
-              'visibility' : 'visibility_off'}}</mat-icon>
-          </div>
-          <div class="w-full">
-            <button type="submit"
-              class="w-full flex items-center justify-center border-2 border-primary rounded-lg px-6 py-2 outline-none bg-primary hover:bg-white anim group"
-              (click)="logIn()">
-              <span class="text-white group-hover:text-primary anim anim">Sign in</span>
-              <span class="block" *ngIf="isBtnLoading">
-                <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
-                  viewBox="0 0 24 24">
-                  <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10"
-                    stroke-width="4"></circle>
-                  <path class="opacity-75 fill-white group-hover:fill-primary anim"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
-                  </path>
-                </svg>
-              </span>
-            </button>
-          </div>
-        </form>
+          <form #logInNgForm="ngForm" [formGroup]="logInForm" class="w-full space-y-5 mt-6">
+            <div class="w-full">
+              <label for="email" class="text16 text-dark font-bold">User ID</label>
+              <input type="email" [formControlName]="'email'" name="email" id="email"
+                class="w-full text-sm border border-light_blue text-light_blue placeholder:text-light_blue rounded-lg outline-none py-3 xl:py-4 px-4"
+                placeholder="Enter your E-Mail">
+            </div>
+            <div class="w-full relative">
+              <label for="password" class="text16 text-dark font-bold">Password</label>
+              <div class="relative w-full">
+                <input [type]="hidePassword ? 'password' : 'text'" [formControlName]="'password'" name="password" id="password"
+                  class="w-full text-sm border border-light_blue text-light_blue placeholder:text-light_blue rounded-lg outline-none py-3 xl:py-4 px-4"
+                  placeholder="Enter your Password">
+                  <span class="absolute right-4 top-1/2 -translate-y-1/2 icon-eye cursor-pointer text-22"></span>
+                <!-- <mat-icon class="absolute right-4 bottom-2 text-light_blue" (click)="showPassword()">{{hidePassword ?'visibility' : 'visibility_off'}}</mat-icon> -->
+              </div>
+            </div>
+            <div class="w-full pt-8 xl:pt-10">
+              <button type="submit" class="w-full btn_primary justify-center font-bold m-0 py-3 xl:py-4"
+                (click)="logIn()">
+                <span class="inline-block">Sign in</span>
+                <span class="inline-block ml-2" *ngIf="isBtnLoading">
+                  <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                    viewBox="0 0 24 24">
+                    <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10"
+                      stroke-width="4"></circle>
+                    <path class="opacity-75 fill-white group-hover:fill-primary anim"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                    </path>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
