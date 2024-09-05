@@ -1,1 +1,40 @@
-<p>leave works!</p>
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap mb-[30px]">
+  <div class="w-full lg:w-auto pb-2 lg:pb-0">
+      <span class=" block text24">Leave</span>
+  </div>
+</div>
+<div class="w-full tabs relative">
+<mat-tab-group animationDuration="0ms"(selectedTabChange)="tabChanged($event)" [selectedIndex]="selectedTab">
+  <mat-tab>
+    <ng-template mat-tab-label class="relative">
+      <span class="text20 text-t2">Leave Requests</span>
+      <div class="absolute top-2 -right-3">
+        <span class="relative flex h-2 w-2">
+          <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span> -->
+          <!-- <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span> -->
+        </span>
+      </div>
+    </ng-template>
+    <!--  *ngIf="selectedTab == 0" -->
+    <div class="w-full">
+      <app-leave-requests></app-leave-requests>
+    </div>
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label class="relative">
+      <span class="text20 text-t2">Leave Type</span>
+      <div class="absolute top-2 -right-3">
+        <span class="relative flex h-2 w-2">
+          <!-- <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/90 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span> -->
+        </span>
+      </div>
+    </ng-template>
+    <!--  *ngIf="selectedTab == 1" -->
+    <div class="w-full">
+      <app-leave-type></app-leave-type>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+<span class="w-full h-0.5 bg-t4 absolute top-[46px]"></span>
+</div>

@@ -17,25 +17,21 @@ import { CONSTANTS } from '../../../common/constants';
 })
 export class ComplaintDetailsComponent {
 
-element: any;
-onSubmit() {
-throw new Error('Method not implemented.');
-}
   selectedTab: any;
   isDataLoad: boolean = false;
   isUpload: boolean = false;
   isBtnLoading: boolean = false;
   pageType: any = "Add new";
   productCouponForm: any = FormGroup;
-  @ViewChild('couponNgForm') couponNgForm: any;
   constants: any = CONSTANTS;
   selectedItemImg: any;
   selectedMotherImg: any;
   selectedFatherImg: any;
   couponId: any;
   varientsList: any = [];
-  @ViewChild('allSelected') allSelected: MatOption | any;
   maultivariants: any = [];
+  @ViewChild('couponNgForm') couponNgForm: any;
+  @ViewChild('allSelected') allSelected: MatOption | any;
 
 
   constructor(

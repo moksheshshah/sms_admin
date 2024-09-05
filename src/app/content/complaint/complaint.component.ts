@@ -7,7 +7,7 @@ import { ClassService } from '../class/class.service';
 import { MatTableDataSource } from '@angular/material/table';
 
 export interface complaintComponent {
-  complain_by:any
+  complain_by:any;
   designation: any;
   mobile_no: any;
   complain_type: any;
