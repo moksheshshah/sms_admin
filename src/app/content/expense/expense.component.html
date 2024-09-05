@@ -1,1 +1,93 @@
-<p>expense works!</p>
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-[30px]">
+    <div class="w-full lg:w-auto pb-2 lg:pb-0">
+        <span class=" block text24">Expense List</span>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3  justify-end ml-auto">
+        <label for="main_search" class="search py-2 xl:py-2.5 w-full border border-[#CBD4E1]">
+            <span class="icon_show icon-search text-t3 text-xl xl:text-2xl"></span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
+        </label>
+        <button class="lg:order-4 btn_primary group anim" (click)="addIncome()">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Add Expense</span>
+        </button>
+    </div>
+</div>
+<div class="w-full relative space-y-6 xl:space-y-8">
+    <div class="w-full relative overflow-hidden">
+        <div class="rounded-xl overflow-x-auto relative">
+            <table mat-table matSort [dataSource]="expenseData" class="mat-elevation-z8 h-full">
+    
+                <!-- No Column -->
+                <ng-container matColumnDef="no">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">#</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.no}} </td>
+                </ng-container>
+    
+                <!--Income Title Column -->
+                <ng-container matColumnDef="expense_title">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Expense Title</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.expense_title}} </td>
+                </ng-container>
+    
+                <!-- Paytment Method Column -->
+                <ng-container matColumnDef="paytment_method">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Paytment Method</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.paytment_method}} </td>
+                </ng-container>
+    
+                <!--Date Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Date</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.date}} </td>
+                </ng-container>
+
+                    <!-- Category Column -->
+                    <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Category</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.category}} </td>
+                </ng-container>
+
+                   <!--Amount Column -->
+                   <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Amount</th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails"> {{element?.amount}} </td>
+                </ng-container>
+    
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
+                    <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
+                        <div class="flex space-x-3">
+                            <span class="block icon-eye text-xl cursor-pointer text-primary anim"></span>
+                            <span class="block icon-edit text-xl cursor-pointer text-primary anim" (click)="editExpense($event,element)"></span>
+                            <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteExpense(element)"></span>
+                        </div>
+                    </td>
+                </ng-container>
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div class="w-full"> 
+                <div class="w-full flex justify-center p-5" *ngIf="expenseData.length == 0">
+                    <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                        <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Expense Create </strong>
+                        <span class="block lg:text-18 text-center text-t2"> Please create Expense first </span>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2">
+            <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)" [totalRecords]="totalExpanse" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+        </div> 
+        <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
+            <div class="flex flex-col items-center justify-center">
+                <div
+                    class="w-12 h-12 rounded-full animate-spin border-4 border-solid border-primary border-t-transparent">
+                </div>
+                <p class="block text-base font-medium pt-2">Plase wait</p>
+            </div>
+        </div>
+    </div>
+</div>
