@@ -6,17 +6,18 @@ import { ClassService } from '../../class/class.service';
 import { Router } from '@angular/router';
 import { GlobalFunctions } from '../../../common/global-function';
 import { CommonModalComponent } from '../../../common-modal/common-modal.component';
+import { AddEditLeaveTypeComponent } from '../add-edit-leave-type/add-edit-leave-type.component';
 
 export interface complaintComponent {
   id:any
-  name: any;
+  type: any;
   action: any;
   }
 
 const STDATTENDANCE_DATA:complaintComponent[]=[
-  { id:'1', name: 'John Doe',action: ''},
-  { id:'2', name: 'John Doe',action: ''},
-  { id:'3', name: 'John Doe',action: ''},
+  { id:'1', type: 'Casual',action: ''},
+  { id:'2', type: 'Casual',action: ''},
+  { id:'3', type: 'Casual',action: ''},
 ];
 
 
@@ -27,7 +28,7 @@ const STDATTENDANCE_DATA:complaintComponent[]=[
 })
 export class LeaveTypeComponent {
   searchSize: any = "";
-  displayedColumns: string[] = ['id', 'name', 'action'];
+  displayedColumns: string[] = ['id', 'type', 'action'];
   // noticeData = new MatTableDataSource<meetingComponent>(this.meetingData);
   complainData = STDATTENDANCE_DATA;
   selection = new SelectionModel<complaintComponent>(true, []);
@@ -52,7 +53,6 @@ export class LeaveTypeComponent {
     { key:'5th', value:'5' }, 
   ];
   
-
   constructor(private _router:Router, 
     private _couponService:ClassService,
     private _globalFunctions:GlobalFunctions,
@@ -85,8 +85,36 @@ export class LeaveTypeComponent {
       this._globalFunctions.errorHanding(error,this,true);
     })
   }
+
+  addLeaveType(){
+    const dialogRef = this._dialog.open(AddEditLeaveTypeComponent, {
+      width: '410px',
+      height: 'fit-content',
+      data: [{ result: null },
+      { btnName: "Add" }
+      ],
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getAllCouponList();
+    });
+  }
+
+  editLeaveType(resData:any){
+    // e.stopPropagation();
+    const dialogRef = this._dialog.open(AddEditLeaveTypeComponent, {
+      width: '410px',
+      data: [{ result: resData },
+      { btnName: "Edit" }
+      ],
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe((res) => {
+      this.getAllCouponList();
+    });
+  }
   
-  deleteLeave(resData:any){
+  deleteLeaveType(resData:any){
     // this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'410px',
@@ -123,10 +151,10 @@ export class LeaveTypeComponent {
         //   this.isTableLoading = false;
         }
       });
-    }
+  }
   
-    viewLeave(resData:any){
-      this._router.navigate(['leave/', resData?.id]);
-    }
+  viewLeave(resData:any){
+    this._router.navigate(['leave/', resData?.id]);
+  }
   
   }

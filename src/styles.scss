@@ -25,8 +25,29 @@
 .input{@apply outline-none p-2.5 xl:p-3 rounded-md border border-t4;}
 .custome_table tr:not(:first-child,:last-child){@apply border-b border-t4;}
 .btn_table{@apply py-2 px-3 bg-primary hover:bg-transparent text-white hover:text-primary border border-primary hover:border-primary rounded-lg ;}
+.check_lable label{@apply text-14 font-semibold text-t2;}
+.sidebar_link{@apply border-primary bg-t6  anim text-primary; }
+.sidebar_link{
+  font-weight : 600 !important;
+}
 
 
+// check box design 
+
+.check_lable .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+  border-color: #CBD4E1 !important;
+}
+.check_lable .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background, .check_lable .mdc-checkbox:hover .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background.mdc-checkbox:hover .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+  background-color: #3B418B !important;
+  border-color: #3B418B !important;
+}
+.check_lable .mdc-checkbox:active .mdc-checkbox__native-control:checked~.mdc-checkbox__ripple, .check_lable .mdc-checkbox .mdc-checkbox__native-control:focus:checked~.mdc-checkbox__ripple{
+  background-color: transparent !important;
+  opacity: 0 !important;
+}
+.mdc-checkbox .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark{
+  color: #fff !important;
+}
 ::-webkit-scrollbar {
   width: 6px;
   background-color: #F5F5F5;
@@ -243,6 +264,10 @@ span.p-paginator-pages{
   font-weight: 600 !important;
 }
 
+input.form-control {
+    width: 20px !important;
+    height: 20px !important;
+}
 @media (max-width: 1366px){
   .cle_drop .mat-mdc-form-field-infix span.mat-mdc-select-min-line{
     font-size: 12px;

@@ -15,6 +15,7 @@ import { LeaveRequestsComponent } from './leave-requests/leave-requests.componen
 import { PaginatorModule } from 'primeng/paginator';
 import { LeaveTypeComponent } from './leave-type/leave-type.component';
 import { ViewLeaveDetailsComponent } from './view-leave-details/view-leave-details.component';
+import { AddEditLeaveTypeComponent } from './add-edit-leave-type/add-edit-leave-type.component';
 
 const routes:Routes = [
   {
@@ -32,7 +33,8 @@ const routes:Routes = [
     LeaveComponent,
     LeaveRequestsComponent,
     LeaveTypeComponent,
-    ViewLeaveDetailsComponent
+    ViewLeaveDetailsComponent,
+    AddEditLeaveTypeComponent
   ],
   imports: [
     CommonModule,

@@ -1,14 +1,11 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CONSTANTS } from '../../../common/constants';
-import { studentAttendanceListComponent } from '../../attendance/student-attendance-list/student-attendance-list.component';
 import { ClassService } from '../../class/class.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { GlobalFunctions } from '../../../common/global-function';
 import { CommonModalComponent } from '../../../common-modal/common-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ViewLeaveDetailsComponent } from '../view-leave-details/view-leave-details.component';
 
 export interface complaintComponent {
   id:any
@@ -32,7 +29,7 @@ const STDATTENDANCE_DATA:complaintComponent[]=[
   templateUrl: './leave-requests.component.html',
   styleUrl: './leave-requests.component.scss'
 })
-export class LeaveRequestsComponent {
+export class LeaveRequestsComponent implements OnInit{
 //  COMPLAIN_DATA: complaintComponent[]=[] ;
 searchSize: any = "";
 displayedColumns: string[] = ['id', 'name', 'type', 'date','reason','apply_date','status', 'action'];
@@ -65,6 +62,10 @@ constructor(private _router:Router,
   private _globalFunctions:GlobalFunctions,
   private _dialog:MatDialog
 ){}
+
+ngOnInit(): void {
+  this.getAllCouponList();
+}
 
 getAllCouponList(event:any = '') {
   this.isTableLoading = true;

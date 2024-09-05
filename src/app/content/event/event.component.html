@@ -1,18 +1,18 @@
-<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-4 border-b border-t4">
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-4">
   <div class="w-full lg:w-auto pb-2 lg:pb-0">
       <span class=" block text24">Event List</span>
   </div>
   <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3  justify-end ml-auto">
-      <button class="lg:order-4 btn_primary group anim">
+      <button class="lg:order-4 btn_primary group anim" (click)="addEvent()">
           <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
-          <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Add New Exam</span>
+          <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Add New Event</span>
       </button>
   </div>
 </div>
 <div class="w-full relative py-6 xl:py-8">
   <div class="w-full relative">
-      <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
-          <table mat-table matSort [dataSource]="complainData" class="h-full">
+      <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative">
+          <table mat-table matSort [dataSource]="eventData" class="h-full">
                 <!-- Size Name Column -->
                 <ng-container matColumnDef="event_title">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Event Title</th>
@@ -32,7 +32,7 @@
                 <ng-container matColumnDef="publish">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5">Publish</th>
                     <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
-                      <p-inputSwitch [(ngModel)]="element.status"></p-inputSwitch>
+                      <p-inputSwitch [(ngModel)]="element.publish"></p-inputSwitch>
                     </td>
                 </ng-container>
                 <!-- Action Column -->
@@ -40,8 +40,8 @@
                     <th mat-header-cell *matHeaderCellDef mat-sort-header class="whitespace-nowrap text16 bg-t5"> Action </th>
                     <td mat-cell *matCellDef="let element" class="whitespace-nowrap font-medium text16 text-t2 t_ditails">
                         <div class="flex space-x-3">
-                            <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim"></span>
-                            <span class="block icon-delete text-xl cursor-pointer text-error anim"></span>
+                            <span class="icon-edit block text-xl cursor-pointer hover:text-primary anim" (click)="editEvent($event, element)"></span>
+                            <span class="block icon-delete text-xl cursor-pointer text-error anim" (click)="deleteEvent(element)"></span>
                         </div>
                     </td>
                 </ng-container>
@@ -50,16 +50,16 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
           <div class="w-full"> 
-              <div class="w-full flex justify-center p-5" *ngIf="couponData.filteredData.length == 0">
+              <div class="w-full flex justify-center p-5" *ngIf="eventData.length == 0">
                   <div class="max-w-8xl w-full rounded-2xl p-10 mx-auto bg-gray_2">
-                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Homework Added </strong>
-                    <span class="block lg:text-18 text-center text-t2"> Please add Homework first </span>
+                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Event Added </strong>
+                    <span class="block lg:text-18 text-center text-t2"> Please add Event first </span>
                   </div>
               </div>
           </div>
-          <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+          <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2">
               <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
-          </div> -->
+          </div>
           <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
               <div class="flex flex-col items-center justify-center">
                   <div

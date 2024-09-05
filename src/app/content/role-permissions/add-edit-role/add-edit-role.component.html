@@ -1,0 +1,26 @@
+<div class="max-w-4xl w-full rounded-3xl bg-white p-7 lg:p-8 xl:p-8 2xl:p-9">
+  <div class="flex items-center justify-end">
+    <span class="block icon-close text-xl text-error cursor-pointer" (click)="closeDailog()"></span>
+  </div>
+  <span class="block text-24 font-bold text-center">{{data[1].btnName}} Role</span>
+  <form class="flex flex-wrap mt-6 xl:mt-8" #sizeNgForm="ngForm" [formGroup]="roleForm" (ngSubmit)="onSubmitAction()">
+    <div class="w-full relative pb-6 mb-1">
+      <label for="item_name" class="block text-14 lg:text-16 text-gray_1 font-semibold pb-2">Type Name<span class="absolute top-0 text-error text-[18] font-bold">&nbsp;*</span></label>
+        <input type="text" pInputText [formControlName]="'role_name'" class="w-full text-16 xl:text-lg border border-t4 text-dark placeholder:text-light_blue rounded-lg outline-none py-2 xl:py-2.5 px-4" placeholder="Name of Leave type">
+        <span class="error-message"
+        *ngIf="roleForm.get('role_name').hasError('required') && (roleForm.get('role_name').dirty || roleForm.get('role_name').touched)">
+        Role Name is required.</span>
+    </div>
+
+    <div class="w-full flex items-center justify-center">
+      <button type="submit" mat-flat-button (click)="onSubmitAction()" class="flex items-center btn_primary anim group">
+        <span class="text-base font-medium leading-[22px] text-white group-hover:text-primary anim">Create</span>
+        <span class="block" *ngIf="isBtnLoading">
+          <svg class="animate-spin -mr-1 ml-3 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"> <circle class="opacity-25 stroke-white group-hover:stroke-primary anim" cx="12" cy="12" r="10" stroke-width="4"></circle> <path class="opacity-75 fill-white group-hover:fill-primary anim" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path> </svg>
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+
+

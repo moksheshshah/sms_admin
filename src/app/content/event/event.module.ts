@@ -11,17 +11,24 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { PaginatorModule } from 'primeng/paginator';
+import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
 
 const routes:Routes = [
   {
     path:'',
     component:EventComponent,
+  },
+  {
+    path:':id',
+    component:AddEditEventComponent,
   }
 ]
 
 @NgModule({
   declarations: [
-    EventComponent
+    EventComponent,
+    AddEditEventComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +42,8 @@ const routes:Routes = [
     MatDatepickerModule,
     MatTableModule,
     MatFormFieldModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PaginatorModule
   ]
 })
 export class EventModule { }

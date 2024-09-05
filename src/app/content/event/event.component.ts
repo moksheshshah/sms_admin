@@ -5,19 +5,20 @@ import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import { ClassService } from '../class/class.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { GlobalFunctions } from '../../common/global-function';
 
-export interface EventComponent {
-  event_title: any;
+export interface eventComponent {
+  event_title: string;
   event_date: any;
   exam_des: any;
   publish: any;
   action: any;
 }
 
-const STDATTENDANCE_DATA: any[]=[
-  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish: 'Fees issues',action: ''},
-  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish: 'Fees issues',action: ''},
-  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish: 'Fees issues',action: ''}
+const EVENT_DATA: eventComponent[]=[
+  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish:true ,action: ''},
+  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish:false,action: ''},
+  { event_title:'15 Aug Celebration', event_date: '01 Aug, 2024 - 02 Aug, 2024',exam_des: 'Lorem Ipsum dummy text here...',publish:true ,action: ''}
 ]
 
 @Component({
@@ -27,30 +28,21 @@ const STDATTENDANCE_DATA: any[]=[
 })
 
 export class EventComponent implements OnInit{
-  //  COMPLAIN_DATA: complaintComponent[]=[] ;
+  //  EVENT_DATA: complaintComponent[]=[] ;
   searchSize: any = "";
-  displayedColumns: string[] = [' event_title', 'event_date', 'exam_des', 'publish', 'action'];
-  // noticeData = new MatTableDataSource<meetingComponent>(this.meetingData);
-  complainData = STDATTENDANCE_DATA;
-  selection = new SelectionModel<EventComponent>(true, []);
+  displayedColumns: string[] = ['event_title', 'event_date', 'exam_des', 'publish', 'action'];
+  // eventData = new MatTableDataSource<eventComponent>(this.EVENT_DATA);
+  eventData = EVENT_DATA;
+  selection = new SelectionModel<eventComponent>(true, []);
   isTableLoading: boolean = false;
-  statusList:any = [
-    { key:'Select Status', value:'' }, 
-    { key:'Pending', value:'pending' }, 
-    { key:'Resolved', value:'Resolved' }, 
-  ];
-  selectedStatus: any;
   pageNo: any;
   limit: any;
-  couponData: any;
   totalCoupon: any;
-  STDATTENDANCE_DATA: any;
-  couponSort: any;
-  private _globalFunctions: any;
 
 constructor(private _router:Router, 
   private _dialog:MatDialog,
-  private _couponService:ClassService
+  private _couponService:ClassService,
+  private _globalFunctions:GlobalFunctions
 ){}
 
 ngOnInit(): void {
@@ -58,7 +50,7 @@ ngOnInit(): void {
 }
 
 getAllCouponList(event:any = ''){
-  this.isTableLoading = true;
+  // this.isTableLoading = true;
   this.pageNo = event? (event.page + 1) : 1;
   this.limit = event.rows || 10;
   let filter = {
@@ -70,9 +62,9 @@ getAllCouponList(event:any = ''){
   this._couponService.getSize(filter).subscribe((result:any)=>{
     if(result && result.IsSuccess){
       this.totalCoupon = result?.Data?.totalDocs;
-      this.STDATTENDANCE_DATA = result.Data.docs;
-      this.couponData = new MatTableDataSource<EventComponent>(this.couponData);
-      this.couponData.sort = this.couponSort;
+      // this.EVENT_DATA = result.Data.docs;
+      // this.couponData = new MatTableDataSource<eventComponent>(this.EVENT_DATA);
+      // this.couponData.sort = this.couponSort;
       this.isTableLoading = false;
     } else {
       this.isTableLoading = false;
@@ -84,13 +76,17 @@ getAllCouponList(event:any = ''){
   })
 }
 
-// editComplaint(event:any, resData:any){
-//   event.stopPropagation();
-//   this._router.navigate(['complaint/', 'complaintdetails']);
-// }
+addEvent(){
+  this._router.navigate(['event/', 'eventdetails']);
+}
 
-deleteComplaint(resData:any){
-  this.isTableLoading = true;
+editEvent(event:any, resData:any){
+  event.stopPropagation();
+  this._router.navigate(['event/', resData?.id]);
+}
+
+deleteEvent(resData:any){
+  // this.isTableLoading = true;
   const dialogRef = this._dialog.open(CommonModalComponent,{
     width:'410px',
     height:'fit-content',
