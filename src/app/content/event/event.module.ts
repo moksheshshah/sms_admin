@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { PaginatorModule } from 'primeng/paginator';
 import { AddEditEventComponent } from './add-edit-event/add-edit-event.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 const routes:Routes = [
   {
@@ -43,7 +44,8 @@ const routes:Routes = [
     MatTableModule,
     MatFormFieldModule,
     InputSwitchModule,
-    PaginatorModule
+    PaginatorModule,
+    NgxEditorModule
   ]
 })
 export class EventModule { }

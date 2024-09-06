@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { PaginatorModule } from 'primeng/paginator';
 import { AddEditIncomeComponent } from './add-edit-income/add-edit-income.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 const routes:Routes = [
   {
@@ -39,7 +40,8 @@ const routes:Routes = [
     MatSelectModule,
     MatOptionModule,
     ReactiveFormsModule,
-    PaginatorModule
+    PaginatorModule,
+    NgxEditorModule
   ]
 })
 export class IncomeModule { }

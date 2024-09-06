@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTabChangeEvent } from '@angular/material/tabs';
-import { Validators } from 'ngx-editor';
+import { Editor, Toolbar, Validators } from 'ngx-editor';
 import { SchoolsService } from '../../schools/schools.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,6 +24,9 @@ export class AddEditNoticeComponent {
   constants: any = CONSTANTS;
   selectedItemImg: any;
   couponId: any;
+  editor !: Editor;
+  toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
+  ingredient_length: any = 0;
   @ViewChild('allSelected') allSelected: MatOption | any;
   @ViewChild('couponNgForm') couponNgForm: any;
 
@@ -37,6 +40,7 @@ export class AddEditNoticeComponent {
   ) { }
 
   ngOnInit() {
+    this.editor = new Editor();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
     if (this.couponId && this.couponId != "studentdetail") {
@@ -185,5 +189,13 @@ export class AddEditNoticeComponent {
 
   imageOnError(event: any) {
     event.target.src = this.constants.defaultImage;
+  }
+
+  ingredientLength(event: any = '') {
+    this.ingredient_length = event.length
+    if (event.length > 10000) {
+      this._toastr.clear();
+      this._toastr.error("You can not write more product description", 'Oops!');
+    }
   }
 }

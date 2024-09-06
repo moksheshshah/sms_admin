@@ -1,0 +1,21 @@
+.NgxEditor__Wrapper{
+  border: 1px solid rgba(0,0,0,0.2) !important;
+  border-radius: 12px !important;
+  background-color: #fff !important;
+}
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align{
+  display: none !important;
+}
+:host ::ng-deep .mat-mdc-tab-group{
+  max-width: inherit !important;
+}
+:host ::ng-deep .mat-mdc-tab-body-content{
+  overflow: unset !important;
+}
+:host ::ng-deep .mat-mdc-tab-label-container{
+  padding: 0 16px !important;
+}
+:host ::ng-deep .mat-mdc-tab-body.mat-mdc-tab-body-active{
+  overflow-y: unset !important;
+  overflow-x: unset !important;
+}

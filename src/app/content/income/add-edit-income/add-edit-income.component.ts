@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import moment from 'moment';
-import { Validators } from 'ngx-editor';
+import { Editor, Toolbar, Validators } from 'ngx-editor';
 import { SchoolsService } from '../../schools/schools.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,6 +42,9 @@ throw new Error('Method not implemented.');
     { key: 'Gpay', value: 'gpay' },
     { key: 'Phonepay', value: 'phonepay' },
   ];
+  editor !: Editor;
+  toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
+  ingredient_length: any = 0;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -55,6 +58,7 @@ throw new Error('Method not implemented.');
   ) { }
 
   ngOnInit() {
+    this.editor = new Editor();
     this.getVarients();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
@@ -259,5 +263,13 @@ throw new Error('Method not implemented.');
 
   imageOnError(event: any) {
     event.target.src = this.constants.defaultImage;
+  }
+
+  ingredientLength(event: any = '') {
+    this.ingredient_length = event.length
+    if (event.length > 10000) {
+      this._toastr.clear();
+      this._toastr.error("You can not write more product description", 'Oops!');
+    }
   }
 }

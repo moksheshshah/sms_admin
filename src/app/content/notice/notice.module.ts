@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { PaginatorModule } from 'primeng/paginator';
+import { NgxEditorModule } from 'ngx-editor';
 
 const routes:Routes = [
   {
@@ -41,7 +42,8 @@ const routes:Routes = [
     MatInputModule,
     MatSelectModule,
     MatOptionModule,
-    PaginatorModule
+    PaginatorModule,
+    NgxEditorModule
   ]
 })
 export class NoticeModule { }
