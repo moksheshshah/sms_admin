@@ -25,6 +25,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-eye_hide:before {
+  content: "\e926";
+}
 .icon-print:before {
   content: "\e904";
   color: #00632b;
