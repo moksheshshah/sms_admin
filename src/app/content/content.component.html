@@ -173,29 +173,6 @@
           <li [routerLink]="'role'" routerLinkActive="sidebar_link" class="text-14 p-1 pr-5 pl-7 hover:bg-t6 rounded-2xl text-primary font-medium cursor-pointer anim">Role & Permissions</li>
         </ul>
       </li>  
-      <!-- <li [ngClass]="isSetting ? 'h-[150px] 2xl:h-[135px] active':'h-[40px]'" class="relative w-full cursor-pointer border-l-2 border-white overflow-hidden anim">
-        <div class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSetting = !isSetting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;">
-          <span class="inline-block">
-            <svg class="w-6 h-6" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.85938 10.8197L5.85941 10.8198C5.86931 10.8098 5.86866 10.8104 5.85938 10.8197Z" fill="#585C8C"/> <path d="M17.6453 8.60796L16.8496 8.41662C16.6765 7.66131 16.3785 6.94353 15.962 6.27613L16.3652 5.59911C16.4186 5.50951 16.4405 5.40468 16.4276 5.30121C16.4146 5.19774 16.3676 5.10154 16.2938 5.02782L14.9723 3.70625C14.8985 3.63259 14.8023 3.58559 14.6988 3.57266C14.5954 3.55973 14.4906 3.5816 14.401 3.63483L13.7239 4.0381C13.0566 3.62155 12.3388 3.32354 11.5835 3.15052L11.3921 2.35479C11.3667 2.25345 11.3082 2.1635 11.2259 2.09922C11.1435 2.03494 11.042 2.00002 10.9376 2H9.06258C8.9581 2.00001 8.85663 2.03493 8.77427 2.09921C8.69192 2.1635 8.6334 2.25345 8.60802 2.35479L8.41668 3.15052C7.66137 3.32354 6.94359 3.62155 6.2762 4.0381L5.59917 3.63483C5.50957 3.5815 5.40474 3.55956 5.30127 3.57249C5.1978 3.58543 5.1016 3.63249 5.02788 3.70625L3.70625 5.02779C3.6325 5.10151 3.58545 5.19771 3.57251 5.30118C3.55958 5.40465 3.58151 5.50947 3.63483 5.59908L4.0381 6.2761C3.62155 6.9435 3.32354 7.66128 3.15052 8.41659L2.35479 8.60793C2.25345 8.63331 2.1635 8.69183 2.09922 8.77419C2.03494 8.85654 2.00002 8.95801 2 9.06248V10.9375C2 11.1526 2.14649 11.3403 2.35523 11.392L3.15096 11.5834C3.26632 12.0839 3.43993 12.5647 3.6629 13.0259C4.00716 12.6802 5.73619 10.9438 5.86046 10.8197C5.85433 10.7881 5.78735 10.1877 5.78557 10.0707C5.74569 7.68209 7.66965 5.78166 10.0019 5.78166C12.35 5.78166 14.2225 7.67509 14.2136 10.0146C14.2036 12.1782 12.5887 14.0201 10.3333 14.1886C10.2357 14.1961 9.79461 14.2612 9.17975 14.14L6.97975 16.34C7.43919 16.5616 7.91821 16.7341 8.41665 16.849L8.60799 17.6452C8.63338 17.7465 8.69189 17.8365 8.77425 17.9008C8.8566 17.965 8.95807 18 9.06255 18H10.9375C11.042 18 11.1435 17.9651 11.2258 17.9008C11.3082 17.8365 11.3667 17.7465 11.3921 17.6452L11.5834 16.8495C12.3387 16.6764 13.0565 16.3784 13.7239 15.9619L14.4009 16.3652C14.5845 16.475 14.8202 16.4448 14.9722 16.2937L16.2938 14.9722C16.3675 14.8984 16.4146 14.8022 16.4275 14.6988C16.4405 14.5953 16.4185 14.4905 16.3652 14.4009L15.9619 13.7239C16.379 13.0565 16.6765 12.3387 16.8495 11.5829L17.6448 11.392C17.8535 11.3403 18 11.1526 18 10.9375V9.06248C18 8.95802 17.9651 8.85656 17.9008 8.7742C17.8366 8.69185 17.7466 8.63334 17.6453 8.60796Z" fill="#585C8C"/> <path d="M13.1739 9.14311C13.1537 9.06381 13.1128 8.99129 13.0555 8.93291C12.9981 8.87453 12.9263 8.83238 12.8474 8.81075C12.7685 8.78918 12.6853 8.78888 12.6063 8.80989C12.5272 8.8309 12.4552 8.87246 12.3974 8.93036L11.3277 10.0001C10.9621 10.3657 10.3677 10.3657 10.002 10.0001C9.63673 9.63479 9.63673 9.03972 10.002 8.67439L11.0722 7.60426C11.13 7.54641 11.1715 7.47429 11.1924 7.39522C11.2133 7.31615 11.213 7.23294 11.1913 7.15406C11.1697 7.07518 11.1276 7.00344 11.0692 6.94611C11.0109 6.88879 10.9384 6.84793 10.8591 6.82769C8.8812 6.32503 7.10123 7.61341 6.77478 9.39261C6.66995 9.97856 6.71665 10.5622 6.90842 11.0996C6.6417 11.3664 2.52199 15.486 2.41126 15.5968C1.86147 16.1466 1.86147 17.041 2.41995 17.5995C2.97321 18.124 3.82053 18.146 4.40526 17.5908L8.90245 13.0936C9.62264 13.3507 10.4258 13.3454 11.2118 13.0681C12.6281 12.5684 13.6193 10.8912 13.1739 9.14311Z" fill="#585C8C"/> </svg>
-          </span>
-          <span class="text-14 font-bold text-t2 inline-block ml-2">Settings</span>
-          <span class="inline-block ml-auto anim" [ngClass]="isSetting ? 'rotate-[180deg]':'rotate-0'">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.99635 14C9.41302 14 8.82969 13.775 8.38802 13.3334L2.95469 7.90003C2.71302 7.65837 2.71302 7.25837 2.95469 7.0167C3.19635 6.77503 3.59635 6.77503 3.83802 7.0167L9.27135 12.45C9.67135 12.85 10.3214 12.85 10.7214 12.45L16.1547 7.0167C16.3964 6.77503 16.7964 6.77503 17.038 7.0167C17.2797 7.25837 17.2797 7.65837 17.038 7.90003L11.6047 13.3334C11.163 13.775 10.5797 14 9.99635 14Z" fill="#585C8C"/> </svg>
-          </span>
-        </div>
-        <ul class="w-full absolute inset-x-0 top-[50px] transition-all duration-300 z-10 pl-5 2xl:px-3 2xl:pl-5" [ngClass]="isSetting ? 'h-auto':'h-0'">
-          <li>
-            <div [routerLink]="'analysis'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl 2xl:rounded-tr-full 2xl:rounded-br-full 2xl:group-hover:rounded-tr-full 2xl:group-hover:rounded-br-full overflow-hidden px-2 2xl:px-3.5 py-2 anim">
-              <span class="block text-gray_1 whitespace-nowrap text-base 2xl:text-sm ml-3">Admin Setup</span>
-            </div>
-          </li>
-          <li>
-            <div [routerLink]="'reports'" routerLinkActive="sidebar_link" class="w-full flex items-center cursor-pointer border-l-2 border-white rounded-tr-md rounded-br-md group-hover:rounded-tr-2xl group-hover:rounded-br-2xl 2xl:rounded-tr-full 2xl:rounded-br-full 2xl:group-hover:rounded-tr-full 2xl:group-hover:rounded-br-full overflow-hidden px-2 2xl:px-3.5 py-2 anim">
-              <span class="block text-gray_1 whitespace-nowrap text-base 2xl:text-sm ml-3">Role & Permissions</span>
-            </div>
-          </li>
-        </ul>
-      </li> -->
       <li>
         <div [routerLink]="'certificate'" routerLinkActive="sidebar_link" class="flex items-center w-full px-3 py-2.5 cursor-pointer toggle-button" (click)="isSetting = !isSetting;isSchool = false;isSchoolManagement = false;isExam=false;isFees=false;isCommunication=false;isAdministrative=false;isReports=false;isAdmin=false;">
           <span class="inline-block">
@@ -236,8 +213,7 @@
           </mat-form-field>
         </div>
         <div class="ml-auto">
-          <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md cursor-pointer" onclick="toggleActive('#search','active');">
-            <span class="icon-search text-primary text-xl 2xl:text-2xl leading-none"></span>
+          <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center ml-auto rounded-md cursor-pointer"  onclick="toggleActive('#search','active');removeActive('#profile','active');"><span class="icon-search text-primary text-xl 2xl:text-2xl leading-none"></span>
           </span>
           <label for="main_search" id="search" class="p-2.5 2xl:p-4 rounded-md bg-white border border-t4 flex space-x-2 max-w-64 2xl:max-w-[350px] w-full ml-4 2xl:ml-6 absolute top-full right-5 -translate-y-3 invisible opacity-0 anim">
             <span>
@@ -246,9 +222,24 @@
             <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search student,teacher etc..." id="main_search"/>
           </label>
         </div>
-        <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6 cursor-pointer">
-          <span class="icon_show icon-user text-primary text-xl 2xl:text-2xl leading-none"></span>
-        </span>
+        <div class="relative">
+          <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6 cursor-pointer" onclick="toggleActive('#profile','active');removeActive('#search','active');"><span class="icon_show icon-user text-primary text-xl 2xl:text-2xl leading-none"></span>
+          </span>
+          <ul id="profile" class="w-full min-w-40 bg-white border border-t4 rounded-md p-3 absolute right-0 top-full translate-y-10 invisible anim space-y-2">
+            <li class="flex items-center cursor-pointer space-x-3" onclick="toggleActive('#profile','active');">
+              <span class="inline-block icon-user"></span>
+              <span class="inline-block text16">Profile</span>
+            </li>
+            <li class="flex items-center cursor-pointer space-x-3" onclick="toggleActive('#profile','active');">
+              <span class="inline-block icon-user"></span>
+              <span class="inline-block text16">Login</span>
+            </li>
+            <li class="flex items-center cursor-pointer text-error space-x-3" onclick="toggleActive('#profile','active');">
+              <span class="inline-block icon-arrow-left"></span>
+              <span class="inline-block text16 text-error">Logout</span>
+            </li>
+          </ul>
+        </div>
       </header>
       <div class="" [ngClass]="isAccounting ? 'w-full' : 'w-full p-5 lg:p-6 2xl:p-7 px-5 lg:px-8 2xl:px-12'">
         <router-outlet></router-outlet>
