@@ -28,7 +28,7 @@ export interface homeworkComponent{
 })
 export class HomeworkComponent {
   COUPON_DATA:homeworkComponent[]=[];
-  totalCoupon:any;
+  totalHomework:any;
   searchCoupon:any;
   displayedColumns:string[]=['#','class','section','subject_Name','creation_date','submission_date','created_by','action'];
   couponData = new MatTableDataSource<homeworkComponent>(this.COUPON_DATA);
@@ -124,7 +124,7 @@ export class HomeworkComponent {
 
     this._couponService.getSize(filter).subscribe((result:any)=>{
       if(result && result.IsSuccess){
-        this.totalCoupon = result?.Data?.totalDocs;
+        this.totalHomework = result?.Data?.totalDocs;
         this.COUPON_DATA = result.Data.docs;
         this.couponData = new MatTableDataSource<homeworkComponent>(this.COUPON_DATA);
         this.couponData.sort = this.couponSort;

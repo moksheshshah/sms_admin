@@ -47,6 +47,9 @@ subjectList:any = [
   { key:'Gujrati', value:'gujrati' }, 
   { key:'Science', value:'science' }, 
 ];
+editor !: Editor;
+toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
+ingredient_length: any = 0;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -60,6 +63,7 @@ subjectList:any = [
   ) { }
 
   ngOnInit() {
+    this.editor = new Editor();
     this.getVarients();
     this.prepareAddEditExpenseForm();
     this.couponId = this._activatedRoute.snapshot.paramMap.get('id');
@@ -251,4 +255,12 @@ subjectList:any = [
     event.target.src = this.constants.defaultImage;
   }
 
+  ingredientLength(event: any = '') {
+    this.ingredient_length = event.length
+    if (event.length > 10000) {
+      this._toastr.clear();
+      this._toastr.error("You can not write more product description", 'Oops!');
+    }
+  }
+  
 }

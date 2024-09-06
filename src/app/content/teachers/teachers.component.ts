@@ -110,7 +110,7 @@ export class TeachersComponent {
   }
 
   changeStatusAction(event:any,resData:any){
-    this.isTableLoading = true;
+    // this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'600px',
       data:{
@@ -152,7 +152,7 @@ export class TeachersComponent {
   }
 
   deleteTeachers(element:any){
-    this.isTableLoading = true;
+    // this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'410px',
       height:'fit-content',

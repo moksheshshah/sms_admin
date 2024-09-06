@@ -82,7 +82,11 @@ export class StudentComponent {
     { key:'Buddhist ', value:'buddhist ' },
     { key:'Muslim', value:'muslim' },
   ];
-  selClass:any;
+  selectedClass: any;
+  selectedSection: any;
+  selectedGender: any;
+  selectedReligion: any;
+  selectedSortBy: any;
   @ViewChild(MatSort,{static:false}) couponSort!:MatSort;
   @ViewChild('paginator', { static: true }) paginator!: Paginator
 
@@ -155,7 +159,7 @@ export class StudentComponent {
   }
 
   changeStatusAction(event:any,resData:any){
-    this.isTableLoading = true;
+    // this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'600px',
       data:{
@@ -197,7 +201,7 @@ export class StudentComponent {
   }
 
   deleteSchool(element:any){
-    this.isTableLoading = true;
+    // this.isTableLoading = true;
     const dialogRef = this._dialog.open(CommonModalComponent,{
       width:'410px',
       height:'fit-content',

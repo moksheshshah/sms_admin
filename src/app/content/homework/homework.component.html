@@ -38,7 +38,7 @@
     <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
         <mat-form-field class="example-full-width w-full mt-0 date" appearance="outline" color="primary">
             <input matInput [matDatepicker]="picker1" (click)="picker1.open()"
-            placeholder="Select Month">
+            placeholder="Select Date">
             <span matSuffix>
             <mat-datepicker-toggle [for]="picker1"></mat-datepicker-toggle>
             </span>
@@ -49,7 +49,7 @@
 </div>
 <div class="w-full relative py-6 xl:py-8">
     <div class="w-full relative">
-        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative bg-white">
+        <div class="rounded-xl overflow-x-hidden lg:overflow-x-auto relative">
             <table mat-table matSort [dataSource]="couponData" class="h-full">
                   <!-- Size Name Column -->
                   <ng-container matColumnDef="#">
@@ -108,9 +108,9 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
-                <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalCoupon" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
-            </div> -->
+            <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="couponData.filteredData.length > 0">
+                <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalHomework" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+            </div>
             <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
                 <div class="flex flex-col items-center justify-center">
                     <div

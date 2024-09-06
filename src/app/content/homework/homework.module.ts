@@ -12,6 +12,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { PaginatorModule } from 'primeng/paginator';
+import { NgxEditorModule } from 'ngx-editor';
 
 const routes:Routes = [
   {
@@ -42,6 +44,8 @@ const routes:Routes = [
     MatTabsModule,
     MatTableModule,
     MatFormFieldModule,
+    PaginatorModule,
+    NgxEditorModule
     // FormControlName
   ]
 })

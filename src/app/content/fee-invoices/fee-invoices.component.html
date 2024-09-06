@@ -149,18 +149,18 @@
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <div class="w-full"> 
-              <div class="w-full flex justify-center p-5" *ngIf="sizeData.length == 0">
-                  <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
-                      <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Year Create </strong>
-                      <span class="block lg:text-18 text-center text-t2"> Please create academic year first </span>
-                  </div>
-              </div>
-          </div>
-      </div>    
-      <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="sizeData.filteredData.length > 0">
-        <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalSizeData" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
-    </div> -->
+        </div>     
+        <div class="w-full"> 
+            <div class="w-full flex justify-center p-5" *ngIf="sizeData.length == 0">
+                <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Year Create </strong>
+                    <span class="block lg:text-18 text-center text-t2"> Please create academic year first </span>
+                </div>
+            </div>
+        </div>
+        <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="sizeData.length > 0">
+          <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalInvoice" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+      </div>
       <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
           <div class="flex flex-col items-center justify-center">
               <div
