@@ -225,18 +225,18 @@
         <div class="relative">
           <span class="p-2.5 py-3 2xl:p-4 2xl:py-3 bg-t6 flex items-center justify-center rounded-md ml-4 2xl:ml-6 cursor-pointer" onclick="toggleActive('#profile','active');removeActive('#search','active');"><span class="icon_show icon-user text-primary text-xl 2xl:text-2xl leading-none"></span>
           </span>
-          <ul id="profile" class="w-full min-w-40 bg-white border border-t4 rounded-md p-3 absolute right-0 top-full translate-y-10 invisible anim space-y-2">
+          <ul id="profile" class="w-full min-w-40 bg-white border border-t4 rounded-md p-3 absolute right-0 top-16 translate-y-10 invisible anim space-y-2">
             <li class="flex items-center cursor-pointer space-x-3" onclick="toggleActive('#profile','active');">
-              <span class="inline-block icon-user"></span>
-              <span class="inline-block text16">Profile</span>
+              <span class="inline-block icon-setting_fill text-primary"></span>
+              <span class="inline-block text16" [routerLink]="'/certificate'">Setting</span>
             </li>
-            <li class="flex items-center cursor-pointer space-x-3" onclick="toggleActive('#profile','active');">
-              <span class="inline-block icon-user"></span>
-              <span class="inline-block text16">Login</span>
-            </li>
+            <!-- <li class="flex items-center cursor-pointer space-x-3" onclick="toggleActive('#profile','active');">
+              <span class="inline-block icon-user text-primary"></span>
+              <span class="inline-block text16" [routerLink]="'/login'">Login</span>
+            </li> -->
             <li class="flex items-center cursor-pointer text-error space-x-3" onclick="toggleActive('#profile','active');">
-              <span class="inline-block icon-arrow-left"></span>
-              <span class="inline-block text16 text-error">Logout</span>
+              <span class="inline-block icon-arrow-left"></span>  
+              <span class="inline-block text16 text-error" (click)="logout()">Logout</span>
             </li>
           </ul>
         </div>
