@@ -1,8 +1,7 @@
 import { Component, OnInit ,OnChanges, DoCheck} from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { fromEvent, merge, of, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { LogInComponent } from '../auth/log-in/log-in.component';
 import isOnline from 'is-online';
 
@@ -35,6 +34,7 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   ];
 
   constructor(private router: Router,
+    private route:ActivatedRoute,
     private toastr:ToastrService
   ) {
     router.events.subscribe((val: any) => {
@@ -45,7 +45,7 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
     });
   }
 
-  ngOnInit(): void {    
+  ngOnInit(): void { 
     this.checkNetworkStatus();
     if(window.innerWidth > 1024){      
       this.isShow = true;
@@ -55,7 +55,7 @@ export class ContentComponent implements OnInit ,OnChanges,DoCheck{
   }
 
   ngOnChanges(){
-    this.checkRoutesPath()
+    this.checkRoutesPath();
   }
 
   ngDoCheck(): void {
