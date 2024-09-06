@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { AddEditExamComponent } from './add-edit-exam/add-edit-exam.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 const routes:Routes = [
   {
@@ -43,7 +44,8 @@ const routes:Routes = [
     MatTabsModule,
     MatTableModule,
     MatFormFieldModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PaginatorModule
   ]
 })
 export class ExamsModule { }

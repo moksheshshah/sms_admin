@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CONSTANTS } from '../../../common/constants';
 import { Router } from '@angular/router';
+import { ClassService } from '../../class/class.service';
+import { GlobalFunctions } from '../../../common/global-function';
 
 
 export interface studentAttendanceListComponent{
@@ -61,7 +63,7 @@ const STDATTENDANCE_DATA:studentAttendanceListComponent[]=[
 })
 export class StudentAttendanceListComponent {
   // STDATTENDANCE_DATA:studentAttendanceListComponent[]=[];
-  totalCoupon:any;
+  totalattandance: any;
   searchCoupon:any;
   displayedColumns:string[]=['student','date1','date2','date3','date4','date5','date6','date7','date8','date9','date10','date11','date12','date13','date14','date15','date16','date17','date18','date19','date20','date21','date22','date23','date24','date25','date26','date27','date28','date29','date30','date31','total_attendace','total_present','total_absent','total_leave'];
   // studentAttendanceData = new MatTableDataSource<studentAttendanceListComponent>(this.STDATTENDANCE_DATA);
@@ -93,10 +95,51 @@ export class StudentAttendanceListComponent {
 selClass: any;
 couponData: any;
 
-constructor(private _router:Router){}
+constructor(private _router:Router, 
+  private _couponService:ClassService,
+  private _globalFunctions:GlobalFunctions
+){}
 
-getAllCouponList() {
+ngOnInit(){
+  this.getAttendanceList();
+}
 
+ngAfterViewInit(){
+  // this.attendanceData.sort = this.couponSort;
+}
+
+filterData(){
+  $('.mat-mdc-select-panel.mdc-menu-surface.mdc-menu-surface--open').click(function(){
+    $('.mat-focused').removeClass('mat-focused')
+  })
+  this.getAttendanceList();  
+}
+
+getAttendanceList(event:any = ''){
+  // this.isTableLoading = true;
+  this.pageNo = event? (event.page + 1) : 1;
+  this.limit = event.rows || 10;
+  let filter = {
+    page: this.pageNo || '1',
+    limit: this.limit || '10',
+    search:this.searchCoupon || '',
+  }
+
+  this._couponService.getSize(filter).subscribe((result:any)=>{
+    if(result && result.IsSuccess){
+      this.totalattandance = result?.Data?.totalDocs;
+      // this.ATTENDANCE_DATA = result.Data.docs;
+      // this.attendanceData = new MatTableDataSource<attendanceComponent>(this.ATTENDANCE_DATA);
+      // this.attendanceData.sort = this.couponSort;
+      this.isTableLoading = false;
+    } else {
+      this.isTableLoading = false;
+      this._globalFunctions.successErrorHandling(result,this,true)
+    }
+  },(error:any)=>{
+    this.isTableLoading = false;
+    this._globalFunctions.errorHanding(error,this,true);
+  })
 }
 
 takeAttendance(event:any){

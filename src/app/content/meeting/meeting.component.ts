@@ -3,6 +3,8 @@ import { CommonModalComponent } from '../../common-modal/common-modal.component'
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
+import { ClassService } from '../class/class.service';
+import { GlobalFunctions } from '../../common/global-function';
 
 export interface meetingComponent {
   meeting_title:any
@@ -25,7 +27,7 @@ export interface meetingComponent {
 })
 export class MeetingComponent {
 //  MEETING_DATA: meetingComponent[]=[] ;
- totalSizeData: any;
+totalmeeting: any;
  searchSize: any = "";
  displayedColumns: string[] = ['meeting_title', 'meeting_agenda', 'meeting_date_time', 'meeting_type','location_link', 'action'];
  // noticeData = new MatTableDataSource<meetingComponent>(this.meetingData);
@@ -56,10 +58,46 @@ export class MeetingComponent {
  selectedSection: any;
  selectedStatus: any;
 limit: any;
+  searchHistory: any;
+  pageNo: any;
 
- constructor(private _router:Router, 
-   private _dialog:MatDialog
- ){}
+constructor(private _router:Router, 
+  private _dialog:MatDialog,
+  private _classService:ClassService,
+  private _globalFunctions:GlobalFunctions
+){}
+
+
+ngOnInit(): void {
+  this.getPaymentHistory();
+}
+
+getPaymentHistory(event:any = ''){
+  // this.isTableLoading = true;
+  this.pageNo = event? (event.page + 1) : 1;
+  this.limit = event.rows || 10;
+  let filter = {
+    page: this.pageNo || '1',
+    limit: this.limit || '10',
+    search:this.searchHistory || '',
+  }
+
+  this._classService.getSize(filter).subscribe((result:any)=>{
+    if(result && result.IsSuccess){
+      this.totalmeeting = result?.Data?.totalDocs;
+      // this.STDATTENDANCE_DATA = result.Data.docs;
+      // this.paymentHistroyData = new MatTableDataSource<paymentElement>(this.PAYMENTHISTROY_DATA);
+      // this.paymentHistroyData.sort = this.couponSort;
+      this.isTableLoading = false;
+    } else {
+      this.isTableLoading = false;
+      this._globalFunctions.successErrorHandling(result,this,true)
+    }
+  },(error:any)=>{
+    this.isTableLoading = false;
+    this._globalFunctions.errorHanding(error,this,true);
+  })
+}
 
  addMeeting(){
    this._router.navigate(['meeting/', 'meetingdetails']);

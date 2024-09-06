@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CommonModalComponent } from '../../common-modal/common-modal.component';
 import { ViewFeeInvoiceComponent } from './view-fee-invoice/view-fee-invoice.component';
+import { PaginatorState } from 'primeng/paginator';
 export interface SizeElement {
   studentName: string;
   class: string;
@@ -33,6 +34,12 @@ const STDATTENDANCE_DATA:SizeElement[]=[
   styleUrl: './fee-invoices.component.scss'
 })
 export class FeeInvoicesComponent {
+  private _couponService: any;
+  private _globalFunctions: any;
+  searchCoupon: string | undefined;
+getAllCouponList($event: PaginatorState) {
+throw new Error('Method not implemented.');
+}
   SIZE_DATA: SizeElement[] = [];
   totalSizeData: any;
   searchSize: any = "";
@@ -64,6 +71,9 @@ export class FeeInvoicesComponent {
   selectedClass: any;
   selectedSection: any;
   selectedStatus: any;
+  pageNo: any;
+  limit: any;
+  couponSort: any;
 
   constructor(private _router:Router, 
     private _dialog:MatDialog
@@ -89,6 +99,7 @@ export class FeeInvoicesComponent {
         buttonNames:[{firstBtn:"Cancle",secondBtn:'Yes, Delete'}]
       }
     });
+  
     dialogRef.afterClosed().subscribe((res)=>{
       if(res){
       //   let param = {
@@ -135,3 +146,7 @@ export class FeeInvoicesComponent {
   }
 
 }
+function getAllCouponList(event: Event | undefined, arg1: string) {
+  throw new Error('Function not implemented.');
+}
+

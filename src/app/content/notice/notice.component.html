@@ -3,7 +3,7 @@
     <span class=" block text24">Notice</span>
 </div>
 <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3  justify-end ml-auto">
-    <label for="main_search" class="search py-2 xl:py-2.5 w-full border border-[#CBD4E1]">
+    <label for="main_search" class="search py-2 xl:py-2.5 w-full">
         <span class="icon_show icon-search text-t3 text-xl xl:text-2xl"></span>
         <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
     </label>
@@ -56,15 +56,18 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <div class="w-full"> 
-                <div class="w-full flex justify-center p-5" *ngIf="noticeData.length == 0">
-                    <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
-                        <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Notice Create </strong>
-                        <span class="block lg:text-18 text-center text-t2"> Please create Notice first </span>
-                    </div>
+        </div>     
+        <div class="w-full"> 
+            <div class="w-full flex justify-center p-5" *ngIf="noticeData.length == 0">
+                <div class="max-w-8xl w-full shadow-xl shadow-slate-100 rounded-2xl p-10 mx-auto bg-gray_2">
+                    <strong class="block text-xl lg:text-2xl 2xl:text-4xl text-center"> No Notice Create </strong>
+                    <span class="block lg:text-18 text-center text-t2"> Please create Notice first </span>
                 </div>
             </div>
-        </div>     
+        </div>
+        <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="noticeData.length > 0">
+            <p-paginator [first]="1" [rows]="limit" (onPageChange)="getPaymentHistory($event)"  [totalRecords]="totalnotice" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+        </div>
         <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
             <div class="flex flex-col items-center justify-center">
                 <div

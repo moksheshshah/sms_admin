@@ -51,7 +51,8 @@ const routes:Routes = [
     MatDatepickerModule,
     MatTabsModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    PaginatorModule
   ]
 })
 export class AttendanceModule { }

@@ -1,17 +1,19 @@
-<div class="flex items-center md:items-start flex-wrap">
-    <span class="text24 order-1">Income List</span>
-    <button class="btn_primary order-2 sm:order-3 group" (click)="addIncome()">
-      <span class="inline-block">
-        <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
-      </span>
-      <span class="text18 text-white group-hover:text-primary">Add Income</span>
-    </button>
-    <label for="main_search" class="search sm:max-w-64 2xl:max-w-[350px]">
-      <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
-      <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search" (keyup)="onKeySearch($event)"/>
-    </label>
-  </div>
-<div class="w-full relative py-6 xl:py-8">
+<div class="w-full flex items-center flex-wrap xl:flex-nowrap pb-[30px]">
+    <div class="w-full lg:w-auto pb-2 lg:pb-0">
+        <span class=" block text24">Income List</span>
+    </div>
+    <div class="w-full xl:w-auto flex items-center flex-wrap lg:flex-nowrap space-x-3  justify-end ml-auto">
+        <label for="main_search" class="search search sm:max-w-64 2xl:max-w-[350px]">
+            <span class="icon_show icon-search text-t3 text-xl xl:text-2xl"></span>
+            <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
+        </label>
+        <button class="lg:order-4 btn_primary group anim" (click)="addIncome()">
+            <span class="icon_show icon-add text-xl xl:text-2xl text-white group-hover:text-primary"></span>
+            <span class="text18 text-white group-hover:text-primary whitespace-nowrap">Add Income</span>
+        </button>
+    </div>
+</div>
+<div class="w-full relative space-y-6 xl:space-y-8">
     <div class="w-full relative overflow-hidden">
         <div class="rounded-xl overflow-x-auto relative">
             <table mat-table matSort [dataSource]="incomeData" class="mat-elevation-z8 h-full">

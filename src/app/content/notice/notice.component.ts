@@ -1,8 +1,10 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { CommonModalComponent } from '../../common-modal/common-modal.component';
+import { ClassService } from '../class/class.service';
+import { GlobalFunctions } from '../../common/global-function';
 
 export interface noticeComponent {
 no:any
@@ -24,9 +26,9 @@ const STDATTENDANCE_DATA:noticeComponent[]=[
   templateUrl: './notice.component.html',
   styleUrl: './notice.component.scss'
 })
-export class NoticeComponent {
+export class NoticeComponent implements OnInit{
    // NOTICE_DATA: meetingComponent[]=[] ;
-   totalSizeData: any;
+   totalnotice: any;
    searchSize: any = "";
    displayedColumns: string[] = ['no', 'title', 'description', 'creation_date', 'action'];
    // noticeData = new MatTableDataSource<meetingComponent>(this.NOTICE_DATA);
@@ -56,10 +58,19 @@ export class NoticeComponent {
    selectedClass: any;
    selectedSection: any;
    selectedStatus: any;
+    limit: any;
+    pageNo: any;
+    searchHistory: any;
  
    constructor(private _router:Router, 
-     private _dialog:MatDialog
+     private _dialog:MatDialog,
+     private _classService:ClassService,
+     private _globalFunctions:GlobalFunctions
    ){}
+
+   ngOnInit(): void {
+     this.getPaymentHistory();
+   }
  
    addNotice(){
      this._router.navigate(['notice/', 'noticedetails']);
@@ -69,6 +80,32 @@ export class NoticeComponent {
      event.stopPropagation();
      this._router.navigate(['notice/', resData?.id]);
    }
+   getPaymentHistory(event:any = ''){
+    // this.isTableLoading = true;
+    this.pageNo = event? (event.page + 1) : 1;
+    this.limit = event.rows || 10;
+    let filter = {
+      page: this.pageNo || '1',
+      limit: this.limit || '10',
+      search:this.searchHistory || '',
+    }
+
+    this._classService.getSize(filter).subscribe((result:any)=>{
+      if(result && result.IsSuccess){
+        this.totalnotice = result?.Data?.totalDocs;
+        // this.STDATTENDANCE_DATA = result.Data.docs;
+        // this.paymentHistroyData = new MatTableDataSource<paymentElement>(this.PAYMENTHISTROY_DATA);
+        // this.paymentHistroyData.sort = this.couponSort;
+        this.isTableLoading = false;
+      } else {
+        this.isTableLoading = false;
+        this._globalFunctions.successErrorHandling(result,this,true)
+      }
+    },(error:any)=>{
+      this.isTableLoading = false;
+      this._globalFunctions.errorHanding(error,this,true);
+    })
+  }
  
    deleteNotice(resData:any){
      this.isTableLoading = true;

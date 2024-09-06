@@ -1,9 +1,11 @@
 import { NumberInput } from '@angular/cdk/coercion';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { CONSTANTS } from '../../../common/constants';
 import { Router } from '@angular/router';
+import { ClassService } from '../../class/class.service';
+import { GlobalFunctions } from '../../../common/global-function';
 export interface studentTakeAttendanceComponent{
   roll_no:any;
   student_name:any;
@@ -25,7 +27,7 @@ const STDATTENDANCE_DATA:studentTakeAttendanceComponent[]=[
   templateUrl: './student-take-attendance.component.html',
   styleUrl: './student-take-attendance.component.scss'
 })
-export class StudentTakeAttendanceComponent {
+export class StudentTakeAttendanceComponent implements OnInit{
   totalCoupon:any;
   searchCoupon:any;
   displayedColumns:string[]=['roll_no','student_name','class','section','status','mark_all_absent','mark_all_present'];
@@ -58,10 +60,41 @@ export class StudentTakeAttendanceComponent {
 selClass: any;
 couponData: any;
 
-constructor(private _router:Router){}
+constructor(private _router:Router,
+  private _couponService:ClassService,
+  private _globalFunctions:GlobalFunctions
+){}
 
-getAllCouponList() {
 
+ngOnInit(): void {
+  this.getAllCouponList();
+}
+
+getAllCouponList(event:any = "") {
+  this.isTableLoading = true;
+    this.pageNo = event? (event.page + 1) : 1;
+    this.limit = event.rows || 10;
+    let filter = {
+      page: this.pageNo || '1',
+      limit: this.limit || '10',
+      search:this.searchCoupon || '',
+    }
+
+    this._couponService.getSize(filter).subscribe((result:any)=>{
+      if(result && result.IsSuccess){
+        this.totalCoupon = result?.Data?.totalDocs;
+        // this.COUPON_DATA = result.Data.docs;
+        // this.couponData = new MatTableDataSource<homeworkComponent>(this.COUPON_DATA);
+        // this.couponData.sort = this.couponSort;
+        this.isTableLoading = false;
+      } else {
+        this.isTableLoading = false;
+        this._globalFunctions.successErrorHandling(result,this,true)
+      }
+    },(error:any)=>{
+      this.isTableLoading = false;
+      this._globalFunctions.errorHanding(error,this,true);
+    })
 }
 
 

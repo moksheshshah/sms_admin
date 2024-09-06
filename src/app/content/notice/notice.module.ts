@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
+import { PaginatorModule } from 'primeng/paginator';
 
 const routes:Routes = [
   {
@@ -39,7 +40,8 @@ const routes:Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    PaginatorModule
   ]
 })
 export class NoticeModule { }

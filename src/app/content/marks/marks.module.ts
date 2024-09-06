@@ -18,6 +18,7 @@ import { AddMarksComponent } from './add-marks/add-marks.component';
 import { ImageModule } from 'primeng/image';
 import { PrintMarksheetComponent } from './print-marksheet/print-marksheet.component';
 import { ViewMarksheetComponent } from './view-marksheet/view-marksheet.component';
+import { PaginatorModule } from 'primeng/paginator';
 
 const routes:Routes = [
   {
@@ -61,7 +62,8 @@ const routes:Routes = [
     MatDatepickerModule,
     InputSwitchModule,
     MatTableModule,
-    ImageModule
+    ImageModule,
+    PaginatorModule
   ]
 })
 export class MarksModule { }

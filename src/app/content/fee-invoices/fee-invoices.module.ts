@@ -53,7 +53,8 @@ const routes:Routes = [
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+    PaginatorModule
   ]
 })
 export class FeeInvoicesModule { }

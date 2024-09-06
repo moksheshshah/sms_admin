@@ -14,14 +14,13 @@
       </button>
   </div>
 </div>
-
 <div class="w-full relative space-y-6 xl:space-y-8">
   <div class="w-full py-1 lg:py-2 px-5 xl:px-7 bg-white rounded-md mt-4">
     <div class="flex items-center flex-wrap 2xl:flex-nowrap -mx-2">
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full sm:max-w-64 2xl:max-w-[350px] p-2">
-            <label for="main_search" class="search py-2 xl:py-2.5 w-full border border-[#CBD4E1]">
-                <span class="icon_show icon-search text-primary text-xl xl:text-2xl"></span>
-                <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search Student" id="main_search"/>
+            <label for="main_search" class="search py-2 xl:py-2.5 w-full">
+                <span class="icon_show icon-search text-t3 text-xl xl:text-2xl"></span>
+                <input class="outline-none bg-transparent text-dark text-14 md:text-16 2xl:text-18 w-full" type="search" name="search" placeholder="Search" id="main_search"/>
             </label>
         </div>
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 2xl:w-full 2xl:max-w-[270px] p-2">
@@ -158,7 +157,10 @@
                   </div>
               </div>
           </div>
-      </div>     
+      </div>    
+      <!-- <div class="w-full data_paginator flex justify-end mt-[-226px] pt-[250px] pb-2" *ngIf="sizeData.filteredData.length > 0">
+        <p-paginator [first]="1" [rows]="limit" (onPageChange)="getAllCouponList($event)"  [totalRecords]="totalSizeData" [rowsPerPageOptions]="[10, 25, 50]"></p-paginator>
+    </div> -->
       <div *ngIf="isTableLoading" class="absolute inset-0 w-full h-full flex items-center justify-center bg-slate-300/30 backdrop-blur-sm z-10">
           <div class="flex flex-col items-center justify-center">
               <div
