@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Editor, Toolbar } from 'ngx-editor';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-edit-fee-invoice',
@@ -31,11 +33,17 @@ export class AddEditFeeInvoiceComponent implements OnInit{
     { key:'Pqr - 04', value:'04' },
   ]
   feesInvoiceForm:any = FormGroup;
+  editor !: Editor;
+  toolbar: Toolbar = [['bold', 'italic'], ['underline', 'strike'], ['code', 'blockquote'], ['ordered_list', 'bullet_list'], [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }], ['link', 'image'], ['text_color', 'background_color'], ['align_left', 'align_center', 'align_right', 'align_justify'],];
+  ingredient_length: any = 0;
 
-  constructor(private _formBuilder:FormBuilder){}
+  constructor(private _formBuilder:FormBuilder, 
+    private _toastr:ToastrService
+  ){}
 
   ngOnInit(): void {
-    this.initForm()
+    this.editor = new Editor();
+    this.initForm();
   }
 
   initForm() {
@@ -56,6 +64,14 @@ export class AddEditFeeInvoiceComponent implements OnInit{
 
   onSubmitted(){
     console.log(this.feesInvoiceForm.value);
-    
+  
+  }
+
+  ingredientLength(event: any = '') {
+    this.ingredient_length = event.length
+    if (event.length > 10000) {
+      this._toastr.clear();
+      this._toastr.error("You can not write more product description", 'Oops!');
+    }
   }
 }

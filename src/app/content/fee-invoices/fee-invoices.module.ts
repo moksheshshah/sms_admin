@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { CollectFeesComponent } from './collect-fees/collect-fees.component';
 import { ViewFeeInvoiceComponent } from './view-fee-invoice/view-fee-invoice.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 const routes:Routes = [
   {
@@ -54,7 +55,8 @@ const routes:Routes = [
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    PaginatorModule
+    PaginatorModule,
+    NgxEditorModule
   ]
 })
 export class FeeInvoicesModule { }
