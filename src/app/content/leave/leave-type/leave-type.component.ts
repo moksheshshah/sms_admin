@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ClassService } from '../../class/class.service';
@@ -26,7 +26,7 @@ const STDATTENDANCE_DATA:complaintComponent[]=[
   templateUrl: './leave-type.component.html',
   styleUrl: './leave-type.component.scss'
 })
-export class LeaveTypeComponent {
+export class LeaveTypeComponent implements OnInit{
   searchSize: any = "";
   displayedColumns: string[] = ['id', 'type', 'action'];
   // noticeData = new MatTableDataSource<meetingComponent>(this.meetingData);
@@ -58,6 +58,10 @@ export class LeaveTypeComponent {
     private _globalFunctions:GlobalFunctions,
     private _dialog:MatDialog
   ){}
+
+  ngOnInit(): void {
+    this.getAllCouponList();
+  }
   
   getAllCouponList(event:any = '') {
     this.isTableLoading = true;

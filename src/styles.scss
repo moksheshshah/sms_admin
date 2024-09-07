@@ -277,6 +277,9 @@ input.form-control {
 .NgxEditor__Content {
   padding-left: 16px !important;
 }
+.custom_th th{
+  text-align: center;
+}
 @media (max-width: 1366px){
   .cle_drop .mat-mdc-form-field-infix span.mat-mdc-select-min-line{
     font-size: 12px;
