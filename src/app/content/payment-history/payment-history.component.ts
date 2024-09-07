@@ -115,8 +115,8 @@ export class PaymentHistoryComponent implements OnInit{
       height:'fit-content',
       data:{
         title:'Confirmation!',
-        message:'Are you sure you want to delete the School? Please note that all data related to this School will be deleted.',
-        buttonNames:[{firstBtn:"Cancle",secondBtn:'Yes, Delete'}]
+        message:'Are You Sure You Want To Delete Fee Payment Record ?',
+        buttonNames:[{firstBtn:"Cancel",secondBtn:'Yes, Delete'}]
       }
     });
     dialogRef.afterClosed().subscribe((res)=>{
